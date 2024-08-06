@@ -13,8 +13,8 @@
                                         <td align="left" valign="top">
                                             <div>
                                                 <ul>
-                                                    <li v-if="dataList[(index - 1) * 2]" class="recipe_item" @click="viewContentRecipe(dataList[(index - 1) * 2].id, dataList[(index - 1) * 2].someProperty, dataList[(index - 1) * 2].title)">
-                                                        <a :href="'view.php?id=recipe&amp;no=' + dataList[(index - 1) * 2].id">
+                                                    <li v-if="dataList[(index - 1) * 2]" class="recipe_item">
+                                                        <a :href="'/recipe/details?' + dataList[(index - 1) * 2].recipeId">
                                                             <img src="/image/recipe_img1.PNG"
                                                                 width="480"
                                                                 height="480"
@@ -28,8 +28,8 @@
                                         <td v-if="dataList[(index - 1) * 2 + 1]" align="left" valign="top">
                                             <div>
                                                 <ul>
-                                                    <li class="recipe_item" @click="viewContentRecipe(dataList[(index - 1) * 2 + 1].id, dataList[(index - 1) * 2 + 1].someProperty, dataList[(index - 1) * 2 + 1].title)">
-                                                        <a :href="'view.php?id=recipe&amp;no=' + dataList[(index - 1) * 2 + 1].id">
+                                                    <li class="recipe_item">
+                                                        <a :href="'/recipe/details?' + dataList[(index - 1) * 2 + 1].recipeId">
                                                             <img src="/image/recipe_img1.PNG"
                                                                 width="480"
                                                                 height="480"
@@ -45,19 +45,19 @@
                                 </table>
                             <div class="layout-pagination">
                                 <div class="pagediv">
-                                    <a href="/Recipe/list/0?size=6&search=" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로가기</a>
+                                    <a href="/recipe/list/0?size=6&search=" class="layout-pagination-button layout-pagination-first-page">맨 처음 페이지로가기</a>
                                     <a href="list.php?id=recipe&amp;page=1" class="layout-pagination-button layout-pagination-prev-page">이전 페이지로가기</a>
-                                    <a href="/Recipe/list/0?size=6&search=" class="layout-pagination-button layout-pagination-number">1</a>
-                                    <a href="/Recipe/list/1?size=6&search=" class="layout-pagination-button layout-pagination-number">2</a>
-                                    <a href="/Recipe/list/2?size=6&search=" class="layout-pagination-button layout-pagination-number">3</a>
-                                    <a href="/Recipe/list/3?size=6&search=" class="layout-pagination-button layout-pagination-number">4</a>
-                                    <a href="/Recipe/list/4?size=6&search=" class="layout-pagination-button layout-pagination-number">5</a>
-                                    <a href="/Recipe/list/5?size=6&search=" class="layout-pagination-button layout-pagination-number">6</a>
-                                    <a href="/Recipe/list/6?size=6&search=" class="layout-pagination-button layout-pagination-number">7</a>
-                                    <a href="/Recipe/list/7?size=6&search=" class="layout-pagination-button layout-pagination-number">8</a>
-                                    <a href="/Recipe/list/8?size=6&search=" class="layout-pagination-button layout-pagination-number">9</a>
-                                    <a href="/Recipe/list/9?size=6&search=" class="layout-pagination-button layout-pagination-number">10</a>
-                                    <a href="/Recipe/list/10?size=6&search=" class="layout-pagination-button layout-pagination-next-page">다음 페이지로가기</a>
+                                    <a href="/recipe/list/0?size=6&search=" class="layout-pagination-button layout-pagination-number">1</a>
+                                    <a href="/recipe/list/1?size=6&search=" class="layout-pagination-button layout-pagination-number">2</a>
+                                    <a href="/recipe/list/2?size=6&search=" class="layout-pagination-button layout-pagination-number">3</a>
+                                    <a href="/recipe/list/3?size=6&search=" class="layout-pagination-button layout-pagination-number">4</a>
+                                    <a href="/recipe/list/4?size=6&search=" class="layout-pagination-button layout-pagination-number">5</a>
+                                    <a href="/recipe/list/5?size=6&search=" class="layout-pagination-button layout-pagination-number">6</a>
+                                    <a href="/recipe/list/6?size=6&search=" class="layout-pagination-button layout-pagination-number">7</a>
+                                    <a href="/recipe/list/7?size=6&search=" class="layout-pagination-button layout-pagination-number">8</a>
+                                    <a href="/recipe/list/8?size=6&search=" class="layout-pagination-button layout-pagination-number">9</a>
+                                    <a href="/recipe/list/9?size=6&search=" class="layout-pagination-button layout-pagination-number">10</a>
+                                    <a href="/recipe/list/10?size=6&search=" class="layout-pagination-button layout-pagination-next-page">다음 페이지로가기</a>
                                     <a href="list.php?id=recipe&amp;page=35" class="layout-pagination-button layout-pagination-last-page">맨 끝 페이지로가기</a>
                                 </div>
                             </div>
@@ -132,10 +132,7 @@ export default {
   },
   computed: {
     pageId() {
-      // 현재 경로를 가져옵니다
-      const path = this.$route.path; // /Recipe/list/1
-
-      // `list/` 이후부터 `?` 이전까지의 부분을 추출합니다
+      const path = this.$route.path;  // 현재 경로를 가져옵니다
       const match = path.match(/list\/([^/?]+)/);
       return match ? match[1] : 0;
     }
