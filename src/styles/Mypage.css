@@ -1,0 +1,303 @@
+.css-u71x2d {
+    position: relative;
+    min-width: 1050px;
+    background-color: rgb(242, 245, 248);
+}
+*, :after, :before {
+    box-sizing: border-box;
+    margin: 0;
+}
+*, :after, :before, legend, td, th {
+    padding: 0;
+}
+user agent stylesheet
+div {
+    display: block;
+    unicode-bidi: isolate;
+}
+.css-72lz6z {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    -webkit-box-pack: center;
+    justify-content: center;
+    padding: 50px 0px 80px;
+    margin: 0px auto;
+}
+.css-1l2tkkh {
+    overflow: hidden;
+    width: 375px;
+    border-radius: 16px;
+}
+.css-3rbu7q.pc {
+    padding-bottom: 0px;
+}
+.css-3rbu7q {
+    padding-bottom: 20px;
+    background-color: rgb(242, 245, 248);
+}
+.css-3rbu7q.pc .top-info-section {
+    margin-bottom: 8px;
+    padding: 24px 20px 20px;
+}
+.css-3rbu7q .top-info-section {
+    padding: 24px 16px 20px;
+}
+.css-3rbu7q > div {
+    background-color: rgb(255, 255, 255);
+}
+.css-jagjhu {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+}
+.css-jagjhu .grade-name {
+    display: flex;
+    -webkit-box-align: center;
+    align-items: center;
+    min-width: calc(100% - 100px);
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+.css-jagjhu.pc .user-name {
+    font-weight: 500;
+    font-size: 20px;
+}
+.css-jagjhu .user-name {
+    overflow: hidden;
+    padding-left: 5px;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 28px;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}
+.css-rurvds {
+    margin-top: 12px;
+    border: 1px solid rgb(226, 226, 226);
+    border-radius: 12px;
+}
+.css-z53t5q {
+    display: flex;
+}
+.css-1d9zl68.pc {
+    font-weight: 500;
+}
+.css-1d9zl68 {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    -webkit-box-align: center;
+    align-items: center;
+    width: 100%;
+    padding: 12px 12px 12px 14px;
+    border-radius: 0px 0px 12px 12px;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 18px;
+    word-break: break-all;
+    background-color: rgb(234, 247, 250);
+}
+a {
+    background-color: transparent;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.css-3rbu7q > div {
+    background-color: rgb(255, 255, 255);
+}
+.css-1tzlowo {
+    width: 100%;
+    padding: 12px 0px 6px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgb(181, 181, 181);
+}
+.css-1ozh7ew.pc {
+    margin: 0px;
+    padding: 20px 25px;
+}
+.css-3rbu7q > div {
+    background-color: rgb(255, 255, 255);
+}
+.css-1ozh7ew.pc .menu-wrap {
+    flex-direction: column;
+    align-items: flex-start;
+}
+.css-1ozh7ew .menu-wrap {
+    display: flex;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+}
+.css-1ozh7ew.pc .menu-link {
+    flex-direction: row;
+    min-width: 100%;
+    font-weight: 500;
+    height: 54px;
+    padding: 16px 0px;
+    font-size: 16px;
+}
+.css-1ozh7ew .menu-link {
+    display: flex;
+    flex-direction: column;
+    -webkit-box-align: center;
+    align-items: center;
+    position: relative;
+    min-width: 56px;
+    font-weight: 600;
+    line-height: 18px;
+    cursor: pointer;
+}
+html, button, input, select, textarea {
+    font-family: "Noto Sans KR", "malgun gothic", AppleGothic, dotum, sans-serif;
+}
+[type=button], [type=reset], [type=submit], button {
+    -webkit-appearance: button;
+}
+button, select {
+    text-transform: none;
+}
+button, input {
+    overflow: visible;
+}
+button, input, optgroup, select, textarea {
+    font-family: inherit;
+    font-size: 100%;
+    line-height: 1.15;
+    margin: 0;
+}
+button {
+    border-radius: 0;
+}
+body, button, input, select, textarea {
+    font-size: 14px;
+    color: #333;
+}
+button, input[type=button], input[type=reset], input[type=submit] {
+    -webkit-appearance: button;
+    cursor: pointer;
+}
+button {
+    overflow: visible;
+    background-color: transparent;
+    border: none;
+}
+button, input, optgroup, select, textarea {
+    color: inherit;
+    font: inherit;
+    -webkit-tap-highlight-color: transparent;
+}
+user agent stylesheet
+button {
+    appearance: auto;
+    text-rendering: auto;
+    letter-spacing: normal;
+    word-spacing: normal;
+    line-height: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: center;
+    align-items: flex-start;
+    cursor: default;
+    box-sizing: border-box;
+    margin: 0em;
+    padding-block: 1px;
+    padding-inline: 6px;
+    border-width: 2px;
+    border-style: outset;
+    border-color: buttonborder;
+    border-image: initial;
+}
+.css-1ozh7ew.pc .menu-link > svg {
+    margin: 0px 8px 0px 0px;
+}
+.css-1ozh7ew .menu-link > svg {
+    margin: 0px 0px 8px;
+}
+svg:not(:root) {
+    overflow: hidden;
+}
+.css-10aedqr {
+    display: flex;
+    gap: 2px;
+}
+.css-3rbu7q.pc .menu-info-section {
+    padding: 0px 25px;
+}
+.css-3rbu7q .menu-info-section {
+    padding: 0px 20px;
+}
+.css-3rbu7q > div {
+    background-color: rgb(255, 255, 255);
+}
+.css-bivr1n {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 12px 0px 16px;
+    border-top: 1px solid rgb(238, 238, 238);
+}
+.css-1tzlowo {
+    width: 100%;
+    padding: 12px 0px 6px;
+    font-weight: 400;
+    line-height: 20px;
+    color: rgb(181, 181, 181);
+}
+.css-1qe2c6r {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 100%;
+    padding: 12px 0px;
+    font-weight: 500;
+    cursor: pointer;
+}
+a {
+    background-color: transparent;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+.css-1mq58uz {
+    font-size: 16px;
+    line-height: 22px;
+    color: rgb(51, 51, 51);
+    white-space: nowrap;
+}
+.css-fb116w {
+    width: 100%;
+    height: 53px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+img {
+    border-style: none;
+}
+img, legend {
+    border: 0;
+    vertical-align: top;
+}
+canvas, img, video {
+    max-width: 100%;
+}
+user agent stylesheet
+img {
+    overflow-clip-margin: content-box;
+    overflow: clip;
+}
+.css-aiwp31 {
+    font-size: 16px;
+    line-height: 22px;
+    white-space: nowrap;
+    color: rgb(95, 0, 128);
+}

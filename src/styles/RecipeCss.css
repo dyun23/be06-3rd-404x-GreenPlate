@@ -1,0 +1,421 @@
+.page_aticle {
+  width: 1050px;
+  margin: 0 auto;
+}
+div,
+th,
+td,
+li,
+dt,
+dd,
+p {
+  word-break: break-all;
+}
+*,
+*:after,
+*:before {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+#lnbMenu {
+  padding-top: 26px;
+}
+.page_aticle button,
+.page_aticle input,
+.page_aticle select,
+.page_aticle * {
+  font-family: noto sans;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+#lnbMenu .inner_lnb {
+  position: relative;
+}
+.layout-wrapper {
+  position: relative;
+  width: 1050px;
+  height: 100%;
+  margin: 0 auto;
+}
+#recipe.wrap {
+  padding: 30px 29px;
+}
+td,
+th {
+  padding: 0;
+}
+body,
+input,
+select,
+textarea,
+button {
+  font-family: noto sans, malgun gothic, AppleGothic, dotum;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: #4c4c4c;
+  font-size: 12px;
+  max-width: 100%;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+  color: inherit;
+  font: inherit;
+  margin: 0;
+}
+table[Attributes Style] {
+  width: 100%;
+}
+#recipe_table .recipe_tr td {
+  margin-left: 30px;
+}
+td,
+th {
+  padding: 0;
+}
+td[Attributes Style] {
+  text-align: -webkit-left;
+  vertical-align: top;
+}
+ol,
+ul {
+  list-style-type: none;
+}
+#recipe .recipe_item img {
+  border-bottom: 1px solid #f4f4f4;
+}
+img {
+  border: 0;
+}
+img,
+video,
+canvas {
+  max-width: 100%;
+}
+img[Attributes Style] {
+  width: 480px;
+  aspect-ratio: auto 480 / 480;
+  height: 480px;
+}
+img {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+#recipe .recipe_item .tit_recipe {
+  width: 480px;
+  height: 70px;
+  padding: 25px 0 25px 30px;
+  text-align: left;
+  font-size: 22px;
+  line-height: 0.6;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+#recipe .recipe_item {
+  width: 480px;
+  height: 550px;
+  margin-bottom: 30px;
+  border: 1px solid #f4f4f4;
+}
+ol,
+ul {
+  list-style-type: none;
+}
+#recipe_table .recipe_tr td {
+  margin-left: 30px;
+}
+.layout-pagination-button:first-child {
+  border-left: 1px solid #ddd;
+}
+.layout-pagination-first-page {
+  background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-first.png);
+}
+.layout-pagination-first-page,
+.layout-pagination-prev-page,
+.layout-pagination-next-page,
+.layout-pagination-last-page {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  text-indent: -9999px;
+}
+.layout-pagination-button {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ddd;
+  border-left: 0;
+  vertical-align: top;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: none;
+}
+.layout-pagination-prev-page {
+  background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-prev.png);
+}
+.layout-pagination-first-page,
+.layout-pagination-prev-page,
+.layout-pagination-next-page,
+.layout-pagination-last-page {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  text-indent: -9999px;
+}
+.layout-pagination-button {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ddd;
+  border-left: 0;
+  vertical-align: top;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: none;
+}
+.layout-pagination-number:hover,
+.layout-pagination-number.__active {
+  background-color: #f7f7f7;
+  color: #5f0080;
+}
+.layout-pagination-number {
+  font-weight: 700;
+  color: #333;
+  line-height: 34px;
+}
+.layout-pagination-button {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ddd;
+  border-left: 0;
+  vertical-align: top;
+}
+b,
+strong {
+  font-weight: 700;
+}
+strong {
+  font-weight: bold;
+}
+.layout-pagination-number {
+  font-weight: 700;
+  color: #333;
+  line-height: 34px;
+}
+.layout-pagination-button {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ddd;
+  border-left: 0;
+  vertical-align: top;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: none;
+}
+.layout-pagination-next-page {
+  background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-next.png);
+}
+.layout-pagination-first-page,
+.layout-pagination-prev-page,
+.layout-pagination-next-page,
+.layout-pagination-last-page {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  text-indent: -9999px;
+}
+.layout-pagination-button {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ddd;
+  border-left: 0;
+  vertical-align: top;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: none;
+}
+.layout-pagination-last-page {
+  background-image: url(https://res.kurly.com/pc/etc/old/images/common/icon-pagination-last.png);
+}
+.layout-pagination-first-page,
+.layout-pagination-prev-page,
+.layout-pagination-next-page,
+.layout-pagination-last-page {
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  text-indent: -9999px;
+}
+.layout-pagination-button {
+  display: inline-block;
+  width: 34px;
+  height: 34px;
+  border: 1px solid #ddd;
+  border-left: 0;
+  vertical-align: top;
+}
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+}
+a:-webkit-any-link {
+  color: -webkit-link;
+  cursor: pointer;
+  text-decoration: none;
+}
+.layout-pagination {
+  margin: 60px 0 0;
+  text-align: center;
+}
+tbody {
+  display: table-row-group;
+  vertical-align: middle;
+  unicode-bidi: isolate;
+  border-color: inherit;
+}
+td {
+  display: table-cell;
+  vertical-align: inherit;
+  unicode-bidi: isolate;
+}
+.xans-board-search .input_txt img {
+  position: relative;
+  right: 5px;
+  top: -2px;
+}
+img {
+  border: 0;
+}
+img,
+video,
+canvas {
+  max-width: 100%;
+}
+img {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+.xans-board-search .stxt {
+  font-size: 14px;
+}
+td {
+  display: table-cell;
+  vertical-align: inherit;
+  unicode-bidi: isolate;
+}
+.xans-board-search .stxt input {
+  margin-left: 10px;
+  margin-right: 3px;
+  position: relative;
+  top: 3px;
+}
+input[type="checkbox"],
+input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+}
+input[type="checkbox" i] {
+  background-color: initial;
+  cursor: default;
+  appearance: auto;
+  box-sizing: border-box;
+  margin: 3px 3px 3px 4px;
+  padding: initial;
+  border: initial;
+}
+.search_bt img {
+  cursor: pointer;
+}
+.search_bt img {
+  float: right;
+}
+img {
+  border: 0;
+}
+img,
+video,
+canvas {
+  max-width: 100%;
+}
+img {
+  overflow-clip-margin: content-box;
+  overflow: clip;
+}
+.xans-board-search input[type="text"] {
+  height: 34px;
+  line-height: 34px;
+  width: 220px;
+  border: 1px solid #bfbfbf;
+  color: #000;
+  float: right;
+  padding: 4px;
+}
+user agent stylesheet input[type="text" i] {
+  padding-block: 1px;
+  padding-inline: 2px;
+}
+input:not(
+    [type="file" i],
+    [type="image" i],
+    [type="checkbox" i],
+    [type="radio" i]
+  ) {
+}
+.xans-board-search2 {
+  height: 80px;
+  padding: 0;
+}
+.xans-board-search {
+  margin-top: 30px;
+  padding: 20px 0 20px 10px;
+  color: #2e2e2e;
+  font-size: 12px;
+  clear: both;
+  border-top: 1px solid #5e3d5a;
+  width: 100%;
+}
+#lnbMenu .tit {
+  padding: 23px 0 20px;
+  font-weight: 700;
+  font-size: 28px;
+  color: #333;
+  line-height: 35px;
+  letter-spacing: -1px;
+  text-align: center;
+}
