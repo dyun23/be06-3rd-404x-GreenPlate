@@ -44,7 +44,7 @@
 <script>
 export default {
   name: "PagingComponent",
-  props: ["totalPages"],
+  props: ["totalPages", "isCategoryPage", "main", "sub"],
   data() {
     return {
       currentPage: 1,
@@ -55,7 +55,13 @@ export default {
       if (page >= 1 && page <= this.totalPages) {
         this.currentPage = page;
         this.$emit("update:currentPage", page);
-        this.$router.push({ path: `/item/list/${page}` });
+        if (this.isCategoryPage) {
+          this.$router.push({
+            path: `/item/${this.main}/${this.sub}/${page}`,
+          });
+        } else {
+          this.$router.push({ path: `/item/list/${page}` });
+        }
       }
     },
   },

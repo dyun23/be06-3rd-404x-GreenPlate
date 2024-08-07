@@ -1,23 +1,38 @@
 <template>
   <div class="css-product">
-    <h3 class="css-product-h3">{{ mainCategory }}</h3>
-    <ul class="css-product-ul">
-      <li
-        class="css-product-li list1"
-        v-for="(category, index) in subCategories"
-        :key="index"
-      >
-        <a
-          :class="[
-            'css-product-category',
-            { 'css-product-default-category': index === 0 },
-          ]"
-          class="category0"
-        >
-          {{ category }}
-        </a>
-      </li>
-    </ul>
+    <div v-if="!isCategoryPage">
+      <h3 class="css-product-h3">{{ allCategory }}</h3>
+    </div>
+    <div v-else>
+      <div v-if="isLoading">
+        <p>Loading...</p>
+      </div>
+      <div v-else>
+        <h3 class="css-product-h3">{{ categories.main }}</h3>
+        <ul class="css-product-ul">
+          <li
+            class="css-product-li list1"
+            v-for="(category, index) in categories.subList"
+            :key="index"
+          >
+            <router-link
+              :to="{
+                path: `/item/list/${categories.main}/${category}/${currentPage}`,
+              }"
+              :class="[
+                'css-product-category',
+                {
+                  'css-product-default-category': category === sub,
+                },
+              ]"
+              class="category0"
+            >
+              {{ category }}
+            </router-link>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -26,17 +41,29 @@ export default {
   name: "CategoryComponent",
   data() {
     return {
-      mainCategory: "상위 카테고리",
-      subCategories: [
-        "하위 카테고리1",
-        "하위 카테고리2",
-        "하위 카테고리3",
-        "하위 카테고리4",
-        "하위 카테고리5",
-        "하위 카테고리6",
-        "하위 카테고리7",
-      ],
+      currentPage: 1,
+      allCategory: "ALL",
+      isLoading: true,
     };
+  },
+  props: {
+    isCategoryPage: Boolean,
+    categories: {
+      type: Object,
+      default: () => ({ main: "", subList: [] }),
+    },
+    main: String,
+    sub: String,
+  },
+  watch: {
+    categories: {
+      immediate: true,
+      handler(change) {
+        if (change) {
+          this.isLoading = false;
+        }
+      },
+    },
   },
 };
 </script>

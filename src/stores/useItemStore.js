@@ -35,5 +35,17 @@ export const useItemStore = defineStore("itemList", {
       console.log("store totalItems:" + this.totalItems);
       return response.data.result;
     },
+
+    async getItemListByCategory(main, sub) {
+      const response = await axios.get("/api/item/category", {
+        params: { main, sub },
+      });
+
+      this.itemList = response.data.result.content;
+      this.totalPages = response.data.result.totalPages;
+      this.totalItems = response.data.result.totalElements;
+
+      return response.data.result;
+    },
   },
 });

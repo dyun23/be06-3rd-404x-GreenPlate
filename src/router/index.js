@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
 
 import ItemPage from "@/pages/ItemPage.vue";
+import ItemCategoryPage from "@/pages/ItemCategoryPage.vue";
 import ItemDetailPage from "@/pages/ItemDetailPage.vue";
 import CartPage from "@/pages/CartPage.vue";
 import RecipePage from "@/pages/RecipePage.vue";
@@ -14,6 +15,11 @@ const router = createRouter({
   history: createWebHistory(),
   routes: [
     { path: "/item/list/:page", component: ItemPage, props: true },
+    {
+      path: "/item/list/:main/:sub/:page",
+      component: ItemCategoryPage,
+      props: true,
+    },
     { path: "/item/list/details/:id", component: ItemDetailPage },
     { path: "/user/details", component: MyPage },
     { path: "/cart", component: CartPage },

@@ -1,6 +1,11 @@
 <template>
   <div class="product-container">
-    <CategoryComponent :isCategoryPage="isCategoryPage"></CategoryComponent>
+    <CategoryComponent
+      :isCategoryPage="isCategoryPage"
+      :categories="categories"
+      :main="main"
+      :sub="sub"
+    ></CategoryComponent>
     <div id="container" class="css-product-elements-container">
       <div class="css-product-items-container">
         <ItemCountComponent :totalItems="totalItems"></ItemCountComponent>
@@ -15,6 +20,8 @@
       <PagingComponent
         :totalPages="totalPages"
         :isCategoryPage="isCategoryPage"
+        :main="main"
+        :sub="sub"
         @update:currentPage="handlePageUpdate"
       ></PagingComponent>
     </div>
@@ -28,6 +35,7 @@ import CardComponent from "../components/item/CardComponent.vue";
 import PagingComponent from "@/components/item/PagingComponent.vue";
 import { mapStores } from "pinia";
 import { useItemStore } from "@/stores/useItemStore";
+import { useCategoryStore } from "@/stores/useCategoryStore";
 
 export default {
   components: {
@@ -36,36 +44,54 @@ export default {
     CardComponent,
     PagingComponent,
   },
-  name: "ItemPage",
+  name: "ItemCategoryPage",
   data() {
     return {
       cards: [],
+      categories: null,
       currentPage: 1,
       totalPages: 0,
       totalItems: 0,
       size: 5,
-      isCategoryPage: false,
+      isCategoryPage: true,
+      main: null,
+      sub: null,
     };
+  },
+  watch: {
+    $route() {
+      console.log("변경 감지");
+      window.location.reload();
+    },
   },
   computed: {
     ...mapStores(useItemStore),
+    ...mapStores(useCategoryStore),
   },
   mounted() {
+    this.main = this.$route.params.main;
+    this.sub = this.$route.params.sub;
     this.getInitItem();
+    this.getCategories(this.main);
   },
   methods: {
     async getInitItem() {
-      await this.itemListStore.getItemList(this.currentPage);
+      await this.itemListStore.getItemListByCategory(this.main, this.sub);
       this.totalPages = this.itemListStore.totalPages;
       this.totalItems = this.itemListStore.totalItems;
       this.cards = this.itemListStore.itemList;
     },
     async handlePageUpdate(page) {
       this.currentPage = page;
-      await this.itemListStore.getItemList(this.currentPage);
+      await this.itemListStore.getItemListByCategory(this.main, this.sub);
       this.cards = this.itemListStore.itemList;
       console.log(this.cards);
       console.log("Current Page updated to:", this.currentPage);
+    },
+    async getCategories(main) {
+      await this.categoryStore.getSubs(main);
+      this.categories = this.categoryStore.categories;
+      console.log(this.categories);
     },
   },
 };
