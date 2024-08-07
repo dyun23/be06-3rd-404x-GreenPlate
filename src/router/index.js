@@ -8,7 +8,8 @@ import RecipeDetailsPage from "@/pages/RecipeDetailPage.vue";
 import MyPage from "@/pages/MyPage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
 import RecipeWritePage from "@/pages/RecipeWritePage.vue";
-import OrderComponent from "@/components/mypage/OrderComponent.vue";
+import MyOrderPage from "@/pages/MyOrderPage.vue";
+import MyAddressPage from "@/pages/MyAddressPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -21,8 +22,10 @@ const router = createRouter({
     { path: "/recipe/details", component: RecipeDetailsPage },
     { path: "/recipe/write", component: RecipeWritePage },
     { path: "/login", component: LoginPage },
-    { path: "/orders", component: OrderComponent },
+    { path: "/mypage/order", component: MyOrderPage },
+    { path: "/mypage/address", component: MyAddressPage }, 
   ],
 });
+
 
 export default router;
