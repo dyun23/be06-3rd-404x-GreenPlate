@@ -9,6 +9,7 @@ import MyPage from "@/pages/MyPage.vue";
 import LoginPage from "@/pages/LoginPage.vue";
 import RecipeWritePage from "@/pages/RecipeWritePage.vue";
 import MyOrderPage from "@/pages/MyOrderPage.vue";
+import MyOrderDetailPage from "@/pages/MyOrderDetailPage.vue";
 import MyAddressPage from "@/pages/MyAddressPage.vue";
 
 const router = createRouter({
@@ -23,6 +24,7 @@ const router = createRouter({
     { path: "/recipe/write", component: RecipeWritePage },
     { path: "/login", component: LoginPage },
     { path: "/mypage/order", component: MyOrderPage },
+    { path: "/mypage/order/:id", component: MyOrderDetailPage },
     { path: "/mypage/address", component: MyAddressPage }, 
   ],
 });
