@@ -10,7 +10,9 @@
           </div>
           <!-- 로그인한 경우 -->
           <div v-else>
-            <button @click="handleLogout">로그아웃</button>
+            <button @click="handleLogout" style="font-size: 12px">
+              로그아웃
+            </button>
           </div>
         </a>
         <div class="css-1qgm48u eo7pjfk0"></div>
@@ -33,7 +35,9 @@
             class="css-17mnrrx e1s3pt0j0"
           />
           <button class="active css-mxd3pm ekdqe1a0" control-id="ControlID-2">
-            <router-link to="/item/list">상품</router-link>
+            <router-link :to="{ path: `/item/list/${currentPage}` }"
+              >상품</router-link
+            >
           </button>
           <button class="css-mxd3pm ekdqe1a0" control-id="ControlID-3">
             <router-link :to="{ path: `/recipe/list/${currentPage}` }"
@@ -85,30 +89,6 @@
         <div class="css-0 e17w4cfr3">
           <CategoryComponent />
         </div>
-        <ul class="navibar-menu">
-          <li class="menu-detail">
-            <span class="menu-detail-title"
-              ><router-link :to="{ path: `/item/list/${currentPage}` }"
-                >신상품</router-link
-              ></span
-            >
-          </li>
-          <li class="menu-detail">
-            <span class="menu-detail-title"
-              ><router-link to="/item/list">베스트</router-link></span
-            >
-          </li>
-          <li class="menu-detail">
-            <span class="menu-detail-title"
-              ><router-link to="/item/list">알뜰쇼핑</router-link></span
-            >
-          </li>
-          <li class="menu-detail">
-            <span class="menu-detail-title"
-              ><router-link to="/item/list">특가/혜택</router-link></span
-            >
-          </li>
-        </ul>
         <div class="livecommerce">
           <div class="livecommerce-div">
             <span class="livecommerce-title">라이브커머스</span>
