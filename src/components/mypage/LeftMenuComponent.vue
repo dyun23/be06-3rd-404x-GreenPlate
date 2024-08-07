@@ -203,26 +203,32 @@
                 stroke-linejoin="round"
               ></path>
             </svg>
-            <div class="css-10aedqr e1n1zlz20">주문 내역</div>
+            <div class="css-10aedqr e1n1zlz20">
+              <router-link to="/mypage/order">주문 내역</router-link>
+            </div>
           </button>
         </div>
       </div>
       <div class="menu-info-section">
         <div class="css-bivr1n eoeriki0">
-          <div class="css-1tzlowo e1ifbcqu0">쇼핑</div>
+          <div class="css-1tzlowo e1ifbcqu0">
+            <router-link to="/item/list/0">쇼핑</router-link>
+          </div>
           <a class="css-1qe2c6r e1ytq75h2">
-            <div class="css-1mq58uz e1ytq75h1">결제수단</div> </a
-          ><a class="css-1qe2c6r e1ytq75h2">
             <div class="css-1mq58uz e1ytq75h1">상품 후기</div>
           </a>
         </div>
         <div class="css-bivr1n eoeriki0">
           <div class="css-1tzlowo e1ifbcqu0">내 정보관리</div>
           <a class="css-1qe2c6r e1ytq75h2">
-            <div class="css-aiwp31 e1ytq75h1">배송지 관리</div> </a
-          ><a class="css-1qe2c6r e1ytq75h2">
-            <div class="css-1mq58uz e1ytq75h1">나의 키워드</div> </a
-          ><a class="css-1qe2c6r e1ytq75h2">
+            <div class="css-aiwp31 e1ytq75h1">
+              <router-link to="/mypage/address">배송지 관리</router-link>
+            </div>
+          </a>
+          <a class="css-1qe2c6r e1ytq75h2">
+            <div class="css-1mq58uz e1ytq75h1">나의 키워드</div> 
+          </a>
+          <a class="css-1qe2c6r e1ytq75h2">
             <div class="css-1mq58uz e1ytq75h1">개인정보 수정</div>
           </a>
         </div>
@@ -232,12 +238,29 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: "LeftMenuComponent",
   data() {
     return {
+      userInfo: [],
       name: "xxx님",
     };
+  },
+  created() {
+    this.getUserInfo();
+  },
+  methods: {
+    async getUserInfo() {
+      const response = await axios.get("/api/user/details", {
+        withCredentials: true
+      });
+
+      console.log("response.data.result:", JSON.stringify(response.data.result, null, 2));
+      this.name = response.data.result.name+"님";
+      return response.data.result;
+    },
   },
 };
 </script>

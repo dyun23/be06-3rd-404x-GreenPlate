@@ -83,7 +83,7 @@ async getData() {
             size: this.pageSize
         };
 
-        const response = await axios.get(`http://localhost:8080/orders/list/user`, {
+        const response = await axios.get(`/api/orders/list/user`, {
             params,
             withCredentials: true
         });
