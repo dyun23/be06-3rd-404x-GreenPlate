@@ -5,7 +5,7 @@
         <a class="css-xygizb eo7pjfk2">회원가입</a>
         <div class="css-1qgm48u eo7pjfk0"></div>
         <a class="css-oyffzd eo7pjfk2">
-          <div v-if="!isLoggedIn()">
+          <div v-if="!isLoggedIn">
             <router-link to="/login">로그인</router-link>
           </div>
           <!-- 로그인한 경우 -->
@@ -36,7 +36,9 @@
             <router-link to="/item/list">상품</router-link>
           </button>
           <button class="css-mxd3pm ekdqe1a0" control-id="ControlID-3">
-            <router-link to="/recipe/list">레시피</router-link>
+            <router-link :to="{ path: `/recipe/list/${currentPage}` }"
+              >레시피</router-link
+            >
           </button>
         </div>
         <div class="css-pqw0uk e1493ofl4">
