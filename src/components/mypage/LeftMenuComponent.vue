@@ -245,7 +245,7 @@ export default {
   data() {
     return {
       userInfo: [],
-      name: "xxx님",
+      name: "",
     };
   },
   created() {

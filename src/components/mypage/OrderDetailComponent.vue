@@ -1,14 +1,14 @@
 <template>
   <div class="css-heioij eug5r8l1">
-    <div class="css-oc8mjz ed9qr673">
+    <div v-if="ordersList[0]" class="css-oc8mjz ed9qr673">
       <div class="css-eq7f8j ed9qr672">
         <h2 class="css-1lmd4kz ed9qr671">주문 내역 상세</h2>
       </div>
     </div>
-    <div class="css-1xdhyk6 eug5r8l0">
+    <div v-if="ordersList[0]"  class="css-1xdhyk6 eug5r8l0">
       <div class="css-1z1jvv e17ra5i93">
-        <div class="css-1u8skbo e17ra5i92"><span class="css-h6hci1 e17ra5i91"><span>12/07(수)</span> 배송 완료되었습니다.</span>
-          <p class="css-b29rhr e17ra5i90">배송완료 시간 04:26</p>
+        <div class="css-1u8skbo e17ra5i92">
+          <span class="css-h6hci1 e17ra5i91"> 배송 상태 : {{formatOrderState(ordersList[0].order_state)}}</span>
         </div>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
@@ -20,54 +20,22 @@
         </span></button>
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <div class="css-cku72n e1lb2pwe2">
-          <div class="css-100mgqw e20ugtq12"><img
-              src="https://img-cf.kurly.com/hdims/resize/%5E%3E120x%3E156/cropcenter/120x156/quality/85/src/shop/data/goods/1540185573395l0.jpg"
+          <div  v-for="(orderDetail, index) in ordersList" :key="index" class="css-100mgqw e20ugtq12">
+            <img src="https://img-cf.kurly.com/hdims/resize/%5E%3E120x%3E156/cropcenter/120x156/quality/85/src/shop/data/goods/1540185573395l0.jpg"
               alt="청양고추 80g" class="css-1mhidi6 e20ugtq11">
             <div class="css-1yt1bj8 e20ugtq10">
               <div class="css-95tt0l e20ugtq9"><a data-testid="deal-name" href="/goods/5027766"
-                  class="css-1awriqz e20ugtq8">청양고추 80g</a></div>
+                  class="css-1awriqz e20ugtq8">{{ orderDetail.itemName }}</a></div>
               <div class="css-95tt0l e20ugtq9"><span data-testid="goods-price"
-                  class="css-1j389vi e20ugtq6">1,200원</span><span class="css-un1ini e20ugtq3"></span><span
-                  class="css-16c8x0o e20ugtq4">1개</span></div>
+                  class="css-1j389vi e20ugtq6">{{ orderDetail.price }}원</span><span class="css-un1ini e20ugtq3"></span><span
+                  class="css-16c8x0o e20ugtq4">{{ orderDetail.cnt }}개</span></div>
               <div class="css-1eza2jc e20ugtq1">
-                <div class="css-95tt0l e20ugtq9"><span class="css-1d54mr1 e20ugtq2">배송완료</span></div>
-                <div class="css-11rfkkj e20ugtq0"></div>
-              </div>
-            </div>
-          </div>
-          <div class="css-100mgqw e20ugtq12"><img
-              src="https://img-cf.kurly.com/hdims/resize/%5E%3E120x%3E156/cropcenter/120x156/quality/85/src/shop/data/goods/1583729857986l0.jpg"
-              alt="[평창수] 생수 (2L X 6개)" class="css-1mhidi6 e20ugtq11">
-            <div class="css-1yt1bj8 e20ugtq10">
-              <div class="css-95tt0l e20ugtq9"><a data-testid="deal-name" href="/goods/5049823"
-                  class="css-1awriqz e20ugtq8">[평창수] 생수 (2L X 6개)</a></div>
-              <div class="css-95tt0l e20ugtq9"><span data-testid="goods-price"
-                  class="css-1j389vi e20ugtq6">7,800원</span><span class="css-un1ini e20ugtq3"></span><span
-                  class="css-16c8x0o e20ugtq4">2개</span></div>
-              <div class="css-1eza2jc e20ugtq1">
-                <div class="css-95tt0l e20ugtq9"><span class="css-1d54mr1 e20ugtq2">배송완료</span></div>
-                <div class="css-11rfkkj e20ugtq0"></div>
-              </div>
-            </div>
-          </div>
-          <div class="css-100mgqw e20ugtq12"><img
-              src="https://img-cf.kurly.com/hdims/resize/%5E%3E120x%3E156/cropcenter/120x156/quality/85/src/shop/data/goods/1640678759346l0.jpg"
-              alt="[피지오겔] 레드 수딩 AI 로션 200ml" class="css-1mhidi6 e20ugtq11">
-            <div class="css-1yt1bj8 e20ugtq10">
-              <div class="css-95tt0l e20ugtq9"><a data-testid="deal-name" href="/goods/5062271"
-                  class="css-1awriqz e20ugtq8">[피지오겔] 레드 수딩 AI 로션 200ml</a></div>
-              <div class="css-95tt0l e20ugtq9"><span data-testid="goods-price" class="css-1j389vi e20ugtq6">31,100원<span
-                    data-testid="original-price" class="css-1n28vw9 e20ugtq5">48,600원</span></span><span
-                  class="css-un1ini e20ugtq3"></span><span class="css-16c8x0o e20ugtq4">1개</span></div>
-              <div class="css-1eza2jc e20ugtq1">
-                <div class="css-95tt0l e20ugtq9"><span class="css-1d54mr1 e20ugtq2">배송완료</span></div>
+                <div class="css-95tt0l e20ugtq9"><span class="css-1d54mr1 e20ugtq2">{{formatOrderState(orderDetail.order_state)}}</span></div>
                 <div class="css-11rfkkj e20ugtq0"></div>
               </div>
             </div>
           </div>
         </div>
-        <div class="css-xfz5ew e1lb2pwe1"><button class="css-1iy0o8r e4nu7ef3" type="button" height="48"
-            radius="6"><span class="css-nytqmg e4nu7ef1">전체 상품 다시 담기</span></button></div>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
@@ -80,13 +48,9 @@
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <ul class="css-c4ewfg e1mzx65b4">
           <li class="css-s4wkbf e1ysbs754"><span class="css-11h8hn9 e1ysbs753">상품금액</span><span
-              class="css-l5tyq9 e1ysbs751">57,600<span class="css-cvbrkf e1ysbs750">원</span></span></li>
-          <li class="css-s4wkbf e1ysbs754"><span class="css-11h8hn9 e1ysbs753">상품할인금액</span><span
-              class="css-l5tyq9 e1ysbs751">-17,500<span class="css-cvbrkf e1ysbs750">원</span></span></li>
-          <li class="css-s4wkbf e1ysbs754"><span class="css-11h8hn9 e1ysbs753">배송비</span><span
-              class="css-l5tyq9 e1ysbs751">3,000<span class="css-cvbrkf e1ysbs750">원</span></span></li>
+              class="css-l5tyq9 e1ysbs751">{{ordersList[0].order_totalPrice}}<span class="css-cvbrkf e1ysbs750">원</span></span></li>
           <li class="css-s4wkbf e1ysbs754"><span class="css-11h8hn9 e1ysbs753">결제금액</span><span
-              class="css-l5tyq9 e1ysbs751">29,083<span class="css-cvbrkf e1ysbs750">원</span></span></li>
+              class="css-l5tyq9 e1ysbs751">{{ordersList[0].order_totalPrice}}<span class="css-cvbrkf e1ysbs750">원</span></span></li>
           <li class="css-s4wkbf e1ysbs754"><span class="css-11h8hn9 e1ysbs753">결제방법</span>
             <div class="css-6r4ker e1mzx65b3">카카오페이</div>
           </li>
@@ -102,11 +66,11 @@
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <ul class="css-12lpk41 e1nt8uak3">
           <li class="css-1i0l638 e1nt8uak2"><span class="css-1l1nmpa e1nt8uak1">주문번호</span><span
-              class="css-1ept5d5 e1nt8uak0">2289622010159</span></li>
+              class="css-1ept5d5 e1nt8uak0">{{ordersList[0].order_id}}</span></li>
           <li class="css-1i0l638 e1nt8uak2"><span class="css-1l1nmpa e1nt8uak1">보내는 분</span><span
-              class="css-1ept5d5 e1nt8uak0">장유정</span></li>
+              class="css-1ept5d5 e1nt8uak0">{{userName}}</span></li>
           <li class="css-1i0l638 e1nt8uak2"><span class="css-1l1nmpa e1nt8uak1">결제일시</span><span
-              class="css-1ept5d5 e1nt8uak0">2022-12-06 22:02:32</span></li>
+              class="css-1ept5d5 e1nt8uak0">{{ new Date(ordersList[0].order_date).toLocaleString() }}</span></li>
         </ul>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
@@ -119,17 +83,11 @@
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <ul class="css-12lpk41 e1nt8uak3">
           <li class="css-1i0l638 e1nt8uak2"><span class="css-1l1nmpa e1nt8uak1">받는분</span><span
-              class="css-1ept5d5 e1nt8uak0">이혜선</span></li>
+              class="css-1ept5d5 e1nt8uak0">받는사람이름</span></li>
           <li class="css-1i0l638 e1nt8uak2"><span class="css-1l1nmpa e1nt8uak1">핸드폰</span><span
-              class="css-1ept5d5 e1nt8uak0">010-6769-****</span></li>
+              class="css-1ept5d5 e1nt8uak0">{{ordersList[0].phoneNum}}</span></li>
           <li class="css-1i0l638 e1nt8uak2"><span class="css-1l1nmpa e1nt8uak1">주소</span><span
-              class="css-1ept5d5 e1nt8uak0">(07531) 서울특별시 강서구 허준로 175 (가양6단지아파트) 612동 807호</span></li>
-          <li class="css-1i0l638 e1nt8uak2"><span class="css-1l1nmpa e1nt8uak1">받으실 장소</span><span
-              class="css-1ept5d5 e1nt8uak0">문 앞</span></li>
-          <li class="css-1i0l638 e1nt8uak2"><span class="css-1l1nmpa e1nt8uak1">공동현관 출입방법</span><span
-              class="css-1ept5d5 e1nt8uak0">자유 출입 가능</span></li>
-          <li class="css-1i0l638 e1nt8uak2"><span class="css-1l1nmpa e1nt8uak1">포장 방법</span><span
-              class="css-1ept5d5 e1nt8uak0">종이 포장재</span></li>
+              class="css-1ept5d5 e1nt8uak0">({{ordersList[0].zipCode}}) {{ordersList[0].address}}</span></li>
         </ul>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div>
@@ -147,10 +105,67 @@
 
 
 <script>
+import axios from 'axios';
+import { useUserInfoStore } from '@/stores/useUserInfoStore';
+
 export default {
-  name: "OrderDetailComponent.vue"
-}
+  name: "OrderDetailComponent",
+  data() {
+    return {
+      ordersList: [],
+      userName: ""
+    };
+  },
+  async created() {
+    this.userInfoStore = useUserInfoStore(); // Pinia 스토어를 초기화합니다.
+    await this.getUserInfo(); // 사용자 정보를 가져옵니다.
+    const ordersId = this.extractNumberFromCurrentPath();
+    if (ordersId) {
+      await this.getData(ordersId); // 데이터를 가져옵니다.
+    }
+  },
+  methods: {
+    async getData(ordersId) {
+      try {
+        const response = await axios.get(`/api/orders/list/user/${ordersId}`, {
+          withCredentials: true
+        });
+        console.log(response.data.result);
+        this.ordersList = response.data.result;
+      } catch (error) {
+        console.error('Error fetching orders:', error);
+      }
+    },
+    async getUserInfo() {
+      try {
+        await this.userInfoStore.getUserInfo(); // 스토어에서 사용자 정보를 가져옵니다.
+        this.userName = this.userInfoStore.name; // 사용자 이름을 설정합니다.
+        console.log(this.userName);
+      } catch (error) {
+        console.error('Error fetching user info:', error);
+      }
+    },
+    formatOrderState(state) {
+      switch (state) {
+        case 'ready':
+          return '상품준비';
+        case 'shipped':
+          return '배송중';
+        case 'completed':
+          return '배송완료';
+        default:
+          return '상태 미정';
+      }
+    },
+    extractNumberFromCurrentPath() {
+      const path = window.location.pathname;
+      const match = path.match(/\/(\d+)$/);
+      return match ? match[1] : null;
+    }
+  }
+};
 </script>
+
 
 
 <style scoped>
@@ -462,5 +477,16 @@ element.style {
     color: rgb(51, 51, 51);
     background-color: rgb(255, 255, 255);
     border: 1px solid rgb(221, 221, 221);
+}
+.css-12lpk41 li:last-of-type {
+    padding-bottom: 20px;
+}
+.css-1i0l638 {
+    display: flex;
+    flex-direction: row;
+    -webkit-box-pack: justify;
+    justify-content: space-between;
+    padding: 0px 20px 9px;
+    line-height: 19px;
 }
 </style>
