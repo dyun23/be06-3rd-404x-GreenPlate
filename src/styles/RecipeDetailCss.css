@@ -4,28 +4,6 @@
   margin: 0 auto;
   padding: 50px 0 51px;
 }
-div,
-th,
-td,
-li,
-dt,
-dd,
-p {
-  word-break: break-all;
-}
-*,
-*:after,
-*:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-user agent stylesheet div {
-  display: block;
-  unicode-bidi: isolate;
-}
 .tit_page h2.tit {
   font-weight: 700;
   font-size: 28px;
@@ -34,27 +12,8 @@ user agent stylesheet div {
   text-align: center;
   letter-spacing: -1px;
 }
-user agent stylesheet h2 {
-  display: block;
-  font-size: 1.5em;
-  margin-block-start: 0.83em;
-  margin-block-end: 0.83em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-  unicode-bidi: isolate;
-}
-user agent stylesheet td {
-  display: table-cell;
-  vertical-align: inherit;
-  unicode-bidi: isolate;
-}
 #main {
   border-bottom: 1px solid #f7f7f7;
-}
-user agent stylesheet div {
-  display: block;
-  unicode-bidi: isolate;
 }
 #content {
   min-width: 1050px;
@@ -65,37 +24,11 @@ user agent stylesheet div {
 #content {
   position: relative;
 }
-user agent stylesheet div {
-  display: block;
-  unicode-bidi: isolate;
-}
 .layout-wrapper {
   position: relative;
   width: 1050px;
   height: 100%;
   margin: 0 auto;
-}
-user agent stylesheet div {
-  display: block;
-  unicode-bidi: isolate;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-table[Attributes Style] {
-  width: 100%;
-  margin-inline-start: auto;
-  margin-inline-end: auto;
-}
-user agent stylesheet table {
-  display: table;
-  border-collapse: separate;
-  box-sizing: border-box;
-  text-indent: initial;
-  unicode-bidi: isolate;
-  border-spacing: 2px;
-  border-color: gray;
 }
 .boardView {
   table-layout: fixed;
@@ -105,48 +38,12 @@ user agent stylesheet table {
   line-height: 180%;
   margin-top: 20px;
 }
-table[Attributes Style] {
-  width: 100%;
-}
-user agent stylesheet table {
-  display: table;
-  border-collapse: separate;
-  box-sizing: border-box;
-  text-indent: initial;
-  unicode-bidi: isolate;
-  border-spacing: 2px;
-  border-color: gray;
-}
-user agent stylesheet tbody {
-  display: table-row-group;
-  vertical-align: middle;
-  unicode-bidi: isolate;
-  border-color: inherit;
-}
-user agent stylesheet tr {
-  display: table-row;
-  vertical-align: inherit;
-  unicode-bidi: isolate;
-  border-color: inherit;
-}
 .boardView th {
   width: 130px;
   padding: 13px 0 13px 20px;
   background-color: #f7f5f8;
   border-top: 1px solid #f4f4f4;
   text-align: left;
-}
-user agent stylesheet th {
-  display: table-cell;
-  vertical-align: inherit;
-  font-weight: bold;
-  text-align: -internal-center;
-  unicode-bidi: isolate;
-}
-user agent stylesheet td {
-  display: table-cell;
-  vertical-align: inherit;
-  unicode-bidi: isolate;
 }
 .boardView tr.etcArea ul .td {
   float: left;
@@ -160,41 +57,14 @@ user agent stylesheet td {
   width: 100%;
   border-top: 1px solid #f4f4f4;
 }
-ol,
-ul {
-  list-style-type: none;
-}
-user agent stylesheet ul {
-  display: block;
-  list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-  unicode-bidi: isolate;
-}
 .boardView tr.etcArea ul .th {
   float: left;
   padding: 13px 0 13px 20px;
   width: 130px;
   background-color: #f7f5f8;
 }
-b,
-strong {
-  font-weight: 700;
-}
-user agent stylesheet strong {
-  font-weight: bold;
-}
-
 .boardView tr.etcArea ul li {
   float: left;
-}
-user agent stylesheet li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-  unicode-bidi: isolate;
 }
 .boardView tr.etcArea td {
   padding: 0;
@@ -205,26 +75,8 @@ user agent stylesheet li {
   padding: 13px 0 13px 23px;
   border-top: 1px solid #f4f4f4;
 }
-user agent stylesheet td {
-  display: table-cell;
-  vertical-align: inherit;
-  unicode-bidi: isolate;
-}
 .view_recipe {
   padding: 150px 10px 10px;
-}
-td,
-th {
-  padding: 0;
-}
-td[Attributes Style] {
-  height: 200px;
-  vertical-align: top;
-}
-user agent stylesheet td {
-  display: table-cell;
-  vertical-align: inherit;
-  unicode-bidi: isolate;
 }
 .goods_wrap {
   width: 1010px;
@@ -232,28 +84,6 @@ user agent stylesheet td {
   font-family: noto sans;
   font-weight: 200;
   letter-spacing: 0;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-table[Attributes Style] {
-  width: 100%;
-}
-user agent stylesheet table {
-  display: table;
-  border-collapse: separate;
-  box-sizing: border-box;
-  text-indent: initial;
-  unicode-bidi: isolate;
-  border-spacing: 2px;
-  border-color: gray;
-}
-user agent stylesheet tbody {
-  display: table-row-group;
-  vertical-align: middle;
-  unicode-bidi: isolate;
-  border-color: inherit;
 }
 .goods_wrap .goods_recipe .recipe_tit {
   display: block;
@@ -273,12 +103,6 @@ user agent stylesheet tbody {
   font-weight: 400;
   text-shadow: 1px 0;
 }
-small {
-  font-size: 80%;
-}
-user agent stylesheet small {
-  font-size: smaller;
-}
 .goods_wrap .goods_recipe h3 {
   display: block;
   font-family: noto sans;
@@ -289,52 +113,14 @@ user agent stylesheet small {
   text-align: center;
   color: #666;
 }
-user agent stylesheet h3 {
-  display: block;
-  font-size: 1.17em;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  font-weight: bold;
-  unicode-bidi: isolate;
-}
 .goods_wrap .context {
   margin-bottom: 130px;
-}
-user agent stylesheet div {
-  display: block;
-  unicode-bidi: isolate;
-}
-img {
-  border: 0;
-}
-img,
-video,
-canvas {
-  max-width: 100%;
-}
-user agent stylesheet img {
-  overflow-clip-margin: content-box;
-  overflow: clip;
-}
-user agent stylesheet div {
-  display: block;
-  unicode-bidi: isolate;
 }
 .goods_wrap .context .words {
   margin-top: 55px;
   font-size: 18px;
   line-height: 32px;
   color: #373737;
-}
-user agent stylesheet p {
-  display: block;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  unicode-bidi: isolate;
 }
 .goods_wrap .goods_recipe .recipe_item_tit {
   display: block;
@@ -344,13 +130,6 @@ user agent stylesheet p {
   font-weight: 700;
   color: #666;
   text-shadow: 1px 0;
-}
-b,
-strong {
-  font-weight: 700;
-}
-user agent stylesheet strong {
-  font-weight: bold;
 }
 .goods-add-product {
   margin-bottom: 50px;
@@ -365,18 +144,6 @@ user agent stylesheet strong {
 .goods-add-product-item-image {
   width: 100%;
   height: 100%;
-}
-img {
-  border: 0;
-}
-img,
-video,
-canvas {
-  max-width: 100%;
-}
-user agent stylesheet img {
-  overflow-clip-margin: content-box;
-  overflow: clip;
 }
 .goods-add-product-item-content-wrapper {
   padding: 10px;
@@ -399,47 +166,11 @@ user agent stylesheet img {
   top: 0;
   height: 100%;
 }
-ol,
-ul {
-  list-style-type: none;
-}
-user agent stylesheet ul {
-  display: block;
-  list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-  unicode-bidi: isolate;
-}
-#recipe_view {
-  width: 100%;
-}
-td,
-th {
-  padding: 0;
-}
-td[Attributes Style] {
-  text-align: -webkit-center;
-}
-user agent stylesheet td {
-  display: table-cell;
-  vertical-align: inherit;
-  unicode-bidi: isolate;
-}
-user agent stylesheet script {
-  display: none;
-}
 .goods-add-product {
   margin-bottom: 50px;
 }
 .goods-add-product {
   position: relative;
-}
-user agent stylesheet div {
-  display: block;
-  unicode-bidi: isolate;
 }
 .__slide-wrapper {
   position: relative;
@@ -448,10 +179,6 @@ user agent stylesheet div {
 .goods-add-product-wrapper {
   position: relative;
   margin-top: 20px;
-}
-user agent stylesheet div {
-  display: block;
-  unicode-bidi: isolate;
 }
 .goods-add-product-move.goods-add-product-move-left {
   left: 0;
@@ -475,67 +202,6 @@ user agent stylesheet div {
   width: 30px;
   background-position: 50% 50%;
 }
-button {
-  outline: none;
-}
-body,
-input,
-select,
-textarea,
-button {
-  font-family: noto sans, malgun gothic, AppleGothic, dotum;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  color: #4c4c4c;
-  font-size: 12px;
-  max-width: 100%;
-}
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
-}
-button,
-select {
-  text-transform: none;
-}
-button {
-  overflow: visible;
-  border-radius: 0;
-}
-button,
-input,
-optgroup,
-select,
-textarea {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-user agent stylesheet button {
-  appearance: auto;
-  text-rendering: auto;
-  letter-spacing: normal;
-  word-spacing: normal;
-  line-height: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: center;
-  align-items: flex-start;
-  cursor: default;
-  box-sizing: border-box;
-  margin: 0em;
-  padding-block: 1px;
-  padding-inline: 6px;
-  border-width: 2px;
-  border-style: outset;
-  border-color: buttonborder;
-  border-image: initial;
-}
 .goods-add-product-move.goods-add-product-move-right {
   right: 0;
   background-image: url(https://res.kurly.com/pc/etc/old/images/common/slide-sub-right-button-black.png);
@@ -558,77 +224,12 @@ user agent stylesheet button {
   width: 30px;
   background-position: 50% 50%;
 }
-button {
-  outline: none;
-}
-body,
-input,
-select,
-textarea,
-button {
-  font-family: noto sans, malgun gothic, AppleGothic, dotum;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  color: #4c4c4c;
-  font-size: 12px;
-  max-width: 100%;
-}
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
-}
-button,
-select {
-  text-transform: none;
-}
-button {
-  overflow: visible;
-  border-radius: 0;
-}
-button,
-input,
-optgroup,
-select,
-textarea {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-user agent stylesheet button {
-  appearance: auto;
-  text-rendering: auto;
-  letter-spacing: normal;
-  word-spacing: normal;
-  line-height: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: center;
-  align-items: flex-start;
-  cursor: default;
-  box-sizing: border-box;
-  margin: 0em;
-  padding-block: 1px;
-  padding-inline: 6px;
-  border-width: 2px;
-  border-style: outset;
-  border-color: buttonborder;
-  border-image: initial;
-}
 .goods-add-product-list-wrapper {
   position: relative;
   overflow: hidden;
   width: 940px;
   margin: 0 auto;
   height: 350px;
-}
-user agent stylesheet div {
-  display: block;
-  unicode-bidi: isolate;
 }
 .__slide-mover {
   position: absolute;
@@ -643,20 +244,6 @@ user agent stylesheet div {
   top: 0;
   height: 100%;
 }
-ol,
-ul {
-  list-style-type: none;
-}
-user agent stylesheet ul {
-  display: block;
-  list-style-type: disc;
-  margin-block-start: 1em;
-  margin-block-end: 1em;
-  margin-inline-start: 0px;
-  margin-inline-end: 0px;
-  padding-inline-start: 40px;
-  unicode-bidi: isolate;
-}
 .__slide-item {
   float: left;
   height: 100%;
@@ -668,32 +255,13 @@ user agent stylesheet ul {
   margin-right: 10px;
   border: 1px solid #ddd;
 }
-user agent stylesheet li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-  unicode-bidi: isolate;
-}
 .goods-add-product-item-figure {
   position: relative;
   height: 230px;
   overflow: hidden;
 }
-user agent stylesheet div {
-  display: block;
-  unicode-bidi: isolate;
-}
 .goods-add-product-item-figure a {
   display: block;
-}
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-user agent stylesheet a:-webkit-any-link {
-  color: -webkit-link;
-  cursor: pointer;
-  text-decoration: none;
 }
 .goods-add-product .btn_cart {
   display: block;
@@ -710,83 +278,6 @@ user agent stylesheet a:-webkit-any-link {
   font-size: 0;
   line-height: 0;
   text-indent: -9999px;
-}
-button {
-  outline: none;
-}
-body,
-input,
-select,
-textarea,
-button {
-  font-family: noto sans, malgun gothic, AppleGothic, dotum;
-  line-height: 1;
-  letter-spacing: -0.05em;
-  color: #4c4c4c;
-  font-size: 12px;
-  max-width: 100%;
-}
-button,
-html input[type="button"],
-input[type="reset"],
-input[type="submit"] {
-  -webkit-appearance: button;
-  cursor: pointer;
-}
-button,
-select {
-  text-transform: none;
-}
-button {
-  overflow: visible;
-  border-radius: 0;
-}
-button,
-input,
-optgroup,
-select,
-textarea {
-  color: inherit;
-  font: inherit;
-  margin: 0;
-}
-user agent stylesheet button {
-  appearance: auto;
-  text-rendering: auto;
-  letter-spacing: normal;
-  word-spacing: normal;
-  line-height: normal;
-  text-transform: none;
-  text-indent: 0px;
-  text-shadow: none;
-  display: inline-block;
-  text-align: center;
-  align-items: flex-start;
-  cursor: default;
-  box-sizing: border-box;
-  margin: 0em;
-  padding-block: 1px;
-  padding-inline: 6px;
-  border-width: 2px;
-  border-style: outset;
-  border-color: buttonborder;
-  border-image: initial;
-}
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
-}
-table[Attributes Style] {
-  width: 100%;
-}
-user agent stylesheet table {
-  display: table;
-  border-collapse: separate;
-  box-sizing: border-box;
-  text-indent: initial;
-  unicode-bidi: isolate;
-  border-spacing: 2px;
-  border-color: gray;
 }
 .bhs_button.yb {
   background-color: #795b8f;
@@ -817,11 +308,6 @@ user agent stylesheet table {
   line-height: 140%;
   color: #333;
 }
-user agent stylesheet li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-  unicode-bidi: isolate;
-}
 .xans-board-movement li a,
 .xans-board-movement li strong {
   float: left;
@@ -835,31 +321,12 @@ user agent stylesheet li {
   background: url(https://res.kurly.com/pc/etc/old/images/board/ico_move_prev.gif)
     no-repeat 0 15px;
 }
-b,
-strong {
-  font-weight: 700;
-}
-a {
-  background-color: transparent;
-  text-decoration: none;
-  color: inherit;
-}
-user agent stylesheet a:-webkit-any-link {
-  color: -webkit-link;
-  cursor: pointer;
-  text-decoration: none;
-}
 .xans-board-movement li {
   overflow: hidden;
   padding: 0 20px;
   border-bottom: 1px solid #f4f4f4;
   line-height: 140%;
   color: #333;
-}
-user agent stylesheet li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-  unicode-bidi: isolate;
 }
 .xans-board-movement li.next {
   border: 0;
@@ -870,29 +337,6 @@ user agent stylesheet li {
   border-bottom: 1px solid #f4f4f4;
   line-height: 140%;
   color: #333;
-}
-div,
-th,
-td,
-li,
-dt,
-dd,
-p {
-  word-break: break-all;
-}
-*,
-*:after,
-*:before {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
-user agent stylesheet li {
-  display: list-item;
-  text-align: -webkit-match-parent;
-  unicode-bidi: isolate;
 }
 .xans-board-movement li.next strong {
   background: url(https://res.kurly.com/pc/etc/old/images/board/ico_move_next.gif)
@@ -910,11 +354,4 @@ user agent stylesheet li {
   font-weight: 400;
   background: url(https://res.kurly.com/pc/etc/old/images/board/ico_move_prev.gif)
     no-repeat 0 15px;
-}
-b,
-strong {
-  font-weight: 700;
-}
-user agent stylesheet strong {
-  font-weight: bold;
 }

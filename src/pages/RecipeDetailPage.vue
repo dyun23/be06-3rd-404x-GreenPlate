@@ -36,7 +36,7 @@
                                     <strong class="th">작성일</strong> <span class="td">2023-04-12</span>
                                   </li>
                                   <li class="hit">
-                                    <strong class="th">좋아요</strong> <span class="td">30476</span>
+                                    <strong class="th">CALORIE</strong> <span class="td">{{recipeData.totalCalorie}}kcal</span>
                                   </li>
                                 </ul>
                               </td>
@@ -60,10 +60,6 @@
                                     <div class="pic">
                                       <img src="/image/recipe_img1.PNG">
                                     </div>
-                                    <p class="words">
-                                      <strong class="recipe_item_tit">CALORIE</strong>
-                                      {{recipeData.totalCalorie}}kcal
-                                    </p>
                                     <p class="words">
                                       <strong class="recipe_item_tit">RECIPE</strong>
                                       {{recipeData.contents}}
@@ -105,16 +101,6 @@
             </tr>
           </tbody>
         </table>
-        <div class="xans-element- xans-board xans-board-movement-1002 xans-board-movement xans-board-1002 ">
-          <ul>
-            <li class="prev ">
-              <strong>이전글</strong><a :href="'/recipe/details?recipeId=' + previousRecipeId">참기름 간장 떡볶이</a>
-            </li>
-            <li class="next ">
-              <strong>다음글</strong><a :href="'/recipe/details?recipeId=' + nextRecipeId">유자 참기름 소스와 제철 생선</a>
-            </li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>
@@ -161,20 +147,12 @@ export default
       const queryString = path.split('?')[1];
       const match = queryString ? queryString.match(/(\d+)/) : null;
       return match ? Number(match[1]) : 1;
-    },
-    previousRecipeId() {
-      return this.recipeId - 1;
-    },
-    nextRecipeId() {
-        return this.recipeId + 1;
     }
   }
 };
 </script>
 
 <style scoped>
-@import '../styles/RecipeDetailCss.css';
-
 #qnb {
   position: absolute;
   z-index: 1;
@@ -242,7 +220,7 @@ export default
 .goods-add-product-item-name {
   overflow: hidden;
   width: 100%;
-  height: 40px;
+  height: 20px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

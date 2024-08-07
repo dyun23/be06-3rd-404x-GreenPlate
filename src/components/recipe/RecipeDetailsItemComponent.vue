@@ -16,16 +16,15 @@
                             href="/shop/goods/goods_view.php?&amp;goodsno=1000167890">
                             <img src="https://product-image.kurly.com/product/image/90083f58-001f-4e05-954b-b995e5434aea.jpg"
                                 alt="" class="goods-add-product-item-image">
-                        </a> <button class="btn_cart"
-                            onclick="dispatchAddCart('1000167890')">이 상품을 장바구니에
-                            담기</button>
+                        </a> 
+                        <button class="btn_cart" @click="addToCart(item.itemId)">이 상품을 장바구니에 담기</button>
                     </div>
                     <div class="goods-add-product-item-content">
                         <div class="goods-add-product-item-content-wrapper">
                             <a
                                 href="/shop/goods/goods_view.php?&amp;goodsno=1000167890">
-                                <p class="goods-add-product-item-name">{{item.name}}</p>
-                                <p class="goods-add-product-item-price"> {{item.discountPrice}}원</p>
+                                <div class="goods-add-product-item-name">{{item.name}}</div>
+                                <div class="goods-add-product-item-price"> {{item.discountPrice}}원</div>
                             </a>
                         </div>
                     </div>
@@ -35,14 +34,28 @@
     </div>
 </div>
 </template>
-
+  
 <script>
+import axios from 'axios';
+
 export default {
   name: "RecipeDetailsItemComponent",
   props: {
     itemList: {
       type: Array,
       required: true
+    }
+  },
+  methods: {
+    async addToCart(itemId) {
+      const params = {
+        itemId: itemId,
+        quantity: 1
+      };
+      const response = await axios.post('/api/cart/add', params, {
+          withCredentials: true
+      });
+      console.log(response);
     }
   }
 };
@@ -118,7 +131,7 @@ export default {
 .goods-add-product-item-name {
   overflow: hidden;
   width: 100%;
-  height: 25px;
+  height: 40px;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
