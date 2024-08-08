@@ -8,7 +8,10 @@
         </span>
       </div>
       <div class="css-eq7f8j ed9qr672">
-        <button class="css-1y56l81 e1ss94ng0">
+        <button @click="updateVisible" class="css-1y56l81 e1ss94ng0">
+          <div v-if="addressStore.isOpen">
+            <AddressPopup />
+          </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="16"
@@ -163,10 +166,34 @@
 </template>
 
 <script>
+import AddressPopup from "./AddressPopup.vue";
+import { mapStores } from "pinia";
+import { useAddressStore } from "@/stores/useAddressStore";
+
 export default {
   name: "AddressComponent",
+  components: {
+    AddressPopup,
+  },
   data() {
-    return {};
+    return { isVisible: false, info: null };
+  },
+  computed: {
+    ...mapStores(useAddressStore),
+  },
+  mounted() {
+    this.getUserInfo();
+  },
+  methods: {
+    updateVisible() {
+      this.addressStore.enable();
+      console.log(this.addressStore.isOpen);
+    },
+    async getUserInfo() {
+      const response = await this.addressStore.getInfo();
+      this.info = response;
+      console.log(this.info);
+    },
   },
 };
 </script>

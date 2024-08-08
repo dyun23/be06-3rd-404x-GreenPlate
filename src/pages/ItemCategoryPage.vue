@@ -9,7 +9,7 @@
     <div id="container" class="css-product-elements-container">
       <div class="css-product-items-container">
         <ItemCountComponent :totalItems="totalItems"></ItemCountComponent>
-        <div class="css-product-items-box">
+        <div v-if="cards != null" class="css-product-items-box">
           <CardComponent
             v-for="(card, index) in cards"
             :key="index"
@@ -47,7 +47,7 @@ export default {
   name: "ItemCategoryPage",
   data() {
     return {
-      cards: [],
+      cards: null,
       categories: null,
       currentPage: 1,
       totalPages: 0,
