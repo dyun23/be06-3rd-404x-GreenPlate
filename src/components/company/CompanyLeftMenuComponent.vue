@@ -162,11 +162,13 @@
         <div class="css-bivr1n eoeriki0">
           <a class="css-1qe2c6r e1ytq75h2">
             <div class="css-aiwp31 e1ytq75h1">
-              <router-link to="/company/product">상품 등록</router-link>
+              <router-link to="/item/register">상품 등록</router-link>
             </div>
           </a>
           <a class="css-1qe2c6r e1ytq75h2">
-            <div class="css-1mq58uz e1ytq75h1">상품 목록 조회</div> 
+            <div class="css-1mq58uz e1ytq75h1">
+              <router-link to="/company/product">상품 목록 조회</router-link>
+            </div> 
           </a>
           <a class="css-1qe2c6r e1ytq75h2">
             <div class="css-1mq58uz e1ytq75h1">

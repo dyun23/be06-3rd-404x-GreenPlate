@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import CompanyLeftMenuComponent from "../components/mypage/CompanyLeftMenuComponent";
+import CompanyLeftMenuComponent from "../components/company/CompanyLeftMenuComponent";
 import CompanyItemListComponent from "@/components/company/CompanyItemListComponent.vue";
 
 export default {
@@ -21,7 +21,7 @@ export default {
   name: "CompanyProductPage",
   data() {
     return {};
-  },
+  }, 
 };
 </script>
 
