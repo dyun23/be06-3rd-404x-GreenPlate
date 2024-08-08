@@ -69,7 +69,7 @@
             <div class="css-1pjgd36 e744wfw6">
               <div class="css-1y8737n e744wfw5">
                 <label class="css-1obgjqh e744wfw4"
-                  >이름<span class="css-qq9ke6 e744wfw0">*</span></label
+                  >회사명<span class="css-qq9ke6 e744wfw0">*</span></label
                 >
               </div>
               <div class="css-82a6rk e744wfw3">
@@ -90,69 +90,66 @@
               </div>
               <div class="css-1w0ksfz e744wfw2"></div>
             </div>
-
-
-            <div class="css-1pjgd36 e744wfw6"><div class="css-1y8737n e744wfw5"><label class="css-1obgjqh e744wfw4">닉네임<span class="css-qq9ke6 e744wfw0">*</span>
-            </label></div>
-            <div class="css-82a6rk e744wfw3"><div class="css-jmalg e1uzxhvi6">
-              <div class="css-176lya2 e1uzxhvi3">
-                <input data-testid="input-box" id="passwordConfirm" name="passwordConfirm" placeholder="닉네임을 입력해주세요" type="password" autocomplete="off" class="css-u52dqk e1uzxhvi2" value="">
-              </div>
-            </div>
-          </div>
-          <div class="css-1w0ksfz e744wfw2"></div></div>
-
             <div class="css-1pjgd36 e744wfw6">
               <div class="css-1y8737n e744wfw5">
-                <label class="css-1obgjqh e744wfw4">생년월일</label>
+                <label class="css-1obgjqh e744wfw4"
+                  >주소<span class="css-qq9ke6 e744wfw0">*</span></label
+                >
               </div>
               <div class="css-82a6rk e744wfw3">
-                <div class="css-18n8lnw e1ke3ehm1">
-                  <div class="css-1dkwuq4 e1uzxhvi6">
-                    <div height="40" class="css-xsmgyi e1uzxhvi3">
-                      <input
-                        data-testid="input-box"
-                        name="birthYear"
-                        placeholder="YYYY"
-                        type="text"
-                        height="40"
-                        class="css-151eme7 e1uzxhvi2"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                  <span class="css-5lnvt6 e1ke3ehm0"></span>
-                  <div class="css-1dkwuq4 e1uzxhvi6">
-                    <div height="40" class="css-xsmgyi e1uzxhvi3">
-                      <input
-                        data-testid="input-box"
-                        name="birthMonth"
-                        placeholder="MM"
-                        type="text"
-                        height="40"
-                        class="css-151eme7 e1uzxhvi2"
-                        value=""
-                      />
-                    </div>
-                  </div>
-                  <span class="css-5lnvt6 e1ke3ehm0"></span>
-                  <div class="css-1dkwuq4 e1uzxhvi6">
-                    <div height="40" class="css-xsmgyi e1uzxhvi3">
-                      <input
-                        data-testid="input-box"
-                        name="birthDay"
-                        placeholder="DD"
-                        type="text"
-                        height="40"
-                        class="css-151eme7 e1uzxhvi2"
-                        value=""
-                      />
-                    </div>
+                <div class="css-jmalg e1uzxhvi6">
+                  <div class="css-176lya2 e1uzxhvi3">
+                    <input
+                      data-testid="input-box"
+                      id="address"
+                      name="address"
+                      placeholder="주소를 입력해 주세요"
+                      type="text"
+                      required=""
+                      class="css-u52dqk e1uzxhvi2"
+                      value=""
+                    />
                   </div>
                 </div>
               </div>
               <div class="css-1w0ksfz e744wfw2"></div>
             </div>
+            <div class="css-1pjgd36 e744wfw6">
+              <div class="css-1y8737n e744wfw5">
+                <label class="css-1obgjqh e744wfw4"
+                  >회사 전화 번호<span class="css-qq9ke6 e744wfw0">*</span></label
+                >
+              </div>
+              <div class="css-82a6rk e744wfw3">
+                <div class="css-jmalg e1uzxhvi6">
+                  <div class="css-176lya2 e1uzxhvi3">
+                    <input
+                      data-testid="input-box"
+                      id="telNum"
+                      name="telNum"
+                      placeholder="회사전화번호를 입력해 주세요"
+                      type="text"
+                      required=""
+                      class="css-u52dqk e1uzxhvi2"
+                      value=""
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="css-1w0ksfz e744wfw2"></div>
+            </div>
+
+
+            <div class="css-1pjgd36 e744wfw6"><div class="css-1y8737n e744wfw5"><label class="css-1obgjqh e744wfw4">회사 번호<span class="css-qq9ke6 e744wfw0">*</span>
+            </label></div>
+            <div class="css-82a6rk e744wfw3"><div class="css-jmalg e1uzxhvi6">
+              <div class="css-176lya2 e1uzxhvi3">
+                <input data-testid="input-box" id="conNumConfirm" name="conNumConfirm" placeholder="회사 번호를 입력해주세요" type="conNum" autocomplete="off" class="css-u52dqk e1uzxhvi2" value="">
+              </div>
+            </div>
+          </div>
+          <div class="css-1w0ksfz e744wfw2"></div></div>
+
             
           </div>
           <div class="css-1eo0fey e1j7jtti0"></div>
@@ -465,30 +462,31 @@
 </template>
 
 <script>
-import { useUserSignupStore } from "@/stores/useUserSignupStore";
+import { useCompanySignupStore } from "@/stores/useCompanySignupStore";
 
 
 export default {
-  name: "RSignupComponentPage",
+  name: "CompanySignupPage",
   data() {
     return {
       form: {
         email: "",
         password: "",
+        comNum: "",
         name: "",
-        nickname: "",
-        birthday: ""
+        address: "",
+        telNum: ""
       },
       message: ""
     };
   },
   setup(){
-    const userSignupStore = useUserSignupStore();
-    return { userSignupStore };
+    const companySignupStore = useCompanySignupStore();
+    return { companySignupStore };
   },
   methods: {
    async signup() {
-      const result = await this.userSignupStore.signup(this.form);
+      const result = await this.companySignupStore.signup(this.form);
       if (result) {
         this.message = '회원가입 성공';
       } else {
@@ -12469,7 +12467,7 @@ user agent stylesheet div {
   display: block;
   unicode-bidi: isolate;
 }
-<style scoped > .css-1mjkje9 {
+.css-1mjkje9 {
   position: relative;
   display: flex;
   -webkit-box-align: center;

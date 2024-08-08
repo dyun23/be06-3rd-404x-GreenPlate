@@ -3,7 +3,7 @@
     <div class="css-t79vuj e15sbxqa2">
       <div class="css-1xfyvd1 eo7pjfk4">
         <div v-if="!isLoggedIn">
-          <a class="css-xygizb eo7pjfk2">회원가입</a>
+          <router-link to="/signup" class="css-xygizb eo7pjfk2">회원가입</router-link>
         </div>
         <div v-else>
           <div class="css-1qolcqm eo7pjfk3">
