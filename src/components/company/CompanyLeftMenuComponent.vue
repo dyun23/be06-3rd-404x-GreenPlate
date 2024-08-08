@@ -167,10 +167,12 @@
             </div>
           </a>
           <a class="css-1qe2c6r e1ytq75h2">
-            <div class="css-1mq58uz e1ytq75h1">상품 관리</div> 
+            <div class="css-1mq58uz e1ytq75h1">상품 목록 조회</div> 
           </a>
           <a class="css-1qe2c6r e1ytq75h2">
-            <div class="css-1mq58uz e1ytq75h1">주문 관리</div>
+            <div class="css-1mq58uz e1ytq75h1">
+              <router-link to="/company/order">주문 관리</router-link>
+            </div>
           </a>
         </div>
       </div>
