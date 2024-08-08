@@ -27,13 +27,13 @@
                             </tr>
                             <tr>
                               <th scope="row">작성자</th>
-                              <td>작성자이름</td>
+                              <td>{{ recipeData.memberName }}</td>
                             </tr>
                             <tr class="etcArea">
                               <td colspan="2">
                                 <ul>
                                   <li class="date">
-                                    <strong class="th">작성일</strong> <span class="td">2023-04-12</span>
+                                    <strong class="th">작성일</strong> <span class="td">{{ recipeData.date }}</span>
                                   </li>
                                   <li class="hit">
                                     <strong class="th">CALORIE</strong> <span class="td">{{recipeData.totalCalorie}}kcal</span>
@@ -58,12 +58,12 @@
                                   </h3>
                                   <div class="context">
                                     <div class="pic">
-                                      <img src="/image/recipe_img1.PNG">
+                                      <img :src="recipeData.imageUrl" alt="Recipe Image" />
                                     </div>
-                                    <p class="words">
+                                    <div class="words">
                                       <strong class="recipe_item_tit">RECIPE</strong>
-                                      {{recipeData.contents}}
-                                    </p>
+                                      <div v-html="recipeData.contents"></div>
+                                    </div>
                                   </div>
                                 </div>
                               </td>

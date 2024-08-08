@@ -14,7 +14,7 @@
                     <div class="goods-add-product-item-figure">
                         <a
                             href="/shop/goods/goods_view.php?&amp;goodsno=1000167890">
-                            <img src="https://product-image.kurly.com/product/image/90083f58-001f-4e05-954b-b995e5434aea.jpg"
+                            <img :src="item.itemUrl"
                                 alt="" class="goods-add-product-item-image">
                         </a> 
                         <button class="btn_cart" @click="addToCart(item.itemId)">이 상품을 장바구니에 담기</button>
