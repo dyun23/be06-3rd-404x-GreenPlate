@@ -1,24 +1,30 @@
 // stores/useUserInfoStore.js
 
-import { defineStore } from 'pinia';
-import axios from 'axios';
+import { defineStore } from "pinia";
+import axios from "axios";
 
-export const useUserInfoStore = defineStore('userInfoList', {
+export const useUserInfoStore = defineStore("userInfoList", {
   state: () => ({
-    userInfoList: [],
-    name: '',
+    userInfoList: null,
+    name: "",
   }),
+  getters: {
+    getInfo() {
+      return this.userInfoList;
+    },
+  },
   actions: {
     async getUserInfo() {
       try {
-        const response = await axios.get('/api/user/details', {
+        const response = await axios.get("/api/user/details", {
           withCredentials: true,
         });
-        console.log('response.data.result:', JSON.stringify(response.data.result, null, 2));
         this.name = response.data.result.name;
+        this.userInfoList = response.data.result;
+
         return response.data.result;
       } catch (error) {
-        console.error('Failed to fetch user info:', error); // 에러 메시지 수정
+        console.error("Failed to fetch user info:", error); // 에러 메시지 수정
       }
     },
   },
