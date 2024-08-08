@@ -11,13 +11,12 @@
           <span class="css-h6hci1 e17ra5i91"> 배송 상태 : {{formatOrderState(ordersList[0].order_state)}}</span>
         </div>
       </div>
-      <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
-          <h3 class="css-1a1250p e1udu6es1">주문번호 <span class="css-dqnyvi e1lb2pwe0">2289622010159</span></h3><span
-            class="css-3qkund e1udu6es0"><span class="css-gxk3p9 e16g8rol0"><svg width="20" height="20"
-                viewBox="2 2 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 7L9 11L5 7" stroke="#999" stroke-width="0.6"></path>
-              </svg></span></span>
-        </span></button>
+      <div class="css-jp2y92 e1s7667r0"></div>
+      <button type="button" class="css-1h4blvi e1udu6es2">
+        <span>
+          <h3 class="css-1a1250p e1udu6es1">주문번호 <span class="css-dqnyvi e1lb2pwe0">{{ordersList[0].order_id}}</span></h3>
+        </span>
+      </button>
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <div class="css-cku72n e1lb2pwe2">
           <div  v-for="(orderDetail, index) in ordersList" :key="index" class="css-100mgqw e20ugtq12">
@@ -25,7 +24,7 @@
               alt="청양고추 80g" class="css-1mhidi6 e20ugtq11">
             <div class="css-1yt1bj8 e20ugtq10">
               <div class="css-95tt0l e20ugtq9"><a data-testid="deal-name" href="/goods/5027766"
-                  class="css-1awriqz e20ugtq8">{{ orderDetail.itemName }}</a></div>
+                  class="css-1awriqz e20ugtq8">{{ orderDetail.item_name }}</a></div>
               <div class="css-95tt0l e20ugtq9"><span data-testid="goods-price"
                   class="css-1j389vi e20ugtq6">{{ orderDetail.price }}원</span><span class="css-un1ini e20ugtq3"></span><span
                   class="css-16c8x0o e20ugtq4">{{ orderDetail.cnt }}개</span></div>
@@ -39,29 +38,21 @@
       </div>
       <div class="css-jp2y92 e1s7667r0"></div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
-          <h3 class="css-1a1250p e1udu6es1">결제정보</h3><span class="css-3qkund e1udu6es0"><span
-              class="css-gxk3p9 e16g8rol0"><svg width="20" height="20" viewBox="2 2 13 13" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 7L9 11L5 7" stroke="#999" stroke-width="0.6"></path>
-              </svg></span></span>
+          <h3 class="css-1a1250p e1udu6es1">결제정보</h3>
         </span></button>
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <ul class="css-c4ewfg e1mzx65b4">
           <li class="css-s4wkbf e1ysbs754"><span class="css-11h8hn9 e1ysbs753">상품금액</span><span
-              class="css-l5tyq9 e1ysbs751">{{ordersList[0].order_totalPrice}}<span class="css-cvbrkf e1ysbs750">원</span></span></li>
+              class="css-l5tyq9 e1ysbs751">{{ orderPrice }}<span class="css-cvbrkf e1ysbs750">원</span></span></li>
           <li class="css-s4wkbf e1ysbs754"><span class="css-11h8hn9 e1ysbs753">결제금액</span><span
-              class="css-l5tyq9 e1ysbs751">{{ordersList[0].order_totalPrice}}<span class="css-cvbrkf e1ysbs750">원</span></span></li>
+              class="css-l5tyq9 e1ysbs751">{{ orderPrice }}<span class="css-cvbrkf e1ysbs750">원</span></span></li>
           <li class="css-s4wkbf e1ysbs754"><span class="css-11h8hn9 e1ysbs753">결제방법</span>
             <div class="css-6r4ker e1mzx65b3">카카오페이</div>
           </li>
         </ul>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
-          <h3 class="css-1a1250p e1udu6es1">주문정보</h3><span class="css-3qkund e1udu6es0"><span
-              class="css-gxk3p9 e16g8rol0"><svg width="20" height="20" viewBox="2 2 13 13" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 7L9 11L5 7" stroke="#999" stroke-width="0.6"></path>
-              </svg></span></span>
+          <h3 class="css-1a1250p e1udu6es1">주문정보</h3>
         </span></button>
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <ul class="css-12lpk41 e1nt8uak3">
@@ -74,11 +65,7 @@
         </ul>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
-          <h3 class="css-1a1250p e1udu6es1">배송정보</h3><span class="css-3qkund e1udu6es0"><span
-              class="css-gxk3p9 e16g8rol0"><svg width="20" height="20" viewBox="2 2 13 13" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 7L9 11L5 7" stroke="#999" stroke-width="0.6"></path>
-              </svg></span></span>
+          <h3 class="css-1a1250p e1udu6es1">배송정보</h3>
         </span></button>
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <ul class="css-12lpk41 e1nt8uak3">
@@ -106,22 +93,20 @@
 
 <script>
 import axios from 'axios';
-import { useCompanyInfoStore } from '@/stores/useCompanyInfoStore';
 
 export default {
   name: "CompanyOrderDetailComponent",
   data() {
     return {
       ordersList: [],
-      companyName: ""
+      orderPrice: null 
     };
   },
   async created() {
-    this.companyInfoStore = useCompanyInfoStore(); // Pinia 스토어를 초기화합니다.
-    await this.getCompanyInfo(); // 사용자 정보를 가져옵니다.
     const ordersId = this.extractNumberFromCurrentPath();
     if (ordersId) {
-      await this.getData(ordersId); // 데이터를 가져옵니다.
+      await this.getData(ordersId);
+      this.orderPrice = this.$route.query.price;
     }
   },
   methods: {
@@ -134,15 +119,6 @@ export default {
         this.ordersList = response.data.result;
       } catch (error) {
         console.error('Error fetching orders:', error);
-      }
-    },
-    async getCompanyInfo() {
-      try {
-        await this.companyInfoStore.getCompanyInfo(); // 스토어에서 사용자 정보를 가져옵니다.
-        this.companyName = this.companyInfoStore.name; // 사용자 이름을 설정합니다.
-        console.log(this.companyName);
-      } catch (error) {
-        console.error('Error fetching company info:', error);
       }
     },
     formatOrderState(state) {

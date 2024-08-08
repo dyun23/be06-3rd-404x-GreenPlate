@@ -31,7 +31,8 @@
                     </button>
                 </div>
                 <div v-for="order in ordersList" :key="order.order_id" class="css-9hrkbf e88f0q51">
-                <a class="css-h9u7nh e13d9bui8">
+                <a class="css-h9u7nh e13d9bui8"> 
+                  <router-link :to="{ path: `/company/order/${order.order_id}`, query: { price: order.price } }">
                     <div class="css-1prr1nv e13d9bui7">
                     <span class="css-mvcumu e13d9bui6">
                         {{ new Date(order.order_date).toLocaleString() }}
@@ -64,6 +65,7 @@
                         </dd>
                     </dl>
                     </div>
+                </router-link>
                 </a>
                 </div>
             </div>

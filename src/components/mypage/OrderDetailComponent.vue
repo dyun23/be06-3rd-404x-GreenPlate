@@ -12,11 +12,7 @@
         </div>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
-          <h3 class="css-1a1250p e1udu6es1">주문번호 <span class="css-dqnyvi e1lb2pwe0">2289622010159</span></h3><span
-            class="css-3qkund e1udu6es0"><span class="css-gxk3p9 e16g8rol0"><svg width="20" height="20"
-                viewBox="2 2 13 13" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 7L9 11L5 7" stroke="#999" stroke-width="0.6"></path>
-              </svg></span></span>
+          <h3 class="css-1a1250p e1udu6es1">주문번호 <span class="css-dqnyvi e1lb2pwe0">2289622010159</span></h3>
         </span></button>
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <div class="css-cku72n e1lb2pwe2">
@@ -39,11 +35,7 @@
       </div>
       <div class="css-jp2y92 e1s7667r0"></div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
-          <h3 class="css-1a1250p e1udu6es1">결제정보</h3><span class="css-3qkund e1udu6es0"><span
-              class="css-gxk3p9 e16g8rol0"><svg width="20" height="20" viewBox="2 2 13 13" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 7L9 11L5 7" stroke="#999" stroke-width="0.6"></path>
-              </svg></span></span>
+          <h3 class="css-1a1250p e1udu6es1">결제정보</h3>
         </span></button>
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <ul class="css-c4ewfg e1mzx65b4">
@@ -57,11 +49,7 @@
         </ul>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
-          <h3 class="css-1a1250p e1udu6es1">주문정보</h3><span class="css-3qkund e1udu6es0"><span
-              class="css-gxk3p9 e16g8rol0"><svg width="20" height="20" viewBox="2 2 13 13" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 7L9 11L5 7" stroke="#999" stroke-width="0.6"></path>
-              </svg></span></span>
+          <h3 class="css-1a1250p e1udu6es1">주문정보</h3>
         </span></button>
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <ul class="css-12lpk41 e1nt8uak3">
@@ -74,11 +62,7 @@
         </ul>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
-          <h3 class="css-1a1250p e1udu6es1">배송정보</h3><span class="css-3qkund e1udu6es0"><span
-              class="css-gxk3p9 e16g8rol0"><svg width="20" height="20" viewBox="2 2 13 13" fill="none"
-                xmlns="http://www.w3.org/2000/svg">
-                <path d="M13 7L9 11L5 7" stroke="#999" stroke-width="0.6"></path>
-              </svg></span></span>
+          <h3 class="css-1a1250p e1udu6es1">배송정보</h3>
         </span></button>
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <ul class="css-12lpk41 e1nt8uak3">
