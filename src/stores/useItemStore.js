@@ -26,13 +26,29 @@ export const useItemStore = defineStore("itemList", {
         params: { page },
       });
 
-      this.itemList = response.data.result.content;
-      this.totalPages = response.data.result.totalPages;
-      this.totalItems = response.data.result.totalElements;
+      if (response.data.result) {
+        this.itemList = response.data.result.content;
+        this.totalPages = response.data.result.totalPages;
+        this.totalItems = response.data.result.totalElements;
 
-      console.log("store itemList:" + this.itemList[0]);
-      console.log("store totalPages:" + this.totalPages);
-      console.log("store totalItems:" + this.totalItems);
+        console.log("store itemList:" + this.itemList[0]);
+        console.log("store totalPages:" + this.totalPages);
+        console.log("store totalItems:" + this.totalItems);
+      }
+      return response.data.result;
+    },
+
+    async getItemListByCategory(main, sub) {
+      const response = await axios.get("/api/item/category", {
+        params: { main, sub },
+      });
+
+      if (response.data.result) {
+        this.itemList = response.data.result.content;
+        this.totalPages = response.data.result.totalPages;
+        this.totalItems = response.data.result.totalElements;
+      }
+
       return response.data.result;
     },
   },

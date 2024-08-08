@@ -34,7 +34,7 @@
             </fieldset>
         </div>
         <div style="text-align: center;">
-            <button @click="send" class="btn">저장</button>
+            <button @click="send" class="send-btn">저장</button>
         </div>
     </div>
 </template>
@@ -65,6 +65,7 @@
                 formData.append('request', jsonBlob);
                 formData.append('file', this.image);
                 await axios.post("http://localhost:8080/recipe/create", formData, {
+                    withCredentials: true,
                     headers: {
                         'Content-Type': 'multipart/form-data'
                     }
@@ -211,23 +212,41 @@
     }
 
     .btn {
+        padding: 0px 10px;
+        text-align: center;
+        overflow: hidden;
         width: 100px;
         height: 30px;
-        color: #fff;
-        border-radius: 5px;
+        border-radius: 3px;
+        color: rgb(95, 0, 128);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(95, 0, 128);
         font-size: 12px;
+        line-height: 28px;
         font-weight: 500;
-        background: transparent;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        display: inline-block;
-        box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5);
-        outline: none;
-        background: rgb(95, 0, 128);
-        border: none;
     }
     .btn:hover {
-        background: rgb(144, 14, 188);
+        color: rgb(144, 14, 188);
+        border: 1px solid rgb(144, 14, 188);
+    }
+    
+    .send-btn {
+        display: block;
+    padding: 0px 10px;
+    text-align: center;
+    overflow: hidden;
+    width: 240px;
+    height: 56px;
+    border-radius: 3px;
+    color: rgb(255, 255, 255);
+    background-color: rgb(95, 0, 128);
+    border: 0px none;
+    margin: 40px auto 30px;
+    font-size: 16px;
+    font-weight: 500;
+    }
+
+    .send-btn:hover {
+        background-color: rgb(144, 14, 188);
     }
 </style>

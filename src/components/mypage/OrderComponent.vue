@@ -11,7 +11,7 @@
     <div class="css-1xdhyk6 eug5r8l0">
         <div class="css-0 e1tspwdg1">
             <div v-for="order in ordersList" :key="order.order_id" class="css-9hrkbf e88f0q51">
-            <a class="css-h9u7nh e13d9bui8">
+            <a class="css-h9u7nh e13d9bui8"><router-link :to="{ path: `/mypage/order/${ order.order_id }` }">
                 <div class="css-1prr1nv e13d9bui7">
                 <span class="css-mvcumu e13d9bui6">
                     {{ new Date(order.order_date).toLocaleString() }}
@@ -44,6 +44,7 @@
                     </dd>
                 </dl>
                 </div>
+            </router-link>
             </a>
             </div>
         </div>
@@ -58,17 +59,20 @@ import axios from 'axios';
 export default {
 name: "OrderComponent",
 data() {
-return {
-  ordersList: [],
-  currentPage: 0, // 페이지 변수를 currentPage로 설정
-  pageSize: 5,    // 페이지 크기를 pageSize로 설정
-  isLoading: false,
-  isLastPage: false // 마지막 페이지 여부를 확인하는 변수
-};
+    return {
+    ordersList: [],
+    currentPage: 0, // 페이지 변수를 currentPage로 설정
+    pageSize: 5,    // 페이지 크기를 pageSize로 설정
+    isLoading: false,
+    isLastPage: false // 마지막 페이지 여부를 확인하는 변수
+    };
+},
+created(){
+    this.getData();
 },
 mounted() {
-window.addEventListener('scroll', this.scrollPagination);
-this.getData();
+    window.addEventListener('scroll', this.scrollPagination);
+    this.getData();
 },
 methods: {
 async getData() {
