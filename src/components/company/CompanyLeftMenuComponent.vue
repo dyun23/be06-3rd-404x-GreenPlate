@@ -158,7 +158,6 @@
           </div>
         </div>
       </div>
-
       <div class="menu-info-section">
         <div class="css-bivr1n eoeriki0">
           <a class="css-1qe2c6r e1ytq75h2">
