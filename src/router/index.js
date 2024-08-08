@@ -13,6 +13,11 @@ import RecipeWritePage from "@/pages/RecipeWritePage.vue";
 import MyOrderPage from "@/pages/MyOrderPage.vue";
 import MyOrderDetailPage from "@/pages/MyOrderDetailPage.vue";
 import MyAddressPage from "@/pages/MyAddressPage.vue";
+import CompanyProductPage from "@/pages/CompanyProductPage.vue";
+import CompanyOrderPage from "@/pages/CompanyOrderPage.vue";
+import RSignuppComponentPage from "@/pages/RSignuppComponentPage.vue";
+
+
 
 const router = createRouter({
   history: createWebHistory(),
@@ -33,7 +38,10 @@ const router = createRouter({
     { path: "/login", component: LoginPage },
     { path: "/mypage/order", component: MyOrderPage },
     { path: "/mypage/order/:id", component: MyOrderDetailPage },
-    { path: "/mypage/address", component: MyAddressPage },
+    { path: "/mypage/address", component: MyAddressPage }, 
+    { path: "/company/product", component: CompanyProductPage },
+    { path: "/company/order", component: CompanyOrderPage },
+    { path: "/signup", component: RSignuppComponentPage },
   ],
 });
 
