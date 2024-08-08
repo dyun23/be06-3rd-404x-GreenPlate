@@ -70,5 +70,23 @@ export const useItemStore = defineStore("itemList", {
       }
       return response.data.result;
     },
+    async getItemsByName(name, page) {
+      if (page >= 1) {
+        page = page - 1;
+      }
+      if (name != null) {
+        const response = await axios.get("/api/item/search/word", {
+          params: {
+            name,
+            page,
+          },
+        });
+        this.itemList = response.data.result.content;
+        this.totalPages = response.data.result.totalPages;
+        this.totalItems = response.data.result.totalElements;
+
+        return response.data.result;
+      }
+    },
   },
 });

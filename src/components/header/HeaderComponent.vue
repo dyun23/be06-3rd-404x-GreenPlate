@@ -3,7 +3,9 @@
     <div class="css-t79vuj e15sbxqa2">
       <div class="css-1xfyvd1 eo7pjfk4">
         <div v-if="!isLoggedIn">
-          <router-link to="/signup" class="css-xygizb eo7pjfk2">회원가입</router-link>
+          <router-link to="/signup" class="css-xygizb eo7pjfk2"
+            >회원가입</router-link
+          >
         </div>
         <div v-else>
           <div class="css-1qolcqm eo7pjfk3">
@@ -70,12 +72,14 @@
               class="css-11ntk83 e1493ofl3"
               value=""
               control-id="ControlID-4"
+              v-model="searchWord"
             />
             <button
               id="submit"
               aria-label="submit"
               class="css-ywxmlw e1493ofl0"
               control-id="ControlID-5"
+              @click="submitSearch"
             ></button>
           </div>
         </div>
@@ -124,6 +128,7 @@ export default {
   name: "HeaderComponent",
   data() {
     return {
+      searchWord: "",
       currentPage: 1,
     };
   },
@@ -143,6 +148,12 @@ export default {
 
       // 홈 페이지로 리다이렉트
       this.$router.push("/");
+    },
+    submitSearch() {
+      this.$router.push({
+        path: "/item/search",
+        query: { word: this.searchWord },
+      });
     },
   },
 };
