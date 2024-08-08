@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import MainPage from "@/pages/MainPage.vue";
 import ItemPage from "@/pages/ItemPage.vue";
 import ItemCategoryPage from "@/pages/ItemCategoryPage.vue";
 import ItemDetailPage from "@/pages/ItemDetailPage.vue";
@@ -20,6 +21,7 @@ import RSignuppComponentPage from "@/pages/RSignuppComponentPage.vue";
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    { path: "/", component: MainPage },
     { path: "/item/list/:page", component: ItemPage, props: true },
     {
       path: "/item/list/:main/:sub/:page",

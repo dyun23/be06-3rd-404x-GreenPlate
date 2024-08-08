@@ -51,5 +51,24 @@ export const useItemStore = defineStore("itemList", {
 
       return response.data.result;
     },
+    async getItems(page, size) {
+      if (page >= 1) {
+        page = page - 1;
+      }
+      const response = await axios.get("/api/item/list", {
+        params: { page, size },
+      });
+
+      if (response.data.result) {
+        this.itemList = response.data.result.content;
+        this.totalPages = response.data.result.totalPages;
+        this.totalItems = response.data.result.totalElements;
+
+        console.log("store itemList:" + this.itemList[0]);
+        console.log("store totalPages:" + this.totalPages);
+        console.log("store totalItems:" + this.totalItems);
+      }
+      return response.data.result;
+    },
   },
 });
