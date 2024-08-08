@@ -3,6 +3,7 @@ import { createRouter, createWebHistory } from "vue-router";
 import ItemPage from "@/pages/ItemPage.vue";
 import ItemCategoryPage from "@/pages/ItemCategoryPage.vue";
 import ItemDetailPage from "@/pages/ItemDetailPage.vue";
+import ItemRegisterPage from "@/pages/ItemRegisterPage.vue";
 import CartPage from "@/pages/CartPage.vue";
 import RecipePage from "@/pages/RecipePage.vue";
 import RecipeDetailsPage from "@/pages/RecipeDetailPage.vue";
@@ -23,6 +24,7 @@ const router = createRouter({
       props: true,
     },
     { path: "/item/list/details/:id", component: ItemDetailPage },
+    { path: "/item/register", component: ItemRegisterPage },
     { path: "/user/details", component: MyPage },
     { path: "/cart", component: CartPage },
     { path: "/recipe/list/:page", component: RecipePage },
@@ -31,7 +33,7 @@ const router = createRouter({
     { path: "/login", component: LoginPage },
     { path: "/mypage/order", component: MyOrderPage },
     { path: "/mypage/order/:id", component: MyOrderDetailPage },
-    { path: "/mypage/address", component: MyAddressPage }, 
+    { path: "/mypage/address", component: MyAddressPage },
   ],
 });
 

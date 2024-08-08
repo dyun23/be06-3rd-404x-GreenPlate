@@ -58,24 +58,21 @@
     }
 
     .btn {
+        padding: 0px 10px;
+        text-align: center;
+        overflow: hidden;
         width: 100px;
         height: 30px;
-        color: #fff;
-        border-radius: 5px;
+        border-radius: 3px;
+        color: rgb(95, 0, 128);
+        background-color: rgb(255, 255, 255);
+        border: 1px solid rgb(95, 0, 128);
         font-size: 12px;
+        line-height: 28px;
         font-weight: 500;
-        background: transparent;
-        cursor: pointer;
-        transition: all 0.3s ease;
-        position: relative;
-        display: inline-block;
-        box-shadow: inset 2px 2px 2px 0px rgba(255, 255, 255, .5);
-        outline: none;
-        background: rgb(95, 0, 128);
-        border: none;
     }
-
     .btn:hover {
-        background: rgb(144, 14, 188);
+        color: rgb(144, 14, 188);
+        border: 1px solid rgb(144, 14, 188);
     }
 </style>
