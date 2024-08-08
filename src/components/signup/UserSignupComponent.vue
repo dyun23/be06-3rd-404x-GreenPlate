@@ -171,6 +171,16 @@
             </div>
           </div>
           <div class="css-1eo0fey e1j7jtti0"></div>
+          <div class="css-y8aj3r e1k9oeg10">
+            <div class="css-2yzr8b e744wfw6">
+              <div class="css-1y8737n e744wfw5">
+                <label class="css-1obgjqh e744wfw4">
+                  이용약관동의<span class="css-qq9ke6 e744wfw0">*</span>
+                </label>
+              </div>
+              
+            </div>
+          </div>
 
           <div class="checkbox-section">
             
