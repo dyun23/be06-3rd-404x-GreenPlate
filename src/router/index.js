@@ -16,7 +16,7 @@ import MyAddressPage from "@/pages/MyAddressPage.vue";
 import CompanyItemPage from "@/pages/CompanyItemPage.vue";
 import CompanyOrderPage from "@/pages/CompanyOrderPage.vue";
 import CompanyOrderDetailPage from "@/pages/CompanyOrderDetailPage.vue";
-import RSignuppComponentPage from "@/pages/RSignuppComponentPage.vue";
+import SignupPage from "@/pages/SignupPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -41,7 +41,9 @@ const router = createRouter({
     { path: "/company/product", component: CompanyItemPage },
     { path: "/company/order", component: CompanyOrderPage },
     { path: "/company/order/:id", component: CompanyOrderDetailPage},
-    { path: "/signup", component: RSignuppComponentPage },
+    { path: "/signup", component: SignupPage},
+   
+   
   ],
 });
 

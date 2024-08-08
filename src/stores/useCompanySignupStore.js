@@ -2,27 +2,28 @@
 import { defineStore } from 'pinia';
 import axios from 'axios';
 
-export const useUserSignupStore = defineStore('userSignup', {
+export const useCompanySignupStore = defineStore('companySignup', {
   state: () => ({
-    user: {
+    company: {
         email: '',
         password: '',
+        colNum: '',
         name: '',
-        nickname: '',
-        birthday: ''
+        address: '',
+        telNum: ''
     },
     message: ''
   }),
   actions: {
-    async signup(user) {
+    async signup(company) {
       // 실제 API 호출을 하는 곳입니다
       try {
         // 예: await axios.post('/signup', { user, userType });
-        const response = await axios.post('/user/signup', user);
+        const response = await axios.post('http://localhost:8080/company/signup', company);
         this.message = response.data.message;
         return true; // 성공
       } catch (error) {
-        console.error('UserSignup error:', error);
+        console.error('CompanySignup error:', error);
         return false; // 실패
       }
     }
