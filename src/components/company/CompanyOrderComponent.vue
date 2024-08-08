@@ -10,6 +10,11 @@
         </div>
         <div class="css-1xdhyk6 eug5r8l0">
             <div class="css-0 e1tspwdg1">
+                <div class="css-z7b9yl e1tspwdg2">
+                    <button class="css-8jchfv e1hwl4uq0" @click="fetchOrders('ready')">상품준비</button>
+                    <button class="css-8jchfv e1hwl4uq0" @click="fetchOrders('shipped')">배송중</button>
+                    <button class="css-8jchfv e1hwl4uq0" @click="fetchOrders('completed')">배송완료</button>
+                </div>
                 <div v-for="order in ordersList" :key="order.order_id" class="css-9hrkbf e88f0q51">
                 <a class="css-h9u7nh e13d9bui8">
                     <div class="css-1prr1nv e13d9bui7">
@@ -52,76 +57,85 @@
     
     </template>
     
-    <script>
-    import axios from 'axios';
-    
-    export default {
+<script>
+import axios from 'axios';
+
+export default {
     name: "CompanyOrderComponent",
     data() {
     return {
-      ordersList: [],
-      currentPage: 0, // 페이지 변수를 currentPage로 설정
-      pageSize: 5,    // 페이지 크기를 pageSize로 설정
-      isLoading: false,
-      isLastPage: false // 마지막 페이지 여부를 확인하는 변수
+        ordersList: [],
+        currentPage: 0,
+        pageSize: 5,
+        isLoading: false,
+        isLastPage: false,
+        currentStatus: '' // Add a data property to keep track of the current state
     };
     },
     mounted() {
     window.addEventListener('scroll', this.scrollPagination);
-    this.getData();
+    this.fetchOrders('ready'); // Initialize with a default state
     },
     methods: {
+    async fetchOrders(status) {
+        this.currentStatus = status; // Set the current state
+        this.currentPage = 0; // Reset page
+        this.isLastPage = false; // Reset last page flag
+        this.ordersList = []; // Clear current orders
+        await this.getData(); // Fetch new data based on state
+    },
     async getData() {
-        // 마지막 페이지이거나 로딩 중이면 중단
         if (this.isLastPage || this.isLoading) return;
-    
+
         this.isLoading = true;
-    
+
         try {
-            const params = {
-                page: this.currentPage,
-                size: this.pageSize
-            };
-    
-            const response = await axios.get(`http://localhost:8080/orders/list/company`, {
-                params,
-                withCredentials: true
-            });
-            console.error('response.data.result:', response.data.result);
-            const newData = response.data.result.content.map(item => ({ ...item, quantity: 1 }));
-            if (newData.length < this.pageSize) {
-                this.isLastPage = true;
-            }
-    
-            this.ordersList = [...this.ordersList, ...newData];
+        const params = {
+            page: this.currentPage,
+            size: this.pageSize,
+            status: this.currentStatus // Include state in the request parameters
+        };
+
+        const response = await axios.get(`http://localhost:8080/orders/list/company`, {
+            params,
+            withCredentials: true
+        });
+        console.error('response.data.result:', response.data.result);
+        const newData = response.data.result.content.map(item => ({ ...item, quantity: 1 }));
+        if (newData.length < this.pageSize) {
+            this.isLastPage = true;
+        }
+
+        this.ordersList = [...this.ordersList, ...newData];
         } catch (error) {
-            console.error('Error fetching orders:', error);
+        console.error('Error fetching orders:', error);
         } finally {
-            this.isLoading = false;
+        this.isLoading = false;
         }
     },
     scrollPagination() {
         const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight - 700;
         if (nearBottom && !this.isLastPage && !this.isLoading) {
-            this.currentPage++;
-            this.getData();
+        this.currentPage++;
+        this.getData();
         }
     },
     formatOrderState(state) {
-      switch (state) {
+        switch (state) {
         case 'ready':
-          return '상품준비';
+            return '상품준비';
         case 'shipped':
-          return '배송중';
+            return '배송중';
         case 'completed':
-          return '배송완료';
+            return '배송완료';
         default:
-          return '상태 미정';
-      }
+            return '상태 미정';
+        }
     }
     }
-    };
-    </script>
+};
+</script>
+    
     
     
     
