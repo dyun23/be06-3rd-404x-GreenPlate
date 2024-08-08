@@ -22,8 +22,8 @@
                   <div class="css-176lya2 e1uzxhvi3">
                     <input
                       data-testid="input-box"
-                      id="memberId"
-                      name="memberId"
+                      id="email"
+                      name="email"
                       placeholder="이메일을 입력해주세요"
                       type="text"
                       v-model="form.email"
@@ -60,9 +60,7 @@
                     />
                   </div>
                 </div>
-                <div class="css-shoa2s e744wfw1">
-                  <p class="css-1ozil7i e1revjhv0">최소 10자 이상 입력</p>
-                </div>
+
               </div>
               <div class="css-1w0ksfz e744wfw2"></div>
             </div>
@@ -182,6 +180,7 @@
                         id="RequiredTermsCondition"
                         type="checkbox"
                         class="css-agvwxo e1dcessg2"
+                        v-model="termsCondition"
                       />
                       <div class="css-79hxr7 e1dcessg1">
                         <svg
@@ -193,8 +192,8 @@
                         >
                           <path
                             d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
+                            :fill="termsCondition ? '#5f0080' : '#fff'"
                             stroke="#ddd"
-                            fill="#fff"
                           ></path>
                           <path
                             d="M7 12.6667L10.3846 16L18 8.5"
@@ -220,6 +219,7 @@
                         id="RequiredTermsOfPrivacy"
                         type="checkbox"
                         class="css-agvwxo e1dcessg2"
+                        v-model="termsOfPrivacy"
                       />
                       <div class="css-79hxr7 e1dcessg1">
                         <svg
@@ -231,8 +231,8 @@
                         >
                           <path
                             d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
+                            :fill="termsOfPrivacy ? '#5f0080' : '#fff'"
                             stroke="#ddd"
-                            fill="#fff"
                           ></path>
                           <path
                             d="M7 12.6667L10.3846 16L18 8.5"
@@ -251,15 +251,9 @@
               </div>
             </div>
           </div>
-          <div class="css-ud3rkg e1utgeno0">
-            <button
-              class="css-18m884r e4nu7ef3"
-              type="submit"
-              width="240"
-              height="56"
-              radius="3"
-            >
-              <span class="css-nytqmg e4nu7ef1">가입하기</span>
+          <div class="css-jmalg e1uzxhvi6">
+            <button type="submit" class="css-12xrtx0 e1uzxhvi4">
+              회원가입
             </button>
           </div>
         </div>
@@ -289,12 +283,20 @@ export default {
         address: "",
         telNum: ""
       },
+      termsCondition: false, // 이용약관 동의
+      termsOfPrivacy: false, // 개인정보 수집∙이용 동의
       message: "",
       isPopupVisible: false // 팝업 표시 여부
     };
   },
   methods: {
     async signup() {
+      if (!this.termsCondition || !this.termsOfPrivacy) {
+        this.message = '이용약관과 개인정보 수집∙이용 동의는 필수입니다.';
+        this.isPopupVisible = true;
+        return;
+      }
+
       try {
         const response = await axios.post('http://localhost:8080/company/signup', this.form, {
           headers: {
@@ -312,6 +314,7 @@ export default {
   }
 };
 </script>
+
 
 
 
@@ -20692,5 +20695,18 @@ th {
 
 .message-popup button:hover {
   background-color: #5a2d8c; /* 호버 시 색상 변경 */
+}
+.css-12xrtx0 {
+  background-color: #5f0080;
+  color: #fff;
+  border: none;
+  padding: 18px 80px; /* 버튼의 패딩을 두 배로 증가 */
+  font-size: 18px;    /* 폰트 크기를 두 배로 증가 */
+  cursor: pointer;
+  border-radius: 4px; /* 버튼의 둥근 모서리 증가 */
+}
+
+.css-12xrtx0:hover {
+  background-color: #4d0066;
 }
 </style>
