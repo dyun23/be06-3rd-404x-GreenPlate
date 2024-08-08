@@ -103,6 +103,8 @@ export default {
         withCredentials: true,
       });
 
+      this.$emit("address-added", data);
+
       this.submmit();
     },
   },

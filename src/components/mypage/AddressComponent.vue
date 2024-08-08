@@ -10,7 +10,7 @@
       <div class="css-eq7f8j ed9qr672">
         <button @click="updateVisible" class="css-1y56l81 e1ss94ng0">
           <div v-if="addressStore.isOpen">
-            <AddressPopup />
+            <AddressPopup @address-added="handleAddressAdded" />
           </div>
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -75,6 +75,9 @@ export default {
       this.address = response.addresses;
       this.name = response.name;
       console.log(this.address);
+    },
+    handleAddressAdded(newAddress) {
+      this.address.push(newAddress);
     },
   },
 };
