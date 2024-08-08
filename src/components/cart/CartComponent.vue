@@ -165,7 +165,7 @@ export default {
                     withCredentials: true
                 })
                 .then(response => {
-                    console.log(response.data); // 응답 데이터 구조 확인
+                    console.log(response.data);
                     if (response.data.success) {
                         const items = response.data.result || [];
                         this.cartStore.setItems(items.map(item => ({
