@@ -11,6 +11,7 @@
             <span class="css-qq9ke6 e1yyjjij0">*</span> 필수입력사항
           </div>
           <div class="css-y8aj3r eo6ykj40">
+            <!-- 아이디 입력 -->
             <div class="css-1pjgd36 e744wfw6">
               <div class="css-1y8737n e744wfw5">
                 <label class="css-1obgjqh e744wfw4">
@@ -39,6 +40,7 @@
                 </button>
               </div>
             </div>
+            <!-- 비밀번호 입력 -->
             <div class="css-1pjgd36 e744wfw6">
               <div class="css-1y8737n e744wfw5">
                 <label class="css-1obgjqh e744wfw4">
@@ -60,12 +62,10 @@
                     />
                   </div>
                 </div>
-                <div class="css-shoa2s e744wfw1">
-                  <p class="css-1ozil7i e1revjhv0">최소 10자 이상 입력</p>
-                </div>
               </div>
               <div class="css-1w0ksfz e744wfw2"></div>
             </div>
+            <!-- 이름 입력 -->
             <div class="css-1pjgd36 e744wfw6">
               <div class="css-1y8737n e744wfw5">
                 <label class="css-1obgjqh e744wfw4">
@@ -90,6 +90,7 @@
               </div>
               <div class="css-1w0ksfz e744wfw2"></div>
             </div>
+            <!-- 닉네임 입력 -->
             <div class="css-1pjgd36 e744wfw6">
               <div class="css-1y8737n e744wfw5">
                 <label class="css-1obgjqh e744wfw4">
@@ -113,6 +114,7 @@
               </div>
               <div class="css-1w0ksfz e744wfw2"></div>
             </div>
+            <!-- 생년월일 입력 -->
             <div class="css-1pjgd36 e744wfw6">
               <div class="css-1y8737n e744wfw5">
                 <label class="css-1obgjqh e744wfw4">생년월일</label>
@@ -169,213 +171,161 @@
             </div>
           </div>
           <div class="css-1eo0fey e1j7jtti0"></div>
-          <div class="css-y8aj3r e1k9oeg10">
-            <div class="css-2yzr8b e744wfw6">
-              <div class="css-1y8737n e744wfw5">
-                <label class="css-1obgjqh e744wfw4">
-                  이용약관동의<span class="css-qq9ke6 e744wfw0">*</span>
-                </label>
-              </div>
-              <div class="css-82a6rk e744wfw3">
-                <div class="css-ov2xfu e1sjmfnv6">
-                  <label class="css-msja7w e1dcessg3" for="TermsAgreeAll">
-                    <input
-                      id="TermsAgreeAll"
-                      type="checkbox"
-                      class="css-agvwxo e1dcessg2"
-                    />
-                    <div class="css-79hxr7 e1dcessg1">
-                      <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
-                          stroke="#ddd"
-                          fill="#fff"
-                        ></path>
-                        <path
-                          d="M7 12.6667L10.3846 16L18 8.5"
-                          stroke="#ddd"
-                          stroke-width="1.5"
-                          stroke-linecap="round"
-                          stroke-linejoin="round"
-                        ></path>
-                      </svg>
-                    </div>
-                    <span>전체 동의합니다.</span>
-                  </label>
-                  <p class="css-nygcgj e1sjmfnv5">
-                    선택항목에 동의하지 않은 경우도 회원가입 및 일반적인 서비스를 이용할 수 있습니다.
-                  </p>
+
+          <div class="checkbox-section">
+            
+            <div class="checkbox-item">
+              <label class="css-msja7w e1dcessg3" for="TermsAgreeAll">
+                <input
+                  id="TermsAgreeAll"
+                  type="checkbox"
+                  class="css-agvwxo e1dcessg2"
+                  v-model="termsAgreeAll"
+                  @change="toggleAllCheckboxes"
+                />
+                <div class="css-79hxr7 e1dcessg1">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
+                      :stroke="termsAgreeAll ? '#5f0080' : '#ddd'"
+                      :fill="termsAgreeAll ? '#5f0080' : '#fff'"
+                    ></path>
+                    <path
+                      d="M7 12.6667L10.3846 16L18 8.5"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
                 </div>
-                <div class="css-ov2xfu e1sjmfnv6">
-                  <div class="css-s5xdrg e1sjmfnv3">
-                    <label class="css-1mjkje9 e1dcessg3" for="RequiredTermsCondition">
-                      <input
-                        id="RequiredTermsCondition"
-                        type="checkbox"
-                        class="css-agvwxo e1dcessg2"
-                      />
-                      <div class="css-79hxr7 e1dcessg1">
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
-                            stroke="#ddd"
-                            fill="#fff"
-                          ></path>
-                          <path
-                            d="M7 12.6667L10.3846 16L18 8.5"
-                            stroke="#ddd"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                        </svg>
-                      </div>
-                      <span>이용약관 동의</span>
-                    </label>
-                    <span class="css-64z8en e1sjmfnv4">(필수)</span>
-                  </div>
+                <span>전체 동의합니다.</span>
+              </label>
+            </div>
+            <div class="checkbox-item">
+              <label class="css-msja7w e1dcessg3" for="RequiredTermsCondition">
+                <input
+                  id="RequiredTermsCondition"
+                  type="checkbox"
+                  class="css-agvwxo e1dcessg2"
+                  v-model="requiredTermsCondition"
+                  @change="checkAllAgree"
+                />
+                <div class="css-79hxr7 e1dcessg1">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
+                      :stroke="requiredTermsCondition ? '#5f0080' : '#ddd'"
+                      :fill="requiredTermsCondition ? '#5f0080' : '#fff'"
+                    ></path>
+                    <path
+                      d="M7 12.6667L10.3846 16L18 8.5"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
                 </div>
-                <div class="css-ov2xfu e1sjmfnv6">
-                  <div class="css-s5xdrg e1sjmfnv3">
-                    <label class="css-1mjkje9 e1dcessg3" for="RequiredTermsOfPrivacy">
-                      <input
-                        id="RequiredTermsOfPrivacy"
-                        type="checkbox"
-                        class="css-agvwxo e1dcessg2"
-                      />
-                      <div class="css-79hxr7 e1dcessg1">
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
-                            stroke="#ddd"
-                            fill="#fff"
-                          ></path>
-                          <path
-                            d="M7 12.6667L10.3846 16L18 8.5"
-                            stroke="#ddd"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                        </svg>
-                      </div>
-                      <span>개인정보 수집∙이용 동의</span>
-                    </label>
-                    <span class="css-64z8en e1sjmfnv4">(필수)</span>
-                  </div>
+                <span>이용약관 동의</span>
+              </label>
+            </div>
+            <div class="checkbox-item">
+              <label class="css-msja7w e1dcessg3" for="RequiredPrivacyPolicy">
+                <input
+                  id="RequiredPrivacyPolicy"
+                  type="checkbox"
+                  class="css-agvwxo e1dcessg2"
+                  v-model="requiredPrivacyPolicy"
+                  @change="checkAllAgree"
+                />
+                <div class="css-79hxr7 e1dcessg1">
+                  <svg
+                    width="24"
+                    height="24"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    xmlns="http://www.w3.org/2000/svg"
+                  >
+                    <path
+                      d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
+                      :stroke="requiredPrivacyPolicy ? '#5f0080' : '#ddd'"
+                      :fill="requiredPrivacyPolicy ? '#5f0080' : '#fff'"
+                    ></path>
+                    <path
+                      d="M7 12.6667L10.3846 16L18 8.5"
+                      stroke="white"
+                      stroke-width="1.5"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></path>
+                  </svg>
                 </div>
-                <div class="css-ov2xfu e1sjmfnv6">
-                  <div class="css-s5xdrg e1sjmfnv3">
-                    <label class="css-1mjkje9 e1dcessg3" for="RequiredSignupAge">
-                      <input
-                        id="RequiredSignupAge"
-                        type="checkbox"
-                        class="css-agvwxo e1dcessg2"
-                      />
-                      <div class="css-79hxr7 e1dcessg1">
-                        <svg
-                          width="24"
-                          height="24"
-                          viewBox="0 0 24 24"
-                          fill="none"
-                          xmlns="http://www.w3.org/2000/svg"
-                        >
-                          <path
-                            d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
-                            stroke="#ddd"
-                            fill="#fff"
-                          ></path>
-                          <path
-                            d="M7 12.6667L10.3846 16L18 8.5"
-                            stroke="#ddd"
-                            stroke-width="1.5"
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                          ></path>
-                        </svg>
-                      </div>
-                      <span>본인은 만 14세 이상입니다.</span>
-                    </label>
-                    <span class="css-64z8en e1sjmfnv4">(필수)</span>
-                  </div>
-                </div>
-              </div>
+                <span>개인정보처리방침 동의</span>
+              </label>
             </div>
           </div>
-          <div class="css-ud3rkg e1utgeno0">
+          <div class="css-1e59shx e15so55l2">
             <button
-              class="css-18m884r e4nu7ef3"
               type="submit"
-              width="240"
-              height="56"
-              radius="3"
+              class="css-1uyc7w1 e1y20peb0"
             >
-              <span class="css-nytqmg e4nu7ef1">가입하기</span>
+              회원가입
             </button>
           </div>
         </div>
       </div>
     </form>
-    <div v-if="isPopupVisible" class="message-popup">
-      <div class="message-content">
-        <p>{{ message }}</p>
-        <button @click="isPopupVisible = false">닫기</button>
-      </div>
-    </div>
   </div>
 </template>
 
+
+
 <script>
-import axios from 'axios';
 export default {
-  name: "UserSignupComponent",
   data() {
     return {
+      termsAgreeAll: false,
+      requiredTermsCondition: false,
+      requiredPrivacyPolicy: false,
       form: {
-        email: "",
-        password: "",
-        username: "",
-        nickname: "",
-        birthYear: "",
-        birthMonth: "",
-        birthDay: ""
-      },
-      message: "",
-      isPopupVisible: false // 팝업 표시 여부
+        email: '',
+        password: '',
+        username: '',
+        nickname: '',
+        birthYear: '',
+        birthMonth: '',
+        birthDay: ''
+      }
     };
   },
   methods: {
-    async signup() {
-      try {
-        const response = await axios.post('http://localhost:8080/user/signup', this.form, {
-          headers: {
-            'Content-Type': 'application/json'
-          }
-        });
-        this.message = response.data.message;
-        this.isPopupVisible = true; // 성공 시 팝업 표시
-      } catch (error) {
-        console.error('회원가입 오류:', error);
-        this.message = error;
-        this.isPopupVisible = true; // 에러 발생 시 팝업 표시
+    toggleAllCheckboxes() {
+      const isChecked = this.termsAgreeAll;
+      this.requiredTermsCondition = isChecked;
+      this.requiredPrivacyPolicy = isChecked;
+    },
+    checkAllAgree() {
+      this.termsAgreeAll = this.requiredTermsCondition && this.requiredPrivacyPolicy;
+    },
+    signup() {
+      if (this.requiredTermsCondition && this.requiredPrivacyPolicy) {
+        // 회원가입 처리 로직
+        console.log('회원가입 처리');
+      } else {
+        alert('필수 약관에 동의하셔야 합니다.');
       }
     }
   }
@@ -20758,5 +20708,181 @@ th {
 
 .message-popup button:hover {
   background-color: #5a2d8c; /* 호버 시 색상 변경 */
+}
+.css-agvwxo {
+  position: relative;
+  cursor: pointer;
+}
+
+.css-79hxr7 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.css-1obgjqh {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.css-qq9ke6 {
+  color: red;
+}
+
+.css-82a6rk {
+  display: flex;
+  align-items: center;
+}
+
+.css-mhmtvt {
+  margin-bottom: 20px;
+}
+
+.css-y8aj3r {
+  margin-bottom: 20px;
+}
+
+.css-2yzr8b {
+  margin-bottom: 10px;
+}
+
+.css-1y8737n {
+  margin-bottom: 5px;
+}
+
+.css-ov2xfu {
+  margin-bottom: 10px;
+}
+
+.css-msja7w {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+.css-5lnvt6 {
+  margin-right: 10px;
+}
+
+.css-1w0ksfz {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.css-1e59shx {
+  margin-top: 20px;
+}
+
+.css-pculus, .css-mhmtvt, .css-rb0i47, .css-1eo0fey {
+  font-size: 16px;
+}
+
+.css-u52dqk {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 8px;
+}
+
+.css-jmalg {
+  display: flex;
+  align-items: center;
+}
+
+.css-176lya2 {
+  width: 100%;
+}
+
+.css-151eme7 {
+  width: 100%;
+}
+
+.css-xsmgyi {
+  margin-right: 5px;
+}
+
+.css-1uyc7w1 {
+  background-color: #5f0080;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.css-1uyc7w1:hover {
+  background-color: #4a0075;
+}
+/* 입력 상자들에 고정 너비 설정 */
+.css-u52dqk, .css-151eme7 {
+  width: 100%; /* 전체 너비로 설정하여 부모 컨테이너에 맞춰서 너비를 조정 */
+  box-sizing: border-box; /* 패딩과 보더를 포함한 너비 조정 */
+}
+
+/* 입력 상자의 고정 너비 설정 예시 */
+input[type="text"], input[type="password"] {
+  width: 320px; /* 원하는 너비 값으로 설정 */
+  box-sizing: border-box; /* 패딩과 보더를 포함한 너비 조정 */
+}
+.checkbox-section {
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 체크박스들 간의 간격 */
+}
+
+.checkbox-item {
+  display: flex;
+  align-items: center;
+  gap: 10px; /* 체크박스와 레이블 간의 간격 */
+}
+
+.css-agvwxo {
+  margin: 0;
+}
+.checkbox-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.checkbox-item {
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-item label {
+  display: flex;
+  align-items: center;
+}
+
+.checkbox-item input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+.css-pculus, .css-o5dw7d, .css-mhmtvt, .css-rb0i47, .css-y8aj3r, .css-1eo0fey, .css-1e59shx {
+  /* 기존 CSS 클래스들이 있는 부분은 그대로 유지 */
+}
+
+.css-1pjgd36, .css-1y8737n, .css-82a6rk, .css-jmalg, .css-176lya2, .css-u52dqk, .css-1w0ksfz, .css-ov2xfu, .css-msja7w, .css-79hxr7 {
+  /* 기존 CSS 클래스들이 있는 부분은 그대로 유지 */
+}
+/* 회원가입 버튼 스타일 수정 */
+.css-1e59shx {
+  text-align: center;
+}
+
+.css-1uyc7w1 {
+  display: inline-block;
+  padding: 14px 80px; /* 버튼의 상하/좌우 패딩 조정 */
+  font-size: 18px; /* 버튼 텍스트 크기 조정 */
+  line-height: 1.5; /* 텍스트 줄 높이 조정 */
+  border-radius: 4px; /* 버튼의 모서리 둥글기 조정 */
+  background-color: #5f0080; /* 버튼 배경색 조정 */
+  color: #ffffff; /* 버튼 텍스트 색상 조정 */
+  border: none; /* 버튼 테두리 제거 */
+  cursor: pointer; /* 버튼 클릭 시 커서 스타일 조정 */
+  transition: background-color 0.3s ease; /* 버튼 배경색 변경에 애니메이션 추가 */
+}
+
+.css-1uyc7w1:hover {
+  background-color: #3e0060; /* 버튼 호버 시 배경색 조정 */
 }
 </style>
