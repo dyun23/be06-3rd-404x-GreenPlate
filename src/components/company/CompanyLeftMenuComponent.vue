@@ -158,7 +158,7 @@
           </div>
         </div>
       </div>
-      
+
       <div class="menu-info-section">
         <div class="css-bivr1n eoeriki0">
           <a class="css-1qe2c6r e1ytq75h2">
@@ -181,7 +181,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "CompanyLeftMenuComponent",
@@ -196,12 +196,18 @@ export default {
   },
   methods: {
     async getUserInfo() {
-      const response = await axios.get("http://localhost:8080/company/details", {
-        withCredentials: true
-      });
+      const response = await axios.get(
+        "http://localhost:8080/company/details",
+        {
+          withCredentials: true,
+        }
+      );
 
-      console.log("response.data.result:", JSON.stringify(response.data.result, null, 2));
-      this.name = response.data.result.name+"님";
+      console.log(
+        "response.data.result:",
+        JSON.stringify(response.data.result, null, 2)
+      );
+      this.name = response.data.result.name + "님";
       return response.data.result;
     },
   },
