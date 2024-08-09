@@ -226,10 +226,7 @@
             </div>
           </a>
           <a class="css-1qe2c6r e1ytq75h2">
-            <div class="css-1mq58uz e1ytq75h1">나의 키워드</div> 
-          </a>
-          <a class="css-1qe2c6r e1ytq75h2">
-            <div class="css-1mq58uz e1ytq75h1">개인정보 수정</div>
+            <div class="css-1mq58uz e1ytq75h1">나의 키워드</div>
           </a>
         </div>
       </div>
@@ -238,7 +235,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 
 export default {
   name: "LeftMenuComponent",
@@ -254,11 +251,14 @@ export default {
   methods: {
     async getUserInfo() {
       const response = await axios.get("/api/user/details", {
-        withCredentials: true
+        withCredentials: true,
       });
 
-      console.log("response.data.result:", JSON.stringify(response.data.result, null, 2));
-      this.name = response.data.result.name+"님";
+      console.log(
+        "response.data.result:",
+        JSON.stringify(response.data.result, null, 2)
+      );
+      this.name = response.data.result.name + "님";
       return response.data.result;
     },
   },
