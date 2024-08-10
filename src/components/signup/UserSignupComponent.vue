@@ -359,11 +359,24 @@ export default {
       const usernameRegex = /^[가-힣]+$/;
       return usernameRegex.test(username);
     },
+    validateBirthDate(year, month, day) {
+      const date = new Date(year, month - 1, day); // 월은 0부터 시작
+      const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      return date.getFullYear() == year &&
+             date.getMonth() + 1 == month &&
+             date.getDate() == day &&
+             formattedDate === `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    },
     async signup() {
       if (this.requiredTermsCondition && this.requiredPrivacyPolicy) {
         if (this.validateEmail(this.form.email)) {
           if (this.validatePassword(this.form.password)) {
             if (this.validateUsername(this.form.username)) {
+              if (this.validateBirthDate(
+                this.form.birthYear,
+                this.form.birthMonth,
+                this.form.birthDay
+              )) {
               try {
                 await axios.post('http://localhost:8080/user/signup', this.form, {
                   headers: {
@@ -375,23 +388,21 @@ export default {
                 console.error('UserSignup error:', error);
                 alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요');
               }
+            } 
+             else {
+               alert('생년월일은 YYYY-MM-DD 형식으로 입력하세요');
+              }
+              }else {
+               alert('이름은 한글로 입력해야합니다');
+              }
             } else {
-              alert('이름은 한글로 입력해야합니다');
-             
+              alert('비밀번호는 8글자 이상 25글자 이하로 입력해 주세요');
             }
           } else {
-            alert('비밀번호는 8글자 이상 25글자 이하로 입력해 주세요');
-            
-            
-          }
+            alert('이메일 형식으로 입력해주세요 (예: example@gmail.com)');
+          } 
         } else {
-          alert('이메일 형식으로 입력해주세요 (예: example@gmail.com)');
-          
-          
-        }
-      } else {
          alert('이용약관과 개인정보처리방침에 동의해 주세요');
-        
       }
     },
     closePopup() {
