@@ -21,6 +21,7 @@ import SignupPage from "@/pages/SignupPage.vue";
 import OrderPage from "@/pages/OrderPage.vue";
 import ItemSearchResultPage from "@/pages/ItemSearchResultPage.vue";
 import MyKeywordPage from "@/pages/MyKeywordPage.vue";
+import OrderSheetPage from "@/pages/OrderSheetPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
@@ -57,6 +58,7 @@ const router = createRouter({
     { path: "/signup", component: SignupPage },
     { path: "/order", component: OrderPage },
     { path: "/mypage/keyword", component: MyKeywordPage },
+    { path: "/ordersheet", component: OrderSheetPage },
   ],
 });
 
