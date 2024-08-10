@@ -2,38 +2,32 @@
     <div class="css-1ykiyus e146m4rf2">
         <div class="css-1uom1od e146m4rf0">
             <h2 class="css-10owlr e146m4rf1">주문서</h2>
-            <div class="css-ixlb9s epvroj94">
+            <div v-if="selectedItems.length" class="css-ixlb9s epvroj94">
                 <div class="css-zo1i6f edbbr7c2">
                     <h3 class="css-1ddzp0m edbbr7c1">주문 상품</h3>
                 </div>
-                <div class="css-bd9p1l e17a7yib10"><img
+                <div v-for="item in selectedItems" :key="item.id" class="css-bd9p1l e17a7yib10"><img
                         src="https://product-image.kurly.com/hdims/resize/%5E%3E120x%3E156/cropcenter/120x156/quality/85/src/product/image/4bf285ce-e95f-4fd6-9fab-b69e2c9691bb.jpeg"
                         alt="[비움반찬] 진미채볶음" class="css-17jyui4 e17a7yib9"><span class="css-10nl60h e17a7yib8"><span
-                            class="css-9j7jhp e17a7yib7">[비움반찬] 진미채볶음</span></span><span
-                        class="css-1efb5i1 e17a7yib5">1개</span><span class="css-1j31gob e17a7yib4"><span
-                            class="css-jnogx7 e17a7yib1">3,700원</span></span></div>
-                <div class="css-bd9p1l e17a7yib10"><img
-                        src="https://product-image.kurly.com/hdims/resize/%5E%3E120x%3E156/cropcenter/120x156/quality/85/src/product/image/1cef6b73-3e91-4a7a-8024-58b5d8cf5010.jpg"
-                        alt="[KF365] 아보카도 (1개)" class="css-17jyui4 e17a7yib9"><span class="css-10nl60h e17a7yib8"><span
-                            class="css-9j7jhp e17a7yib7">[KF365] 아보카도 (1개)</span></span><span
-                        class="css-1efb5i1 e17a7yib5">1개</span><span class="css-1j31gob e17a7yib4"><span
-                            class="css-jnogx7 e17a7yib1">2,490원</span></span></div>
+                            class="css-9j7jhp e17a7yib7">{{ item.title }}</span></span><span
+                        class="css-1efb5i1 e17a7yib5">{{ item.quantity }}개</span><span class="css-1j31gob e17a7yib4"><span
+                            class="css-jnogx7 e17a7yib1">{{ item.discountPrice }}원</span></span></div>
                 <div class="css-12aowi2 edbbr7c2">
                     <h3 class="css-1ddzp0m edbbr7c1">주문자 정보</h3>
                 </div>
                 <div id="kurly-orderer-info" class="css-shoa2s e1vfdada3">
                     <div class="css-yazyg9 e150alo82"><span class="css-ln1csn e150alo81">보내는 분</span>
                         <div class="css-82a6rk e150alo80">
-                            <div class="css-t6o2y8 e1vfdada2">장유정</div>
+                            <div class="css-t6o2y8 e1vfdada2">{{this.name}}</div>
                         </div>
                     </div>
                     <div class="css-yazyg9 e150alo82"><span class="css-ln1csn e150alo81">휴대폰</span>
                         <div class="css-82a6rk e150alo80">
-                            <div class="css-t6o2y8 e1vfdada2">010-9327-2717</div>
+                            <div v-if="defaultAddress" class="css-t6o2y8 e1vfdada2">{{defaultAddress.phoneNum}}</div>
                         </div>
                     </div>
                     <div class="css-yazyg9 e150alo82"><span class="css-ln1csn e150alo81">이메일</span>
-                        <div class="css-82a6rk e150alo80">cloud_mist@naver.com<div class="css-1r0yqr6 e1vfdada1">
+                        <div class="css-82a6rk e150alo80">{{this.email}}<div class="css-1r0yqr6 e1vfdada1">
                                 <p class="css-i7dt79 e1vfdada0">정보 변경은 마이컬리 &gt; 개인정보 수정 메뉴에서 가능합니다.</p>
                             </div>
                         </div>
@@ -51,9 +45,11 @@
                     </div>
                     <div class="css-5d6nlw e17yjk9v4">
                         <div class="css-1gshg9u e150alo82"><span class="css-ln1csn e150alo81">배송지</span>
-                            <div class="css-82a6rk e150alo80"><span class="css-3uygi7 e17yjk9v3">기본배송지</span>
-                                <p class="css-36j4vu e17yjk9v2">서울 강서구 허준로 175 (가양6단지아파트) 612동 807호</p>
-                                <div class="css-rqc9f e14u1xpe0">010-6769-3771</div>
+                            <div v-if="defaultAddress" class="css-82a6rk e150alo80"><span class="css-3uygi7 e17yjk9v3">기본배송지</span>
+                                <p class="css-36j4vu e17yjk9v2">
+                                    ({{defaultAddress.zipcode}}) {{defaultAddress.address}} {{defaultAddress.addressDetail}}
+                                </p>
+                                <div class="css-rqc9f e14u1xpe0">{{defaultAddress.phoneNum}}</div>
                                 <div class="css-iqoq9n e17yjk9v0"><button class="css-1xky6jf e4nu7ef3" type="button"
                                         width="60" height="30" radius="3"><span
                                             class="css-nytqmg e4nu7ef1">변경</span></button></div>
@@ -123,7 +119,7 @@
                                 <div class="css-1hvttuk eahaaoi12">
                                     <div class="css-1rmc3ba eahaaoi11">주문금액</div>
                                     <div><span class="css-2pg1ps eahaaoi10"><span
-                                                class="css-rfpchb eahaaoi3"></span>42,820</span><span
+                                                class="css-rfpchb eahaaoi3"></span>{{selectedTotalCost}}</span><span
                                             class="css-158icaa eahaaoi8">원</span></div>
                                 </div>
                                 <div class="css-sk644d eahaaoi9">
@@ -135,7 +131,7 @@
                                         <div class="css-1rmc3ba eahaaoi11">상품금액</div>
                                     </div>
                                     <div><span class="css-2pg1ps eahaaoi10"><span
-                                                class="css-rfpchb eahaaoi3"></span>50,480</span><span
+                                                class="css-rfpchb eahaaoi3"></span>{{originalPriceTotal}}</span><span
                                             class="css-158icaa eahaaoi8">원</span></div>
                                 </div>
                                 <div class="css-sk644d eahaaoi9">
@@ -147,13 +143,13 @@
                                         <div class="css-1rmc3ba eahaaoi11">상품할인금액</div>
                                     </div>
                                     <div><span class="css-2pg1ps eahaaoi10"><span
-                                                class="css-rfpchb eahaaoi3">-</span>7,660</span><span
+                                                class="css-rfpchb eahaaoi3">-</span>{{originalPriceTotal-selectedTotalCost}}</span><span
                                             class="css-158icaa eahaaoi8">원</span></div>
                                 </div>
                                 <div class="css-1hgn7mh eahaaoi7">
                                     <div class="css-1rmc3ba eahaaoi11">최종결제금액</div>
                                     <div><span class="css-2pg1ps eahaaoi10"><span
-                                                class="css-rfpchb eahaaoi3"></span>42,820</span><span
+                                                class="css-rfpchb eahaaoi3"></span>{{selectedTotalCost}}</span><span
                                             class="css-158icaa eahaaoi8">원</span></div>
                                 </div>
                                 <div class="css-1ujngs9 eahaaoi1">결제는 카카오페이 결제만 가능합니다</div>
@@ -168,16 +164,52 @@
 
 <script>
 import { useCartStore } from '../stores/useCartStore';
+import { useUserInfoStore } from "@/stores/useUserInfoStore";
+import { computed } from 'vue';
+import { mapStores } from "pinia";
 
 export default {
-    name: "OrderComponent",
-    setup() {
-        const cartStore = useCartStore();
-        return {
-            selectedItems: cartStore.selectedItems,
-            selectedTotalCost: cartStore.selectedTotalCost
-        };
+  name: "OrderComponent",
+  data() {
+    return { 
+      addresses: [], // 주소를 배열로 선언
+      name: null, 
+      email: null
+    };
+  },
+  setup() {
+    const cartStore = useCartStore();
+
+    const originalPriceTotal = computed(() => {
+      return cartStore.selectedItems.reduce((total, item) => {
+        return total + (item.originalPrice * item.quantity);
+      }, 0);
+    });
+
+    return {
+      selectedItems: cartStore.selectedItems,
+      selectedTotalCost: cartStore.selectedTotalCost,
+      originalPriceTotal
+    };
+  },
+  computed: {
+    ...mapStores(useUserInfoStore),
+    defaultAddress() { // 기본 주소가 있을 경우 반환, 없으면 null 반환
+      return this.addresses.length > 0 ? this.addresses[0] : null;
     }
+  },
+  mounted() {
+    this.getInfo();
+  },
+  methods: {
+    async getInfo() {
+      const response = await this.userInfoListStore.getUserInfo();
+      this.name = response.name;
+      this.email = response.email;
+      this.addresses = response.addresses.filter(addr => addr.defaultAddr);       // 기본 주소만 필터링하여 배열에 저장
+      console.log(this.response);
+    }
+  },
 };
 </script>
 
