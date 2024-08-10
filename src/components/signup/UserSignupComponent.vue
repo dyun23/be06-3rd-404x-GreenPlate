@@ -320,6 +320,7 @@ export default {
       isPopupVisible: false, // 팝업 표시 여부
       Message: '',
       emailError: false,
+      passwordError: false,
       form: {
         email: '',
         password: '',
@@ -345,9 +346,14 @@ export default {
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email) && email.endsWith('@gmail.com');
     },
+    validatePassword(password) {
+      // 비밀번호 길이 검사
+      return password.length >= 8 && password.length <= 25;
+    },
     async signup() {
       if (this.requiredTermsCondition && this.requiredPrivacyPolicy) {
         if (this.validateEmail(this.form.email)) {
+          if (this.validatePassword(this.form.password)) {
           try {
             await axios.post('http://localhost:8080/company/signup', this.form, {
             headers: {
@@ -361,6 +367,11 @@ export default {
             alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요');
             
           }
+        } else {
+            alert('비밀번호는 8글자 이상 25글자 이하로 입력해 주세요'); // 비밀번호 길이 오류 메시지
+            this.passwordError = true;
+            
+        }
         } else {
           alert(this.popupMessage = '이메일 형식으로 입력해주세요 (예: example@gmail.com)') // 이메일 형식 오류 시 팝업 표시
           this.emailError = true;
