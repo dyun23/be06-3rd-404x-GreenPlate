@@ -44,7 +44,7 @@
 <script>
 export default {
   name: "PagingComponent",
-  props: ["totalPages", "isCategoryPage", "main", "sub"],
+  props: ["totalPages", "isCategoryPage", "searchWord", "main", "sub"],
   data() {
     return {
       currentPage: 1,
@@ -58,6 +58,11 @@ export default {
         if (this.isCategoryPage) {
           this.$router.push({
             path: `/item/${this.main}/${this.sub}/${page}`,
+          });
+        } else if (this.searchWord != null) {
+          this.$router.push({
+            path: "/item/search",
+            query: { word: this.searchWord, page: page },
           });
         } else {
           this.$router.push({ path: `/item/list/${page}` });

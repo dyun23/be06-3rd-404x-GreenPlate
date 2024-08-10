@@ -1,5 +1,6 @@
 import { createRouter, createWebHistory } from "vue-router";
 
+import MainPage from "@/pages/MainPage.vue";
 import ItemPage from "@/pages/ItemPage.vue";
 import ItemCategoryPage from "@/pages/ItemCategoryPage.vue";
 import ItemDetailPage from "@/pages/ItemDetailPage.vue";
@@ -17,11 +18,23 @@ import CompanyItemPage from "@/pages/CompanyItemPage.vue";
 import CompanyOrderPage from "@/pages/CompanyOrderPage.vue";
 import CompanyOrderDetailPage from "@/pages/CompanyOrderDetailPage.vue";
 import SignupPage from "@/pages/SignupPage.vue";
+import OrderPage from "@/pages/OrderPage.vue";
+import ItemSearchResultPage from "@/pages/ItemSearchResultPage.vue";
+import MyKeywordPage from "@/pages/MyKeywordPage.vue";
 
 const router = createRouter({
   history: createWebHistory(),
   routes: [
+    { path: "/", component: MainPage },
     { path: "/item/list/:page", component: ItemPage, props: true },
+    {
+      path: "/item/search",
+      component: ItemSearchResultPage,
+      props: (route) => ({
+        query: route.query.word,
+        page: Number(route.query.page) || 1,
+      }),
+    },
     {
       path: "/item/list/:main/:sub/:page",
       component: ItemCategoryPage,
@@ -40,10 +53,10 @@ const router = createRouter({
     { path: "/mypage/address", component: MyAddressPage },
     { path: "/company/product", component: CompanyItemPage },
     { path: "/company/order", component: CompanyOrderPage },
-    { path: "/company/order/:id", component: CompanyOrderDetailPage},
-    { path: "/signup", component: SignupPage},
-   
-   
+    { path: "/company/order/:id", component: CompanyOrderDetailPage },
+    { path: "/signup", component: SignupPage },
+    { path: "/order", component: OrderPage },
+    { path: "/mypage/keyword", component: MyKeywordPage },
   ],
 });
 
