@@ -69,8 +69,8 @@
                                   <div class="css-gd125q e4nb37r1">
                                       <div>
                                           <div class="css-18dvwsu ef0cmoa0"><button type="button"
-                                                  class="css-1fecctx ehlmjxl0" data-testid="kakao-pay-button"
-                                                  color="#f6e500"><svg xmlns="http://www.w3.org/2000/svg" width="50"
+                                                  class="css-1fecctx ehlmjxl0" data-testid="kakao-pay-button" 
+                                                  color="#f6e500" disabled style="cursor: default;"><svg xmlns="http://www.w3.org/2000/svg" width="50"
                                                       height="20" viewBox="0 0 50 20" fill="none">
                                                       <path fill-rule="evenodd" clip-rule="evenodd"
                                                           d="M7.51492 2C3.3647 2 0 4.64484 0 7.90661C0 9.84455 1.18731 11.5641 3.02104 12.6413C2.83002 13.4093 2.33737 15.3834 2.27107 15.5978C2.1884 15.8644 2.1678 16.6436 2.97307 16.1105C3.60651 15.6909 5.4518 14.4102 6.54233 13.7625C6.86117 13.795 7.18536 13.8132 7.51492 13.8132C11.6654 13.8132 15.0298 11.1689 15.0298 7.90661C15.0298 4.64484 11.6654 2 7.51492 2Z"
@@ -106,8 +106,10 @@
                       <p class="css-1tak4sl eh5sxvr3">주문완료 상태일 경우에만 주문 취소가 가능하며, 상품 미배송 시 결제하신 수단으로 환불됩니다.</p>
                       <p class="css-1tak4sl eh5sxvr3">컬리 내 개별 판매자가 등록한 오픈마켓 상품의 경우 컬리는 통신판매중개자로서 주문, 품질, 교환/환불 등 의무와
                           책임을 부담하지 않습니다.</p>
-                      <div class="css-1azakc el0c5j40"><button class="css-1lha8en e4nu7ef3" type="button" width="240"
-                              height="56" radius="3"><span class="css-nytqmg e4nu7ef1">42,820원 결제하기</span></button>
+                      <div class="css-1azakc el0c5j40">
+                        <button @click="payment" class="css-1lha8en e4nu7ef3" type="button" width="240" height="56" radius="3" >
+                          <span class="css-nytqmg e4nu7ef1">{{selectedTotalCost}}원 결제하기</span>
+                        </button>
                       </div>
                   </div>
                   <div class="css-1rz7w0y epvroj91">
@@ -167,6 +169,7 @@ import { useCartStore } from '../stores/useCartStore';
 import { useUserInfoStore } from "@/stores/useUserInfoStore";
 import { computed } from 'vue';
 import { mapStores } from "pinia";
+import axios from 'axios';
 
 export default {
 name: "OrderComponent",
@@ -208,6 +211,56 @@ methods: {
     this.email = response.email;
     this.addresses = response.addresses.filter(addr => addr.defaultAddr);       // 기본 주소만 필터링하여 배열에 저장
     console.log(this.response);
+  },
+  payment() {
+    const IMP = window.IMP;
+    // IMP 인스턴스 초기화
+    IMP.init("imp74464581");
+
+    const defaultAddr = this.defaultAddress;
+    const orderId = `${this.email}_${Date.now()}`;
+
+    const customDataList = this.selectedItems.map(item => {
+      return {
+        [item.itemId]: item.quantity
+      };
+    });
+
+      // 결제 요청
+    IMP.request_pay(
+      {
+        pg: "kakaopay.TC0ONETIME",
+        merchant_uid: "order_no"+orderId,
+        name: "order_test",
+        amount: this.selectedTotalCost,
+        buyer_email: this.email,
+        buyer_name: this.name,
+        buyer_tel: defaultAddr.phoneNum,
+        buyer_addr: defaultAddr.address +" "+ defaultAddr.addressDetail,
+        buyer_postcode: defaultAddr.zipcode,
+        custom_data: {"list": customDataList }
+      },
+      async (rsp) => {
+      if (rsp.success) {
+        try {
+          const response = await axios.get(`http://localhost:8080/orders/kakaoPay/${rsp.imp_uid}`, {
+            withCredentials: true
+          });
+          if (response.data.code === 5100) {
+            alert('결제가 완료되었습니다.');
+            this.$router.push({ path: `/mypage/order` });
+          } else {
+            alert('결제가 실패하였습니다.');
+          }
+        } catch (error) {
+          console.error("결제 처리 중 오류 발생:", error);
+          alert("결제 처리 중 오류가 발생했습니다.");
+        }
+      } else {
+        alert(rsp.error_msg);
+      }
+    }
+  );
   }
 },
 };
