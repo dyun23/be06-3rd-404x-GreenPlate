@@ -30,6 +30,7 @@
                       required
                       class="css-u52dqk e1uzxhvi2"
                       v-model="form.email"
+                      :class="{'input-error':emailError}"
                     />
                   </div>
                 </div>
@@ -300,17 +301,13 @@
     </form>
     <div v-if="isPopupVisible" class="message-popup">
       <div class="message-content">
-        <p>{{ message }}<br><br>이메일 인증을 진행해 주세요</p>
-        <button @click="isPopupVisible = false">
-          <router-link to="/login">Close</router-link>
-        </button>
+        <p>{{ Message }}</p>
+        <button @click="closePopup"></button>
       </div>
     </div>
   </div>
 </template>
-
-
-
+    
 <script>
 import axios from 'axios';
 
@@ -321,6 +318,9 @@ export default {
       requiredTermsCondition: false,
       requiredPrivacyPolicy: false,
       isPopupVisible: false, // 팝업 표시 여부
+      Message: '',
+      emailError: false,
+      passwordError: false,
       form: {
         email: '',
         password: '',
@@ -341,23 +341,50 @@ export default {
     checkAllAgree() {
       this.termsAgreeAll = this.requiredTermsCondition && this.requiredPrivacyPolicy;
     },
+    validateEmail(email){
+      // 이메일 형식이 @gmial.com 으로 끝나는지 확인
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email) && email.endsWith('@gmail.com');
+    },
+    validatePassword(password) {
+      // 비밀번호 길이 검사
+      return password.length >= 8 && password.length <= 25;
+    },
     async signup() {
       if (this.requiredTermsCondition && this.requiredPrivacyPolicy) {
-        try {
-        const response = await axios.post('http://localhost:8080/user/signup', this.form, {
+        if (this.validateEmail(this.form.email)) {
+          if (this.validatePassword(this.form.password)) {
+          try {
+            await axios.post('http://localhost:8080/company/signup', this.form, {
             headers: {
               'Content-Type': 'application/json'
             }
-          });
-          this.message = response.data.message;
-          this.isPopupVisible = true; // 성공 시 팝업 표시
-        } catch (error) {
-          console.error('UserSignup error:', error);
-          alert('가입 중 오류가 발생했습니다.');
+            });
+            alert('회원가입이 성공했습니다');
+            
+          } catch (error) {
+            console.error('UserSignup error:', error);
+            alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요');
+            
+          }
+        } else {
+            alert('비밀번호는 8글자 이상 25글자 이하로 입력해 주세요'); // 비밀번호 길이 오류 메시지
+            this.passwordError = true;
+            
+        }
+        } else {
+          alert(this.popupMessage = '이메일 형식으로 입력해주세요 (예: example@gmail.com)') // 이메일 형식 오류 시 팝업 표시
+          this.emailError = true;
+          this.isPopupVisible = false;
         }
       } else {
-        alert('필수 약관에 동의하셔야 합니다.');
+       alert('필수 약관에 동의하셔야 합니다.');
+        this.isPopupVisible = false; // 약관 동의 오류 시 팝업 표시
+        
       }
+    },
+    closePopup() {
+      this.isPopupVisible = false;
     }
   }
 };
