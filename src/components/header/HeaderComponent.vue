@@ -17,7 +17,7 @@
               <router-link to="/mypage/address" class="css-12olpw6 ecncdj40"
                 >배송지 관리</router-link
               >
-              <div class="css-12olpw6 ecncdj40">개인정보 수정</div>
+              <div class="css-12olpw6 ecncdj40">나의 키워드</div>
             </div>
           </div>
         </div>
