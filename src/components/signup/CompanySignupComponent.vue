@@ -291,8 +291,8 @@
     </form>
     <div v-if="isPopupVisible" class="message-popup">
       <div class="message-content">
-        <p>{{ message }}</p>
-        <button @click="isPopupVisible = false">
+        <p>{{ Message }}</p>
+        <button @click="closePopup">
           <router-link to="/login">Close</router-link>
         </button>
       </div>
@@ -318,9 +318,9 @@ export default {
       termsAgreeAll: false,
       requiredTermsCondition: false,
       requiredPrivacyPolicy: false,
-      isPopupVisible: false, // 팝업 표시 여부
-      message: "",
-
+      isPopupVisible: false, // Controls the visibility of the popup
+      Message: "", // Stores the message to be displayed in the popup
+      emailError: false,
     };
   },
   methods: {
@@ -332,28 +332,41 @@ export default {
     checkAllAgree() {
       this.termsAgreeAll = this.requiredTermsCondition && this.requiredPrivacyPolicy;
     },
+    validateEmail(email) {
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailRegex.test(email) && email.endsWith('@gmail.com');
+    },
     async signup() {
       if (this.requiredTermsCondition && this.requiredPrivacyPolicy) {
-        try {
-          const response = await axios.post('http://localhost:8080/company/signup', this.form, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-          });
-          this.message = response.data.message;
-          this.isPopupVisible = true; // 성공 시 팝업 표시
-        } catch (error) {
-          console.error('CompanySignup error:', error);
-          alert('가입 중 오류가 발생했습니다.');
+        if (this.validateEmail(this.form.email)) {
+          try {
+              await axios.post('http://localhost:8080/company/signup', this.form, {
+              headers: {
+                'Content-Type': 'application/json'
+              }
+            });
+            alert('회원가입이 성공적으로 완료되었습니다.');
+            // Show success message
+          } catch (error) {
+            console.error('CompanySignup error:', error);
+            alert('가입 중 오류가 발생했습니다. 다시 시도해 주세요.');
+            // Show error message
+          }
+        } else {
+          alert(this.popupMessage = '이메일 형식으로 입력해주세요 (예: example@gmail.com)') // 이메일 형식 오류 시 팝업 표시
+          this.emailError = true;
+          this.isPopupVisible = false; // Show email format error message
         }
       } else {
         alert('필수 약관에 동의하셔야 합니다.');
-          return;
+        this.isPopupVisible = false; // Show missing agreement error message
       }
+    },
+    closePopup() {
+      this.isPopupVisible = false;
     }
   }
 };
-
 </script>
 <style scoped>
 .css-pculus {
