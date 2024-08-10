@@ -3,7 +3,8 @@
     <form @submit.prevent="signup">
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>회원가입</title>
+      <title>회원가입
+      </title>
       <div class="css-pculus e1ovi4141">
         <div class="css-o5dw7d e1ovi4140">회원가입</div>
         <div class="css-mhmtvt e15so55l1">
@@ -85,6 +86,7 @@
                       required
                       class="css-u52dqk e1uzxhvi2"
                       v-model="form.username"
+                      :class="{'input-error':usernameError}"
                     />
                   </div>
                 </div>
@@ -302,7 +304,7 @@
     <div v-if="isPopupVisible" class="message-popup">
       <div class="message-content">
         <p>{{ Message }}</p>
-        <button @click="closePopup"></button>
+        <button @click="closePopup">닫기</button>
       </div>
     </div>
   </div>
@@ -312,6 +314,7 @@
 import axios from 'axios';
 
 export default {
+  name: "UserSignupComponent",
   data() {
     return {
       termsAgreeAll: false,
@@ -321,6 +324,7 @@ export default {
       Message: '',
       emailError: false,
       passwordError: false,
+      usernameError: false,
       form: {
         email: '',
         password: '',
@@ -342,7 +346,7 @@ export default {
       this.termsAgreeAll = this.requiredTermsCondition && this.requiredPrivacyPolicy;
     },
     validateEmail(email){
-      // 이메일 형식이 @gmial.com 으로 끝나는지 확인
+      // 이메일 형식이 @gmail.com으로 끝나는지 확인
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email) && email.endsWith('@gmail.com');
     },
@@ -350,41 +354,48 @@ export default {
       // 비밀번호 길이 검사
       return password.length >= 8 && password.length <= 25;
     },
+    validateUsername(username) {
+      // 이름이 한글만 포함되었는지 확인
+      const usernameRegex = /^[가-힣]+$/;
+      return usernameRegex.test(username);
+    },
     async signup() {
       if (this.requiredTermsCondition && this.requiredPrivacyPolicy) {
         if (this.validateEmail(this.form.email)) {
           if (this.validatePassword(this.form.password)) {
-          try {
-            await axios.post('http://localhost:8080/company/signup', this.form, {
-            headers: {
-              'Content-Type': 'application/json'
+            if (this.validateUsername(this.form.username)) {
+              try {
+                await axios.post('http://localhost:8080/user/signup', this.form, {
+                  headers: {
+                    'Content-Type': 'application/json'
+                  }
+                });
+                alert('회원가입이 성공했습니다');
+              } catch (error) {
+                console.error('UserSignup error:', error);
+                alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요');
+              }
+            } else {
+              alert('이름은 한글로 입력해야합니다');
+             
             }
-            });
-            alert('회원가입이 성공했습니다');
+          } else {
+            alert('비밀번호는 8글자 이상 25글자 이하로 입력해 주세요');
             
-          } catch (error) {
-            console.error('UserSignup error:', error);
-            alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요');
             
           }
         } else {
-            alert('비밀번호는 8글자 이상 25글자 이하로 입력해 주세요'); // 비밀번호 길이 오류 메시지
-            this.passwordError = true;
-            
-        }
-        } else {
-          alert(this.popupMessage = '이메일 형식으로 입력해주세요 (예: example@gmail.com)') // 이메일 형식 오류 시 팝업 표시
-          this.emailError = true;
-          this.isPopupVisible = false;
+          alert('이메일 형식으로 입력해주세요 (예: example@gmail.com)');
+          
+          
         }
       } else {
-       alert('필수 약관에 동의하셔야 합니다.');
-        this.isPopupVisible = false; // 약관 동의 오류 시 팝업 표시
+         alert('이용약관과 개인정보처리방침에 동의해 주세요');
         
       }
     },
     closePopup() {
-      this.isPopupVisible = false;
+      this.isPopupVisible = true;
     }
   }
 };
@@ -961,7 +972,6 @@ input[type="text"], input[type="password"] {
   cursor: pointer; /* 버튼 클릭 시 커서 스타일 조정 */
   transition: background-color 0.3s ease; /* 버튼 배경색 변경에 애니메이션 추가 */
 }
-
 .css-1uyc7w1:hover {
   background-color: #3e0060; /* 버튼 호버 시 배경색 조정 */
 }
