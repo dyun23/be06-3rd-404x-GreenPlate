@@ -89,6 +89,7 @@ export default {
             .then(response => {
                 console.log("Delete successful:", response.data);
                 this.$emit('delete-item', this.item.id);
+                window.location.reload();
             })
             .catch(error => {
                 console.error("Error deleting cart item:", error);

@@ -50,7 +50,7 @@
                                   ({{defaultAddress.zipcode}}) {{defaultAddress.address}} {{defaultAddress.addressDetail}}
                               </p>
                               <div class="css-rqc9f e14u1xpe0">{{defaultAddress.phoneNum}}</div>
-                              <div class="css-iqoq9n e17yjk9v0"><button class="css-1xky6jf e4nu7ef3" type="button"
+                              <div class="css-iqoq9n e17yjk9v0"><button class="css-1xky6jf e4nu7ef3" type="button" @click="confirmChangeAddr"
                                       width="60" height="30" radius="3"><span
                                           class="css-nytqmg e4nu7ef1">변경</span></button></div>
                           </div>
@@ -211,6 +211,11 @@ methods: {
     this.email = response.email;
     this.addresses = response.addresses.filter(addr => addr.defaultAddr);       // 기본 주소만 필터링하여 배열에 저장
     console.log(this.response);
+  },
+  confirmChangeAddr() {
+      if (confirm("배송지 변경을 위해 마이페이지로 이동하시겠습니까?")) {
+          this.$router.push({ path: `/mypage/address` });
+      }
   },
   payment() {
     const IMP = window.IMP;

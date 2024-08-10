@@ -15,7 +15,7 @@
                         :class="['css-8jchfv', 'e1hwl4uq0', { active: currentStatus === 'ready' }]"
                         @click="fetchOrders('ready')"
                     >
-                        상품준비
+                      주문완료
                     </button>
                     <button
                         :class="['css-8jchfv', 'e1hwl4uq0', { active: currentStatus === 'shipped' }]"
@@ -61,7 +61,7 @@
                     <dl class="css-oxiuin e13d9bui3">
                         <dt class="css-1qdgh9t e13d9bui2">주문 상태</dt>
                         <dd class="css-wstq91 e13d9bui1">
-                        {{ formatOrderState(order.order_state) }}
+                        {{ formatOrderState(order.order_state, order.refund_yn) }}
                         </dd>
                     </dl>
                     </div>
@@ -137,16 +137,20 @@
             this.getData();
           }
         },
-        formatOrderState(state) {
+        formatOrderState(state, retfundYn) {
+          let refund = "";
+          if (retfundYn) {
+              refund = ' (결제취소)';
+          }
           switch (state) {
-            case 'ready':
-              return '상품준비';
-            case 'shipped':
-              return '배송중';
-            case 'completed':
-              return '배송완료';
-            default:
-              return '상태 미정';
+          case 'ready':
+              return '주문완료'+refund;
+          case 'shipped':
+              return '배송중'+refund;
+          case 'completed':
+              return '배송완료'+refund;
+          default:
+              return '상태 미정'+refund;
           }
         }
       }
