@@ -253,6 +253,7 @@ methods: {
           });
           if (response.data.code === 5100) {
             alert('결제가 완료되었습니다.');
+            this.deleteSelectedItems();
             this.$router.push({ path: `/mypage/order` });
           } else {
             alert('결제가 실패하였습니다.');
@@ -266,6 +267,23 @@ methods: {
       }
     }
   );
+  },
+  deleteSelectedItems() {
+    const selectedIds = this.selectedItems.map(item => item.itemId);
+    console.log("selectedIds"+selectedIds);
+
+    axios.delete('http://localhost:8080/cart/delete/list', {
+        data: { cartIdList: selectedIds },
+        withCredentials: true
+    })
+    .then(response => {
+        console.log("Delete successful:", response.data);
+        this.items = this.items.filter(item => !item.checked);
+        this.updateSelectedItems();
+    })
+    .catch(error => {
+        console.error("Error deleting selected items:", error);
+    });
   }
 },
 };
