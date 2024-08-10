@@ -40,7 +40,7 @@
                 <dl class="css-oxiuin e13d9bui3">
                     <dt class="css-1qdgh9t e13d9bui2">주문 상태</dt>
                     <dd class="css-wstq91 e13d9bui1">
-                    {{ formatOrderState(order.order_state) }}
+                    {{ formatOrderState(order.order_state, order.refund_yn) }}
                     </dd>
                 </dl>
                 </div>
@@ -64,7 +64,7 @@ data() {
     currentPage: 0, // 페이지 변수를 currentPage로 설정
     pageSize: 5,    // 페이지 크기를 pageSize로 설정
     isLoading: false,
-    isLastPage: false // 마지막 페이지 여부를 확인하는 변수
+    isLastPage: false, // 마지막 페이지 여부를 확인하는 변수
     };
 },
 created(){
@@ -111,17 +111,21 @@ scrollPagination() {
         this.getData();
     }
 },
-formatOrderState(state) {
-  switch (state) {
+formatOrderState(state, retfundYn) {
+    let refund = "";
+    if (retfundYn) {
+        refund = ' (결제취소)';
+    }
+    switch (state) {
     case 'ready':
-      return '상품준비';
+        return '주문완료'+refund;
     case 'shipped':
-      return '배송중';
+        return '배송중'+refund;
     case 'completed':
-      return '배송완료';
+        return '배송완료'+refund;
     default:
-      return '상태 미정';
-  }
+        return '상태 미정'+refund;
+    }
 }
 }
 };

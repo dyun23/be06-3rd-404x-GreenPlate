@@ -9,6 +9,7 @@ export const useUserStore = defineStore("user", {
   }),
   persist: {
     storage: sessionStorage,
+    userType: null,
   },
   actions: {
     async login(user, userType) {
@@ -27,6 +28,7 @@ export const useUserStore = defineStore("user", {
           (userType === "user" && response.data.code === 1070)
         ) {
           this.isLoggedIn = true;
+          this.userType = userType;
           return true;
         } else {
           return false;
@@ -38,6 +40,7 @@ export const useUserStore = defineStore("user", {
     },
     logout() {
       this.isLoggedIn = false;
+      this.userType = null;
     },
   },
 });
