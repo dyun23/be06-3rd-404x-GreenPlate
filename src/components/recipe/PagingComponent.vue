@@ -107,16 +107,16 @@ export default {
   border-left: none;
   cursor: pointer;
   background-color: rgb(247, 247, 247);
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 
 .page-number {
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 
 .page-number:hover {
   background-color: rgb(247, 247, 247);
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
   font-weight: 700;
 }
 </style>

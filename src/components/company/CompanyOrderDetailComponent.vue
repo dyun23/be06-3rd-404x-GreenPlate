@@ -419,7 +419,7 @@ element.style {
 
 .css-1x29nf7 {
   font-weight: 600;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 
 .css-cb2xrd {
@@ -454,9 +454,9 @@ element.style {
   width: 100%;
   height: 48px;
   border-radius: 6px;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(95, 0, 128);
+  border: 1px solid rgb(102, 153, 51);
 }
 .css-c4ewfg {
     padding-bottom: 20px;

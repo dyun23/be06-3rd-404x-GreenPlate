@@ -176,12 +176,12 @@ export default {
 }
 
 .form-actions button[type="submit"] {
-  background-color: rgb(95, 0, 128);
+  background-color: rgb(102, 153, 51);
   color: white;
 }
 
 .form-actions button[type="button"] {
-  background-color: rgb(95, 0, 128);
+  background-color: rgb(102, 153, 51);
   color: white;
 }
 </style>

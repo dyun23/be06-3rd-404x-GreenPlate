@@ -116,11 +116,11 @@ export default {
 
 .css-product-default-category {
   font-weight: 700;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 
 .css-product-category:hover {
   font-weight: 700;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 </style>

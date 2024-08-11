@@ -111,7 +111,7 @@ export default {
 
 .category-list:hover {
   font-weight: 500;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
   background-color: rgb(247, 247, 247);
 }
 

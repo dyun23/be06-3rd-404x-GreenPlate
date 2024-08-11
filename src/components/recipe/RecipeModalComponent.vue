@@ -128,10 +128,15 @@
         padding: 10px 20px;
         font-size: 16px;
         color: #fff;
-        background-color: #5f0080;
+        background-color: rgb(102, 153, 51);
         border: none;
         border-radius: 5px;
         cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover{
+            background-color: rgb(62, 116, 36);
+        }
     }
 
     .item-list-container {
@@ -223,15 +228,17 @@
     .btn {
         padding: 10px 20px;
         font-size: 16px;
-        color: rgb(95, 0, 128);
+        color: rgb(102, 153, 51);
         background-color: rgb(255, 255, 255);
-        border: 1px solid rgb(95, 0, 128);
+        border: 1px solid rgb(102, 153, 51);
         border-radius: 3px;
         cursor: pointer;
+        transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
     }
 
     .btn:hover {
-        color: rgb(144, 14, 188);
-        border: 1px solid rgb(144, 14, 188);
+        color: rgb(255, 255, 255);
+        background-color: rgb(102, 153, 51);
+        border: 1px solid rgb(255, 255, 255);
     }
 </style>

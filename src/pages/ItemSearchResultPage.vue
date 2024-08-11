@@ -151,7 +151,7 @@ h1 {
 
 .css-1qfsi3d {
   font-weight: 500;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 
 .css-mmvz9h {

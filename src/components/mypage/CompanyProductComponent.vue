@@ -18,7 +18,7 @@
                                                 xmlns="http://www.w3.org/2000/svg">
                                                 <path
                                                     d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z"
-                                                    fill="#5f0080"></path>
+                                                    fill="rgb(102, 153, 51)"></path>
                                                 <path d="M7 12.6667L10.3846 16L18 8.5" stroke="#fff" stroke-width="1.5"
                                                     stroke-linecap="round" stroke-linejoin="round"></path>
                                             </svg>
@@ -227,7 +227,7 @@
         height: 56px;
         border-radius: 3px;
         color: rgb(255, 255, 255);
-        background-color: rgb(95, 0, 128);
+        background-color: rgb(102, 153, 51);
         border: 0px none;
         font-weight: 500;
     }
@@ -515,9 +515,9 @@ g {
     width: 100%;
     height: 36px;
     border-radius: 3px;
-    color: rgb(95, 0, 128);
+    color: rgb(102, 153, 51);
     background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
+    border: 1px solid rgb(102, 153, 51);
     margin-top: 16px;
 }
 .addr-change-btn > span {
@@ -527,9 +527,9 @@ g {
 .add-product-button {
         font-size: 16px;
         font-weight: 500;
-        color: #5f0080; /* 보라색 글자 */
+        color: rgb(102, 153, 51); /* 보라색 글자 */
         background-color: transparent;
-        border: 2px solid #5f0080; /* 보라색 테두리 */
+        border: 2px solid rgb(102, 153, 51); /* 보라색 테두리 */
         border-radius: 3px;
         padding: 10px 20px;
         cursor: pointer;
@@ -541,7 +541,7 @@ g {
         margin-top: -100px;
     }
     .add-product-button:hover {
-        color: #5f0080; /* 흰색 글자 */
+        color: rgb(102, 153, 51); /* 흰색 글자 */
     }
 
     .add-product-button:focus {

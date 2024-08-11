@@ -203,7 +203,7 @@ export default {
 }
 .star::after {
   content: "☆";
-  color: #5f0080;
+  color: rgb(102, 153, 51);
   font-size: 20px;
 }
 .star:checked::after,

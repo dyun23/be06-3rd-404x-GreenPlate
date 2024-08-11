@@ -786,7 +786,7 @@ svg:not(:root) {
   height: 56px;
   border-radius: 3px;
   color: rgb(255, 255, 255);
-  background-color: rgb(95, 0, 128);
+  background-color: rgb(102, 153, 51);
   border: 0px none;
   margin: 40px auto 30px;
   font-weight: 500;
@@ -900,7 +900,7 @@ svg:not(:root) {
   font-size: 12px;
   line-height: 16px;
   letter-spacing: -0.5px;
-  color: rgb(141, 76, 196);
+  color: rgb(62, 116, 36);
 }
 
 .css-1y0xj4c > div > span:first-of-type {
@@ -915,7 +915,7 @@ svg:not(:root) {
 }
 
 .css-11y0tcn > span {
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 
 .css-1m5hyg0 {

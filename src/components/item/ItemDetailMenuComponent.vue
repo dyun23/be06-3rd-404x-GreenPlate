@@ -6,13 +6,13 @@
       </li>
       <!-- <li class="css-1tzhzcg efe6b6j1">
         <a class="css-1t0ft7s efe6b6j0"><span class="name">상세정보</span></a>
-      </li>
+      </li> -->
       <li class="css-1tzhzcg efe6b6j1">
         <a class="css-1t0ft7s efe6b6j0">
           <span class="name">후기</span>
           <span class="count">({{ count }})</span>
         </a>
-      </li> -->
+      </li>
     </ul>
   </nav>
 </template>
@@ -31,7 +31,7 @@ export default {
 <style scoped>
 .css-1le17tz {
   z-index: 20;
-  position: sticky;
+  /* position: sticky; */
   top: 56px;
   width: 1010px;
   box-shadow: rgb(221, 221, 221) 0px -0.5px 0px 0px inset;

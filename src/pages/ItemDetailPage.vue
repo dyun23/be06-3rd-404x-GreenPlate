@@ -4,8 +4,8 @@
       <ItemDetailComponent :item="item"></ItemDetailComponent>
       <ItemDetailMenuComponent></ItemDetailMenuComponent>
       <div class="css-0 el27cq1">
-        <ItemDetailContentsComponent></ItemDetailContentsComponent>
-        <ItemDetailDetailComponent></ItemDetailDetailComponent>
+        <ItemDetailContentsComponent :item="item"></ItemDetailContentsComponent>
+        <!-- <ItemDetailDetailComponent></ItemDetailDetailComponent> -->
       </div>
     </div>
   </div>
@@ -15,7 +15,7 @@
 import ItemDetailComponent from "../components/item/ItemDetailComponent.vue";
 import ItemDetailMenuComponent from "../components/item/ItemDetailMenuComponent.vue";
 import ItemDetailContentsComponent from "../components/item/ItemDetailContentsComponent.vue";
-import ItemDetailDetailComponent from "../components/item/ItemDetailDetailComponent.vue";
+// import ItemDetailDetailComponent from "../components/item/ItemDetailDetailComponent.vue";
 import { mapStores } from "pinia";
 import { useItemDetailStore } from "@/stores/useItemDetailStore";
 
@@ -24,7 +24,7 @@ export default {
     ItemDetailComponent,
     ItemDetailMenuComponent,
     ItemDetailContentsComponent,
-    ItemDetailDetailComponent,
+    // ItemDetailDetailComponent,
   },
   name: "ItemDetailPage",
   data() {

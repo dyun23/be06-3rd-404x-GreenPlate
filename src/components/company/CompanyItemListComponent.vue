@@ -292,7 +292,7 @@ export default {
 }
 
 .section_destination .tbl_type1 .star {
-  color: #5f0080;
+  color: rgb(102, 153, 51);
 }
 
 .section_destination .tbl_type1 .modify {

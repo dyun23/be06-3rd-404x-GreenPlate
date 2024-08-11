@@ -75,20 +75,21 @@
             }
 
             .category-title {
-                color: rgb(95, 0, 128);
+                color: rgb(102, 153, 51);
             }
         }
     }
 
     .navibar-category:hover>span:first-of-type {
-        background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNiAxNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wIDBoMTZ2MS43SDBWMHptMCA2LjE1aDE2djEuN0gwdi0xLjd6bTAgNi4xNWgxNlYxNEgwdi0xLjd6IiBmaWxsPSIjNUYwMDgwIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+Cg==) 0px 0px no-repeat;
+        background: url(https://dayun2024-s3.s3.ap-northeast-2.amazonaws.com/summernote/20240811/0ccda3db-0b22-41e7-bdd6-7497e9279a8c_hamburgerG.png) 0px 0px / 25px 25px no-repeat;
     }
 
     .category-span {
-        width: 16px;
-        height: 14px;
+        width: 25px;
+        height: 25px;
         margin-right: 14px;
-        background: url(data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMTYiIGhlaWdodD0iMTQiIHZpZXdCb3g9IjAgMCAxNiAxNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4KICAgIDxwYXRoIGQ9Ik0wIDBoMTZ2MS43SDBWMHptMCA2LjE1aDE2djEuN0gwdi0xLjd6bTAgNi4xNWgxNlYxNEgwdi0xLjd6IiBmaWxsPSIjMzMzIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiLz4KPC9zdmc+Cg==) 0px 0px / 16px 14px no-repeat;
+        margin-bottom: 2px;
+        background: url(https://dayun2024-s3.s3.ap-northeast-2.amazonaws.com/summernote/20240811/0a10f1cb-7fda-4552-b819-0fa71d08837c_hamburger.png) 0px 0px / 25px 25px no-repeat;
     }
 
     .category-title {
@@ -142,7 +143,7 @@
 
     .category-list:hover {
         font-weight: 500;
-        color: rgb(95, 0, 128);
+        color: rgb(102, 153, 51);
         background-color: rgb(247, 247, 247);
     }
 
@@ -168,7 +169,7 @@
 
         &:hover {
             font-weight: 500;
-            color: rgb(95, 0, 128)
+            color: rgb(102, 153, 51)
         }
     }
 
@@ -202,9 +203,9 @@
     }
 
     .category-list-sub-div :hover>span {
-        box-shadow: rgb(95, 0, 128) 0px -1px 0px 0px inset;
+        box-shadow: rgb(102, 153, 51) 0px -1px 0px 0px inset;
         font-weight: 500;
-        color: rgb(95, 0, 128);
+        color: rgb(102, 153, 51);
     }
 
     .category-list-sub-title {

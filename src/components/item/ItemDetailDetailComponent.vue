@@ -307,7 +307,7 @@ export default {
   display: block;
   font-weight: 500;
   font-size: 18px;
-  color: #5f0080;
+  color: rgb(102, 153, 51);
   line-height: 27px;
   text-align: center;
 }
@@ -323,7 +323,7 @@ export default {
   display: block;
   font-weight: 500;
   font-size: 18px;
-  color: #5f0080;
+  color: rgb(102, 153, 51);
   line-height: 27px;
   text-align: center;
 }

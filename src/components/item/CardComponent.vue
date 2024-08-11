@@ -1,30 +1,20 @@
 <template>
   <router-link
-    :to="{ path: `/item/list/details/${card.id}` }"
-    class="css-product-item-href"
-  >
+      :to="{ path: `/item/list/details/${card?.id || 'default'}` }"
+      class="css-product-item-href"
+    >
     <div class="css-product-item-box2">
       <div class="css-product-item-box3">
         <div class="css-product-item-box4" style="padding-bottom: 128.514%">
           <div class="css-product-item-box5">
             <span>
               <img
+                :src="getValidImageUrl(card.imageUrl)"
                 sizes="100vw"
-                srcset="
-                  https://product-image.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/product/image/1c4433e5-6404-442b-8dcb-73ddfb3bd86a.jpg  640w,
-                  https://product-image.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/product/image/1c4433e5-6404-442b-8dcb-73ddfb3bd86a.jpg  750w,
-                  https://product-image.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/product/image/1c4433e5-6404-442b-8dcb-73ddfb3bd86a.jpg  828w,
-                  https://product-image.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/product/image/1c4433e5-6404-442b-8dcb-73ddfb3bd86a.jpg 1080w,
-                  https://product-image.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/product/image/1c4433e5-6404-442b-8dcb-73ddfb3bd86a.jpg 1200w,
-                  https://product-image.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/product/image/1c4433e5-6404-442b-8dcb-73ddfb3bd86a.jpg 1920w,
-                  https://product-image.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/product/image/1c4433e5-6404-442b-8dcb-73ddfb3bd86a.jpg 2048w,
-                  https://product-image.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/product/image/1c4433e5-6404-442b-8dcb-73ddfb3bd86a.jpg 3840w
-                "
-                src="https://product-image.kurly.com/hdims/resize/%5E%3E360x%3E468/cropcenter/360x468/quality/85/src/product/image/1c4433e5-6404-442b-8dcb-73ddfb3bd86a.jpg"
                 decoding="async"
                 data-nimg="fill"
                 class="css-product-item-img"
-            /></span>
+              /></span>
           </div>
         </div>
       </div>
@@ -87,8 +77,26 @@ export default {
     card: {
       type: Object,
       required: true,
+      default: () => ({ id: 'default', imageUrl: 'https://via.placeholder.com/250x320' }),
     },
   },
+  methods: {
+    getValidImageUrl(imageUrl) {
+      const placeholder = "https://via.placeholder.com/250x320";
+      if (!imageUrl || !this.isValidUrl(imageUrl)) {
+        return placeholder;
+      }
+      return imageUrl;
+    },
+    isValidUrl(string) {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+  }
 };
 </script>
 
@@ -317,7 +325,7 @@ export default {
   border-left: none;
   cursor: pointer;
   background-color: rgb(247, 247, 247);
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 
 :not(svg) {

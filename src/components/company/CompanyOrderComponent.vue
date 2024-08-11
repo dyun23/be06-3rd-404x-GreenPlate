@@ -334,8 +334,8 @@ border-radius: 16px;
     margin-right: 0px;
 }
 .css-8jchfv.active {
-    border: 1px solid rgb(95, 0, 128);
-    color: rgb(95, 0, 128);
+    border: 1px solid rgb(102, 153, 51);
+    color: rgb(102, 153, 51);
     font-weight: 500;
 }
 .css-1e8mkxi {
@@ -345,8 +345,8 @@ border-radius: 16px;
 .custom-button {
     padding: 10px 20px;
     background-color: white; /* 배경색 흰색 */
-    color: rgb(95, 0, 128);   /* 글자색 보라색 */
-    border: 1px solid rgb(95, 0, 128); /* 테두리 색상 보라색, 두께 2px */
+    color: rgb(102, 153, 51);   /* 글자색 보라색 */
+    border: 1px solid rgb(102, 153, 51); /* 테두리 색상 보라색, 두께 2px */
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;  /* 기본 글자 크기 설정 (기존보다 2배는 아니지만, 강조를 위해 크기 조정) */
@@ -357,9 +357,9 @@ border-radius: 16px;
 }
 
 .custom-button:hover {
-    background-color: rgb(95, 0, 128); /* 배경색 보라색 */
+    background-color: rgb(102, 153, 51); /* 배경색 보라색 */
     color: white; /* 글자색 흰색 */
-    border-color: rgb(95, 0, 128); /* 테두리 색상 보라색 */
+    border-color: rgb(102, 153, 51); /* 테두리 색상 보라색 */
 }
 .button-container {
     position: absolute;
@@ -375,7 +375,7 @@ border-radius: 16px;
 .input-container {
     display: flex;
     align-items: center;
-    border: 1px solid rgb(95, 0, 128); /* 테두리 보라색 */
+    border: 1px solid rgb(102, 153, 51); /* 테두리 보라색 */
     border-radius: 4px;
     background-color: white; /* 배경색 흰색 */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
@@ -397,8 +397,8 @@ border-radius: 16px;
 .input-container button {
     padding: 5px 10px;
     background-color: white; /* 배경색 흰색 */
-    color: rgb(95, 0, 128);   /* 글자색 보라색 */
-    border: 1px solid rgb(95, 0, 128); /* 테두리 색상 보라색 */
+    color: rgb(102, 153, 51);   /* 글자색 보라색 */
+    border: 1px solid rgb(102, 153, 51); /* 테두리 색상 보라색 */
     border-radius: 4px;
     cursor: pointer;
     font-size: 14px;
@@ -407,7 +407,7 @@ border-radius: 16px;
     height: 30px; /* 버튼 높이 설정 */
 }
 .input-container button:hover {
-    background-color: rgb(95, 0, 128); /* 배경색 보라색 */
+    background-color: rgb(102, 153, 51); /* 배경색 보라색 */
     color: white; /* 글자색 흰색 */
 }
 </style>
