@@ -39,6 +39,15 @@
         </li>
       </ul>
     </div>
+    <button
+      data-v-4153b08d=""
+      class="css-1qirdbn e4nu7ef3"
+      type="button"
+      radius="3"
+      @click="save"
+    >
+      <span data-v-4153b08d="" class="css-nytqmg e4nu7ef1">저장하기</span>
+    </button>
   </div>
 </template>
 
@@ -85,6 +94,9 @@ export default {
     },
     handleAddressAdded(newAddress) {
       this.address.push(newAddress);
+    },
+    save() {
+      alert("저장이 완료되었습니다.");
     },
   },
 };
@@ -201,5 +213,25 @@ button {
   overflow: visible;
   background-color: transparent;
   border: none;
+}
+.css-14jnwd7 .cart-button[data-v-4153b08d] {
+  font-weight: 500;
+}
+.css-1qirdbn[data-v-4153b08d] {
+  display: block;
+  padding: 0 10px;
+  text-align: center;
+  overflow: hidden;
+  width: 100%;
+  height: 52px;
+  border-radius: 3px;
+  color: #fff;
+  background-color: rgb(102, 153, 51);
+  border: 0 none;
+}
+.css-nytqmg[data-v-4153b08d] {
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 500;
 }
 </style>
