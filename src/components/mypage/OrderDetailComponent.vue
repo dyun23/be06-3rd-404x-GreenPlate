@@ -12,7 +12,7 @@
         </div>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div><button type="button" class="css-1h4blvi e1udu6es2"><span>
-          <h3 class="css-1a1250p e1udu6es1">주문번호 <span class="css-dqnyvi e1lb2pwe0">2289622010159</span></h3>
+          <h3 class="css-1a1250p e1udu6es1">주문번호 <span class="css-dqnyvi e1lb2pwe0">{{ordersList[0].order_id}}</span></h3>
         </span></button>
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <div class="css-cku72n e1lb2pwe2">
