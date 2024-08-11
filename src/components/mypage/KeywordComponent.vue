@@ -285,8 +285,8 @@ export default {
   -webkit-box-align: center;
   align-items: center;
   padding: 12px 0px 9px;
-  color: rgb(95, 0, 128);
-  border: 1px solid rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
+  border: 1px solid rgb(102, 153, 51);
 }
 
 .css-astzrz {
@@ -323,7 +323,7 @@ export default {
   grid-area: 2 / 2 / 3 / 3;
   text-align: left;
   width: 100%;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 
 .css-8tmcoy {
@@ -380,7 +380,7 @@ export default {
   width: calc(25% - 10px);
   line-height: 1.25;
   border-radius: 4px;
-  border: 1px solid rgb(95, 0, 128);
+  border: 1px solid rgb(102, 153, 51);
   font-weight: 500;
 }
 
@@ -389,7 +389,7 @@ export default {
 }
 
 .css-dtskoq {
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 
 input[type="checkbox"],
@@ -508,7 +508,7 @@ input[type="radio"] {
   height: 52px;
   border-radius: 3px;
   color: rgb(255, 255, 255);
-  background-color: rgb(95, 0, 128);
+  background-color: rgb(102, 153, 51);
   border: 0px none;
 }
 

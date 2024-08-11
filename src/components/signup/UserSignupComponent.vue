@@ -206,8 +206,8 @@
                   >
                     <path
                       d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
-                      :stroke="termsAgreeAll ? '#5f0080' : '#ddd'"
-                      :fill="termsAgreeAll ? '#5f0080' : '#fff'"
+                      :stroke="termsAgreeAll ? 'rgb(102, 153, 51)' : '#ddd'"
+                      :fill="termsAgreeAll ? 'rgb(102, 153, 51)' : '#fff'"
                     ></path>
                     <path
                       d="M7 12.6667L10.3846 16L18 8.5"
@@ -240,8 +240,8 @@
                   >
                     <path
                       d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
-                      :stroke="requiredTermsCondition ? '#5f0080' : '#ddd'"
-                      :fill="requiredTermsCondition ? '#5f0080' : '#fff'"
+                      :stroke="requiredTermsCondition ? 'rgb(102, 153, 51)' : '#ddd'"
+                      :fill="requiredTermsCondition ? 'rgb(102, 153, 51)' : '#fff'"
                     ></path>
                     <path
                       d="M7 12.6667L10.3846 16L18 8.5"
@@ -274,8 +274,8 @@
                   >
                     <path
                       d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
-                      :stroke="requiredPrivacyPolicy ? '#5f0080' : '#ddd'"
-                      :fill="requiredPrivacyPolicy ? '#5f0080' : '#fff'"
+                      :stroke="requiredPrivacyPolicy ? 'rgb(102, 153, 51)' : '#ddd'"
+                      :fill="requiredPrivacyPolicy ? 'rgb(102, 153, 51)' : '#fff'"
                     ></path>
                     <path
                       d="M7 12.6667L10.3846 16L18 8.5"
@@ -744,7 +744,7 @@ svg:not(:root) {
     height: 56px;
     border-radius: 3px;
     color: rgb(255, 255, 255);
-    background-color: rgb(95, 0, 128);
+    background-color: rgb(102, 153, 51);
     border: 0px none;
 }
 .css-nytqmg {
@@ -781,9 +781,9 @@ svg:not(:root) {
     width: 100%;
     height: 44px;
     border-radius: 4px;
-    color: rgb(95, 0, 128);
+    color: rgb(102, 153, 51);
     background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
+    border: 1px solid rgb(102, 153, 51);
 }
 .css-1schgvv > span {
     font-size: 14px;
@@ -816,9 +816,9 @@ svg:not(:root) {
   width: 100%;
   height: 52px;
   border-radius: 3px;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(95, 0, 128);
+  border: 1px solid rgb(102, 153, 51);
 }
 .css-nytqmg {
   display: inline-block;
@@ -837,7 +837,7 @@ svg:not(:root) {
   background-color: #ffffff; /* 배경색 흰색 */
   color: #333; /* 텍스트 색상 */
   padding: 20px;
-  border: 2px solid #5f0080; /* 보라색 테두리 */
+  border: 2px solid rgb(102, 153, 51); /* 보라색 테두리 */
   border-radius: 8px; /* 테두리 둥글게 */
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   z-index: 1000; /* Ensure popup is on top */
@@ -862,7 +862,7 @@ svg:not(:root) {
 }
 
 .message-popup button:hover {
-  background-color: #5a2d8c; /* 호버 시 색상 변경 */
+  background-color: rgb(62, 116, 36); /* 호버 시 색상 변경 */
 }
 .css-agvwxo {
   position: relative;
@@ -955,7 +955,7 @@ svg:not(:root) {
 }
 
 .css-1uyc7w1 {
-  background-color: #5f0080;
+  background-color: rgb(102, 153, 51);
   color: white;
   border: none;
   padding: 10px 20px;
@@ -964,7 +964,7 @@ svg:not(:root) {
 }
 
 .css-1uyc7w1:hover {
-  background-color: #4a0075;
+  background-color: rgb(62, 116, 36);
 }
 /* 입력 상자들에 고정 너비 설정 */
 .css-u52dqk, .css-151eme7 {
@@ -1030,18 +1030,18 @@ input[type="text"], input[type="password"] {
   font-size: 18px; /* 버튼 텍스트 크기 조정 */
   line-height: 1.5; /* 텍스트 줄 높이 조정 */
   border-radius: 4px; /* 버튼의 모서리 둥글기 조정 */
-  background-color: #5f0080; /* 버튼 배경색 조정 */
+  background-color: rgb(102, 153, 51); /* 버튼 배경색 조정 */
   color: #ffffff; /* 버튼 텍스트 색상 조정 */
   border: none; /* 버튼 테두리 제거 */
   cursor: pointer; /* 버튼 클릭 시 커서 스타일 조정 */
   transition: background-color 0.3s ease; /* 버튼 배경색 변경에 애니메이션 추가 */
 }
 .css-1uyc7w1:hover {
-  background-color: #3e0060; /* 버튼 호버 시 배경색 조정 */
+  background-color: rgb(62, 116, 36); /* 버튼 호버 시 배경색 조정 */
 }
 
 .message-popup button {
-  background-color: #5f0080; /* 버튼 배경색 보라색 */
+  background-color: rgb(102, 153, 51); /* 버튼 배경색 보라색 */
   color: #fff;
   border: none;
   padding: 10px 20px; /* 패딩 증가 */

@@ -169,7 +169,7 @@ a:-webkit-any-link {
 .layout-pagination-number:hover,
 .layout-pagination-number.__active {
   background-color: #f7f7f7;
-  color: #5f0080;
+  color: rgb(102, 153, 51);
 }
 .layout-pagination-number {
   font-weight: 700;
@@ -380,7 +380,7 @@ input:not(
   color: #2e2e2e;
   font-size: 12px;
   clear: both;
-  border-top: 1px solid #5e3d5a;
+  border-top: 1px solid rgb(128, 183, 89);
   width: 100%;
 }
 #lnbMenu .tit {

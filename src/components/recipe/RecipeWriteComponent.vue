@@ -233,17 +233,19 @@ export default {
     width: 100px;
     height: 30px;
     border-radius: 3px;
-    color: rgb(95, 0, 128);
+    color: rgb(102, 153, 51);
     background-color: rgb(255, 255, 255);
-    border: 1px solid rgb(95, 0, 128);
+    border: 1px solid rgb(102, 153, 51);
     font-size: 12px;
     line-height: 28px;
     font-weight: 500;
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
 }
 
 .btn:hover {
-    color: rgb(144, 14, 188);
-    border: 1px solid rgb(144, 14, 188);
+    color: rgb(255, 255, 255);
+    background-color: rgb(102, 153, 51);
+    border: 1px solid rgb(255, 255, 255);
 }
 
 .send-btn {
@@ -255,14 +257,15 @@ export default {
     height: 56px;
     border-radius: 3px;
     color: rgb(255, 255, 255);
-    background-color: rgb(95, 0, 128);
+    background-color: rgb(102, 153, 51);
     border: 0px none;
     margin: 40px auto 30px;
     font-size: 16px;
     font-weight: 500;
+    transition: background-color 0.3s ease;
 }
 
 .send-btn:hover {
-    background-color: rgb(144, 14, 188);
+    background-color: rgb(62, 116, 36);
 }
 </style>

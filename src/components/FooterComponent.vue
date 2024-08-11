@@ -286,7 +286,7 @@ export default {
 }
 .css-1tby8gd {
     margin-left: 3px;
-    color: #5f0080;
+    color: rgb(102, 153, 51);
 }
 
 .css-zjik7 {

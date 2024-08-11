@@ -50,9 +50,9 @@ export default {
 }
 
 .category-list-sub-div:hover > .category-list-sub-title {
-  box-shadow: rgb(95, 0, 128) 0px -1px 0px 0px inset;
+  box-shadow: rgb(102, 153, 51) 0px -1px 0px 0px inset;
   font-weight: 500;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 
 .category-list-sub-title {

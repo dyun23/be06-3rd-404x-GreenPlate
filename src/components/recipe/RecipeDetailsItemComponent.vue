@@ -13,7 +13,7 @@
                 <li  v-for="(item, index) in itemList" :key="index"  class="goods-add-product-item __slide-item">
                     <div class="goods-add-product-item-figure">
                       <router-link :to="{ path: `/item/list/details/${item.itemId}` }">
-                            <img :src="item.itemUrl"
+                            <img :src="getValidImageUrl(item.itemUrl)"
                                 alt="" class="goods-add-product-item-image">
                       </router-link>
                       <button class="btn_cart" @click="addToCart(item.itemId)">이 상품을 장바구니에 담기</button>
@@ -45,6 +45,21 @@ export default {
     }
   },
   methods: {
+    getValidImageUrl(imageUrl) {
+      const placeholder = "https://via.placeholder.com/180x230";
+      if (!imageUrl || !this.isValidUrl(imageUrl)) {
+        return placeholder;
+      }
+      return imageUrl;
+    },
+    isValidUrl(string) {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    },
     async addToCart(itemId) {
       const params = {
         itemId: itemId,
@@ -102,7 +117,7 @@ export default {
 
 .link_menu:hover,
 .link_menu.on {
-  color: #5f0080;
+  color: rgb(102, 153, 51);
 }
 
 @media all and (max-width: 1250px) {

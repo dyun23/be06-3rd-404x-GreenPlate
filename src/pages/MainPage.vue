@@ -1,6 +1,7 @@
 <template>
   <div class="product-container">
     <div class="css-product-elements-container1">
+      <img class="logo-img" src="/image/title.PNG">
       <img
         class="main-img"
         src="https://raw.githubusercontent.com/beyond-sw-camp/be06-2nd-404x-GreenPlate/develop/img/greenplate.jpg"
@@ -78,8 +79,7 @@ export default {
 
 <style scoped>
 .main-img {
-  margin-top: 50px;
-  margin-bottom: 50px;
+  margin: 50px auto;
   width: 75%;
 }
 #container {
@@ -151,5 +151,10 @@ th {
 }
 a {
   background-color: transparent;
+}
+.logo-img{
+  margin-top: 30px;
+  width: 60%;
+  height: 50px;
 }
 </style>

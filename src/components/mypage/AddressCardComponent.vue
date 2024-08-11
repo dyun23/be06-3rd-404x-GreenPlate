@@ -120,7 +120,7 @@ export default {
   font-size: 12px;
 }
 .css-z4mca9 {
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
   font-size: 14px;
 }
 
@@ -138,8 +138,8 @@ input[type="radio"] {
   display: none;
 }
 input[type="radio"]:checked + .css-79hxr7 {
-  border-color: #5f0080;
-  background-color: #5f0080;
+  border-color: rgb(102, 153, 51);
+  background-color: rgb(102, 153, 51);
 }
 input[type="radio"]:checked + .css-79hxr7 svg {
   display: block;
@@ -163,8 +163,8 @@ input[type="radio"] {
 
 /* 라디오 버튼이 선택된 상태 */
 input[type="radio"]:checked + .css-79hxr7 {
-  border-color: #5f0080; /* 선택된 경우 테두리 색상 */
-  background-color: #5f0080; /* 선택된 경우 배경 색상 */
+  border-color: rgb(102, 153, 51); /* 선택된 경우 테두리 색상 */
+  background-color: rgb(102, 153, 51); /* 선택된 경우 배경 색상 */
 }
 
 /* 기본 동그라미 스타일 */

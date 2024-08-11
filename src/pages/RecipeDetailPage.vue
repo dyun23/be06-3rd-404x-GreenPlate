@@ -58,7 +58,7 @@
                                   </h3>
                                   <div class="context">
                                     <div class="pic">
-                                      <img :src="recipeData.imageUrl" alt="Recipe Image" />
+                                      <img :src="getValidImageUrl(recipeData.imageUrl)" alt="Recipe Image" />
                                     </div>
                                     <div class="words">
                                       <strong class="recipe_item_tit">RECIPE</strong>
@@ -83,7 +83,7 @@
           </tr>
           </tbody>
         </table>
-        <table width="100%" style="table-layout:fixed; border-top:1px solid #795c90; height:80px;">
+        <table width="100%" style="table-layout:fixed; border-top:1px solid rgb(128, 183, 89); height:80px;">
           <tbody>
             <tr>
               <td align="center" style="padding-top:10px;">
@@ -127,6 +127,21 @@ export default
     this.getData();
   },
   methods: {
+    getValidImageUrl(imageUrl) {
+      const placeholder = "https://via.placeholder.com/900x500";
+      if (!imageUrl || !this.isValidUrl(imageUrl)) {
+        return placeholder;
+      }
+      return imageUrl;
+    },
+    isValidUrl(string) {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    },
     async getData() {
       try {
         // pageId를 computed 속성에서 가져와서 사용합니다
@@ -192,7 +207,7 @@ export default
 
 .link_menu:hover,
 .link_menu.on {
-  color: #5f0080;
+  color: rgb(102, 153, 51);
 }
 
 @media all and (max-width: 1250px) {

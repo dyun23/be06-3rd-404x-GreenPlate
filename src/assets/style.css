@@ -4,7 +4,7 @@ a, a:link, a:visited, a:active, a:focus, .router-link-active {
 }
 a:hover{
   text-decoration: none;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
 }
 a:focus {
   outline: none;

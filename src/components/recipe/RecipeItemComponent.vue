@@ -9,7 +9,7 @@
                 <li v-if="card[0]" class="recipe_item">
                   <a :href="`/recipe/details?${card[0].recipeId}`">
                     <img
-                      :src="card[0].imageUrl"
+                      :src="getValidImageUrl(card[0].imageUrl)"
                       width="480"
                       height="480"
                     />
@@ -27,7 +27,7 @@
                 <li v-if="card[1]" class="recipe_item">
                   <a :href="`/recipe/details?${card[1].recipeId}`">
                     <img
-                      :src="card[1].imageUrl"
+                      :src="getValidImageUrl(card[1].imageUrl)"
                       width="480"
                       height="480"
                     />
@@ -59,6 +59,23 @@ export default {
       return pairs;
     },
   },
+  methods: {
+    getValidImageUrl(imageUrl) {
+      const placeholder = "https://via.placeholder.com/480";
+      if (!imageUrl || !this.isValidUrl(imageUrl)) {
+        return placeholder;
+      }
+      return imageUrl;
+    },
+    isValidUrl(string) {
+      try {
+        new URL(string);
+        return true;
+      } catch (_) {
+        return false;
+      }
+    }
+  }
 };
 </script>
 

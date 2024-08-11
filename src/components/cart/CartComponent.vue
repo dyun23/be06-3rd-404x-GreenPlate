@@ -8,61 +8,26 @@
             <div class="cart-total-div">
               <div class="total-div">
                 <label class="total-label">
-                  <input
-                    type="checkbox"
-                    class="total-input"
-                    :checked="isChecked"
-                    @change="toggleTotalCheck"
-                  />
+                  <input type="checkbox" class="total-input" :checked="isChecked" @change="toggleTotalCheck">
                   <div class="total-check">
-                    <svg
-                      v-if="isChecked"
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg v-if="isChecked" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
                       <path
-                        d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z"
-                        fill="#5f0080"
-                      ></path>
-                      <path
-                        d="M7 12.6667L10.3846 16L18 8.5"
-                        stroke="#fff"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
+                          d="M12 24C18.6274 24 24 18.6274 24 12C24 5.37258 18.6274 0 12 0C5.37258 0 0 5.37258 0 12C0 18.6274 5.37258 24 12 24Z"
+                          fill="rgb(102, 153, 51)"></path>
+                      <path d="M7 12.6667L10.3846 16L18 8.5" stroke="#fff" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
-                    <svg
-                      v-else
-                      width="24"
-                      height="24"
-                      viewBox="0 0 24 24"
-                      fill="none"
-                      xmlns="http://www.w3.org/2000/svg"
-                    >
+                    <svg v-else width="24" height="24" viewBox="0 0 24 24" fill="none"
+                         xmlns="http://www.w3.org/2000/svg">
                       <path
-                        d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
-                        stroke="#ddd"
-                        fill="#fff"
-                      ></path>
-                      <path
-                        d="M7 12.6667L10.3846 16L18 8.5"
-                        stroke="#ddd"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      ></path>
+                          d="M23.5 12C23.5 18.3513 18.3513 23.5 12 23.5C5.64873 23.5 0.5 18.3513 0.5 12C0.5 5.64873 5.64873 0.5 12 0.5C18.3513 0.5 23.5 5.64873 23.5 12Z"
+                          stroke="#ddd" fill="#fff"></path>
+                      <path d="M7 12.6667L10.3846 16L18 8.5" stroke="#ddd" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round"></path>
                     </svg>
                   </div>
-                  <span
-                    >전체선택
-                    <span class="total-value"
-                      >({{ checkedCount }}/{{ items.length }})</span
-                    ></span
-                  >
+                  <span>전체선택 <span class="total-value">({{ checkedCount }}/{{ items.length }})</span></span>
                 </label>
                 <span class="total-middle"></span>
                 <button @click="confirmDeleteSelected">선택삭제</button>
@@ -72,15 +37,9 @@
           <div class="cart-items">
             <div>
               <ul>
-                <CartItemComponent
-                  v-for="item in items"
-                  :key="item.id"
-                  :item="item"
-                  :cartId="item.id"
-                  @update-checked="updateItemChecked"
-                  @update-count="updateItemCount"
-                  @delete-item="deleteItem"
-                />
+                <CartItemComponent v-for="item in items" :key="item.id" :item="item" :cartId="item.id"
+                                   @update-checked="updateItemChecked" @update-count="updateItemCount"
+                                   @delete-item="deleteItem" />
               </ul>
             </div>
           </div>
@@ -92,32 +51,18 @@
                 <span class="css-vmo0an ea1mry76">전체 상품금액</span>
                 <span class="cost-text">{{ allTotalCost }} 원</span>
               </div>
-              <button
-                class="addr-change-btn"
-                type="button"
-                height="36"
-                radius="3"
-                @click="orderAllItems"
-              >
+              <button class="addr-change-btn" type="button" height="36" radius="3" @click="orderAllItems">
                 <span class="addr-change-text">전체 상품 주문하기</span>
               </button>
             </div>
             <div class="cart-cost-div">
               <div class="css-8jmoub ea1mry77">
                 <span class="css-vmo0an ea1mry76">선택 상품금액</span>
-                <span class="cost-text"
-                  ><span style="font-weight: 700">{{ selectedTotalCost }}</span>
-                  원</span
-                >
+                <span class="cost-text"><span style="font-weight: 700;">{{ selectedTotalCost }}</span> 원</span>
               </div>
             </div>
             <div class="order-div">
-              <button
-                class="order-btn"
-                type="button"
-                height="56"
-                @click="orderSelectedItems"
-              >
+              <button class="order-btn" type="button" height="56" @click="orderSelectedItems">
                 <span class="order-text">선택 상품 주문하기</span>
               </button>
             </div>
@@ -129,22 +74,22 @@
 </template>
 
 <script>
-import axios from "axios";
-import { useCartStore } from "../../stores/useCartStore";
-import CartItemComponent from "./CartItemComponent.vue";
-import { useRouter } from "vue-router";
+import axios from 'axios';
+import { useCartStore } from '../../stores/useCartStore';
+import CartItemComponent from './CartItemComponent.vue';
+import { useRouter } from 'vue-router';
 
 export default {
   name: "CartComponent",
   components: {
-    CartItemComponent,
+    CartItemComponent
   },
   setup() {
     const cartStore = useCartStore();
     const router = useRouter();
     return {
       cartStore,
-      router,
+      router
     };
   },
   computed: {
@@ -152,46 +97,46 @@ export default {
       return this.cartStore.items;
     },
     isChecked() {
-      return this.items.length > 0 && this.items.every((item) => item.checked);
+      return this.items.length > 0 && this.items.every(item => item.checked);
     },
     checkedCount() {
-      return this.items.filter((item) => item.checked).length;
+      return this.items.filter(item => item.checked).length;
     },
     selectedTotalCost() {
       return this.cartStore.selectedTotalCost;
     },
     allTotalCost() {
       return this.cartStore.totalCost;
-    },
+    }
   },
   methods: {
     toggleTotalCheck() {
       const isChecked = this.isChecked;
-      this.items.forEach((item) => {
+      this.items.forEach(item => {
         item.checked = !isChecked;
       });
       this.updateSelectedItems();
     },
     updateItemChecked(id, checked) {
-      const item = this.items.find((item) => item.id === id);
+      const item = this.items.find(item => item.id === id);
       if (item) {
         item.checked = checked;
       }
       this.updateSelectedItems();
     },
     updateItemCount(id, count) {
-      const item = this.items.find((item) => item.id === id);
+      const item = this.items.find(item => item.id === id);
       if (item) {
         item.quantity = count;
       }
       this.updateSelectedItems();
     },
     deleteItem(id) {
-      this.items = this.items.filter((item) => item.id !== id);
+      this.items = this.items.filter(item => item.id !== id);
       this.updateSelectedItems();
     },
     updateSelectedItems() {
-      const selectedItems = this.items.filter((item) => item.checked);
+      const selectedItems = this.items.filter(item => item.checked);
       this.cartStore.setSelectedItems(selectedItems);
     },
     confirmDeleteSelected() {
@@ -200,37 +145,30 @@ export default {
       }
     },
     deleteSelectedItems() {
-      const selectedIds = this.items
-        .filter((item) => item.checked)
-        .map((item) => item.id);
+      const selectedIds = this.items.filter(item => item.checked).map(item => item.id);
 
-      axios
-        .delete("http://localhost:8080/cart/delete/list", {
-          data: { cartIdList: selectedIds },
-          withCredentials: true,
-        })
-        .then((response) => {
-          console.log("Delete successful:", response.data);
-          this.items = this.items.filter((item) => !item.checked);
-          this.updateSelectedItems();
-        })
-        .catch((error) => {
-          console.error("Error deleting selected items:", error);
-        });
-
-      console.log();
+      axios.delete('http://localhost:8080/cart/delete/list', {
+        data: { cartIdList: selectedIds },
+        withCredentials: true
+      })
+          .then(response => {
+            console.log("Delete successful:", response.data);
+            this.items = this.items.filter(item => !item.checked);
+            this.updateSelectedItems();
+          })
+          .catch(error => {
+            console.error("Error deleting selected items:", error);
+          });
     },
     fetchCartItems() {
-      axios
-        .get("http://localhost:8080/cart/list", {
-          withCredentials: true,
-        })
-        .then((response) => {
-          console.log(response.data);
-          if (response.data.success) {
-            const items = response.data.result || [];
-            this.cartStore.setItems(
-              items.map((item) => ({
+      axios.get('http://localhost:8080/cart/list', {
+        withCredentials: true
+      })
+          .then(response => {
+            console.log(response.data);
+            if (response.data.success) {
+              const items = response.data.result || [];
+              this.cartStore.setItems(items.map(item => ({
                 id: item.cartId,
                 itemId: item.itemId,
                 title: item.itemName,
@@ -238,32 +176,29 @@ export default {
                 checked: false,
                 discountPrice: item.discountPrice,
                 imageUrl: item.imageUrl,
-                originalPrice: item.price,
-              }))
-            );
-          } else {
-            this.errorMessage =
-              response.data.message ||
-              "장바구니 데이터를 불러오는 데 실패했습니다.";
-          }
-        })
-        .catch((error) => {
-          console.error("Error fetching cart items:", error);
-          this.errorMessage = "장바구니 데이터를 불러오는 데 실패했습니다.";
-        });
+                originalPrice: item.price
+              })));
+            } else {
+              this.errorMessage = response.data.message || '장바구니 데이터를 불러오는 데 실패했습니다.';
+            }
+          })
+          .catch(error => {
+            console.error("Error fetching cart items:", error);
+            this.errorMessage = '장바구니 데이터를 불러오는 데 실패했습니다.';
+          });
     },
     orderAllItems() {
       this.cartStore.setSelectedItems(this.cartStore.items);
-      this.router.push("/order");
+      this.router.push('/order');
     },
     orderSelectedItems() {
-      this.router.push("/order");
-    },
+      this.router.push('/order');
+    }
   },
   created() {
     this.fetchCartItems();
-  },
-};
+  }
+}
 </script>
 
 <style scoped>
@@ -390,7 +325,7 @@ export default {
   height: 56px;
   border-radius: 3px;
   color: rgb(255, 255, 255);
-  background-color: rgb(95, 0, 128);
+  background-color: rgb(102, 153, 51);
   border: 0px none;
   font-weight: 500;
 }
@@ -399,12 +334,12 @@ export default {
   background-color: #ddd;
 }
 
-.order-btn > div {
+.order-btn>div {
   display: inline-block;
   position: relative;
 }
 
-.order-btn > div > div:first-of-type {
+.order-btn>div>div:first-of-type {
   max-width: 100px;
   max-height: 100px;
   width: 70%;
@@ -436,7 +371,7 @@ export default {
   margin-right: 12px;
 }
 
-.total-check > svg {
+.total-check>svg {
   vertical-align: middle;
 }
 
@@ -450,43 +385,43 @@ export default {
 }
 
 /* .css-td54hr {
-    display: flex;
-    -webkit-box-pack: justify;
-    justify-content: space-between;
-    height: 60px;
-    padding: 15px 5px 15px 0px;
-    border-top: 1px solid rgb(51, 51, 51);
-    font-weight: 700;
-    font-size: 18px;
-    line-height: 26px;
+display: flex;
+-webkit-box-pack: justify;
+justify-content: space-between;
+height: 60px;
+padding: 15px 5px 15px 0px;
+border-top: 1px solid rgb(51, 51, 51);
+font-weight: 700;
+font-size: 18px;
+line-height: 26px;
 }
 .css-1nzj0g2 {
-    display: flex;
-    -webkit-box-align: center;
-    align-items: center;
-    font-weight: 500;
+display: flex;
+-webkit-box-align: center;
+align-items: center;
+font-weight: 500;
 }
 .css-12dwhid {
-    margin-right: 8px;
-    vertical-align: top;
+margin-right: 8px;
+vertical-align: top;
 }
 .css-12dwhid > span {
-    vertical-align: top;
+vertical-align: top;
 }
 .css-lvqq7y {
-    border: 0px;
-    background: none;
-    outline: none;
+border: 0px;
+background: none;
+outline: none;
 }
 svg:not(:root) {
-    overflow: hidden;
+overflow: hidden;
 }
 :not(svg) {
-    transform-origin: 0px 0px;
+transform-origin: 0px 0px;
 }
 g {
-    fill: none;
-    fill-rule: evenodd;
+fill: none;
+fill-rule: evenodd;
 } */
 
 .addr-div {
@@ -508,8 +443,7 @@ g {
   font-size: 16px;
   font-weight: 500;
   line-height: 20px;
-  background: url("https://res.kurly.com/pc/service/cart/2007/ico_location.svg")
-    0px 50% / 20px 20px no-repeat;
+  background: url("https://res.kurly.com/pc/service/cart/2007/ico_location.svg") 0px 50% / 20px 20px no-repeat;
 }
 
 .addr {
@@ -534,13 +468,13 @@ g {
   width: 100%;
   height: 36px;
   border-radius: 3px;
-  color: rgb(95, 0, 128);
+  color: rgb(102, 153, 51);
   background-color: rgb(255, 255, 255);
-  border: 1px solid rgb(95, 0, 128);
+  border: 1px solid rgb(102, 153, 51);
   margin-top: 16px;
 }
 
-.addr-change-btn > span {
+.addr-change-btn>span {
   font-size: 12px;
   font-weight: 500;
 }

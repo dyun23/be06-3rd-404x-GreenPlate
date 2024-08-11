@@ -90,7 +90,7 @@
                   >
                     <stop
                       offset="0%"
-                      stop-color="rgb(154,58,244)"
+                      stop-color="rgb(62, 116, 36)"
                       stop-opacity="1"
                     ></stop>
                     <stop
