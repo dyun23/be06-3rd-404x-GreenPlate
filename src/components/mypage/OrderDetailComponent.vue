@@ -115,6 +115,15 @@ export default {
       await this.getData(ordersId); // 데이터를 가져옵니다.
     }
   },
+  computed: {
+    isCancellable() {
+    if (this.ordersList.length > 0) {
+        const state = this.formatOrderState(this.ordersList[0].order_state);
+        return state.includes('주문완료') && !state.includes('결제취소');
+      }
+      return false;
+    }
+  },
   methods: {
     async getData(ordersId) {
       try {
