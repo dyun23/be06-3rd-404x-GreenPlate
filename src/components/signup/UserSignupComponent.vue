@@ -3,7 +3,8 @@
     <form @submit.prevent="signup">
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-      <title>회원가입</title>
+      <title>회원가입
+      </title>
       <div class="css-pculus e1ovi4141">
         <div class="css-o5dw7d e1ovi4140">회원가입</div>
         <div class="css-mhmtvt e15so55l1">
@@ -36,7 +37,7 @@
                 </div>
               </div>
               <div class="css-1w0ksfz e744wfw2">
-                <button class="css-ufulao e4nu7ef3" type="button">
+                <button class="css-ufulao e4nu7ef3" type="button" @click="checkEmailDuplicate">
                   <span class="css-nytqmg e4nu7ef1">중복확인</span>
                 </button>
               </div>
@@ -85,6 +86,7 @@
                       required
                       class="css-u52dqk e1uzxhvi2"
                       v-model="form.username"
+                      :class="{'input-error':usernameError}"
                     />
                   </div>
                 </div>
@@ -302,7 +304,9 @@
     <div v-if="isPopupVisible" class="message-popup">
       <div class="message-content">
         <p>{{ Message }}</p>
-        <button @click="closePopup"></button>
+        <button @click="closePopup">
+          <router-link to="/login">Close</router-link>
+        </button>
       </div>
     </div>
   </div>
@@ -312,6 +316,7 @@
 import axios from 'axios';
 
 export default {
+  name: "UserSignupComponent",
   data() {
     return {
       termsAgreeAll: false,
@@ -321,6 +326,7 @@ export default {
       Message: '',
       emailError: false,
       passwordError: false,
+      usernameError: false,
       form: {
         email: '',
         password: '',
@@ -341,8 +347,38 @@ export default {
     checkAllAgree() {
       this.termsAgreeAll = this.requiredTermsCondition && this.requiredPrivacyPolicy;
     },
+    async checkEmailDuplicate() {
+        if (this.form.email.trim() === '') {
+          alert('이메일을 입력해 주세요');
+          return;
+        }
+
+        try {
+          // GET 요청을 보내기 위해 email을 쿼리 파라미터로 전송합니다.
+          const response = await axios.get('http://localhost:8080/user/email', {
+            params: { email: this.form.email }
+          });
+
+          // 콘솔 로그로 응답 데이터 확인
+          console.log('Server response:', response);
+           // 응답 메시지에 따라 적절한 알림을 표시합니다.
+          if (response.data.code === 1701) {
+            alert('중복된 이메일입니다.');
+            this.emailError = true;
+          } else if (response.data.code === 1700) {
+            alert('사용 가능한 이메일입니다.');
+            this.emailError = false;
+          } else {
+            // 예상치 못한 응답 메시지 처리
+            alert('이메일 중복 확인 중 오류가 발생했습니다.');
+          }
+        } catch (error) {
+          console.error('Email check error:', error.response ? error.response.data : error.message);
+          alert('이메일 중복 확인 중 오류가 발생했습니다: ' + (error.response ? error.response.data.message : error.message));
+        }
+      },
     validateEmail(email){
-      // 이메일 형식이 @gmial.com 으로 끝나는지 확인
+      // 이메일 형식이 @gmail.com으로 끝나는지 확인
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email) && email.endsWith('@gmail.com');
     },
@@ -350,44 +386,83 @@ export default {
       // 비밀번호 길이 검사
       return password.length >= 8 && password.length <= 25;
     },
-    async signup() {
-      if (this.requiredTermsCondition && this.requiredPrivacyPolicy) {
-        if (this.validateEmail(this.form.email)) {
-          if (this.validatePassword(this.form.password)) {
-          try {
-            await axios.post('http://localhost:8080/company/signup', this.form, {
-            headers: {
-              'Content-Type': 'application/json'
-            }
-            });
-            alert('회원가입이 성공했습니다');
-            
-          } catch (error) {
-            console.error('UserSignup error:', error);
-            alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요');
-            
-          }
-        } else {
-            alert('비밀번호는 8글자 이상 25글자 이하로 입력해 주세요'); // 비밀번호 길이 오류 메시지
-            this.passwordError = true;
-            
-        }
-        } else {
-          alert(this.popupMessage = '이메일 형식으로 입력해주세요 (예: example@gmail.com)') // 이메일 형식 오류 시 팝업 표시
-          this.emailError = true;
-          this.isPopupVisible = false;
-        }
-      } else {
-       alert('필수 약관에 동의하셔야 합니다.');
-        this.isPopupVisible = false; // 약관 동의 오류 시 팝업 표시
-        
-      }
+    validateUsername(username) {
+      // 이름이 한글만 포함되었는지 확인
+      const usernameRegex = /^[가-힣]+$/;
+      return usernameRegex.test(username);
     },
+    validateBirthDate(year, month, day) {
+      const date = new Date(year, month - 1, day); // 월은 0부터 시작
+      const formattedDate = `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+      return date.getFullYear() == year &&
+             date.getMonth() + 1 == month &&
+             date.getDate() == day &&
+             formattedDate === `${year}-${String(month).padStart(2, '0')}-${String(day).padStart(2, '0')}`;
+    },
+    async signup() {
+    // 약관 동의 확인
+    if (!this.requiredTermsCondition || !this.requiredPrivacyPolicy) {
+        alert('이용약관과 개인정보처리방침에 동의해 주세요.');
+        return;
+    }
+
+    // 이메일 유효성 검사
+    if (!this.validateEmail(this.form.email)) {
+        alert('이메일 형식으로 입력해 주세요 (예: example@gmail.com)');
+        return;
+    }
+
+    // 비밀번호 유효성 검사
+    if (!this.validatePassword(this.form.password)) {
+        alert('비밀번호는 8글자 이상 25글자 이하로 입력해 주세요.');
+        return;
+    }
+
+    // 이름 유효성 검사
+    if (!this.validateUsername(this.form.username)) {
+        alert('이름은 한글로 입력해야 합니다.');
+        return;
+    }
+
+    // 생년월일 유효성 검사
+    if (!this.validateBirthDate(
+        this.form.birthYear,
+        this.form.birthMonth,
+        this.form.birthDay
+    )) {
+        alert('생년월일은 YYYY-MM-DD 형식으로 입력하세요');
+        return;
+    }
+
+    // 이메일 중복 확인
+    if (this.emailError) {
+        alert('이메일 중복 확인을 먼저 해 주세요.');
+        return;
+    }
+
+    try {
+        const response = await axios.post('http://localhost:8080/user/signup', this.form, {
+            headers: {
+                'Content-Type': 'application/json'
+            }
+        });
+
+        if (response.status === 200) {
+            alert('회원가입이 성공했습니다');
+        } else {
+            alert('회원가입 중 오류가 발생했습니다.');
+        }
+    } catch (error) {
+        console.error('UserSignup error:', error.response ? error.response.data : error.message);
+        alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요: ' + (error.response ? error.response.data.message : error.message));
+    }
+},
     closePopup() {
-      this.isPopupVisible = false;
+      this.isPopupVisible = true;
     }
   }
 };
+
 </script>
 <style scoped>
 .css-pculus {
@@ -961,7 +1036,6 @@ input[type="text"], input[type="password"] {
   cursor: pointer; /* 버튼 클릭 시 커서 스타일 조정 */
   transition: background-color 0.3s ease; /* 버튼 배경색 변경에 애니메이션 추가 */
 }
-
 .css-1uyc7w1:hover {
   background-color: #3e0060; /* 버튼 호버 시 배경색 조정 */
 }
