@@ -2,19 +2,19 @@
   <div class="css-jxzkyr enjmmt32">
     <div class="css-1nt6ns3 enjmmt31">
       <label class="css-1xdhyk6 e1dcessg3" for="address-1">
-        <input
+        <!-- <input
           id="address-1"
-          type="radio"
+          type="checkbox"
           name="address"
           class="css-agvwxo e1dcessg2"
-          value="15944794"
-          checked
-        />
-        <div class="css-79hxr7"></div>
+          :value="address.id"
+          :checked="selectedCheckbox === address.id"
+          @click="check(address.id)"
+        /> -->
       </label>
+      {{ selectedCheckbox }}
     </div>
     <div data-testid="address-area" class="css-upe1zs e77s2kj4">
-      <!-- <div class="css-2n86z e77s2kj1">기본 배송지</div> -->
       <p class="css-12stxlh e77s2kj2">
         [{{ address.zipcode }}] {{ address.address }}
         {{ address.addressDetail }}
@@ -29,15 +29,24 @@
 
 <script>
 export default {
-  data() {},
+  data() {
+    return {
+      selectedCheckbox: null, // 단일 값으로 수정
+    };
+  },
   props: {
     address: {
-      type: String, // 또는 필요한 타입
+      type: Object, // address가 객체라고 가정
       required: true,
     },
     name: {
       type: String,
       required: true,
+    },
+  },
+  methods: {
+    check(id) {
+      this.selectedCheckbox = id; // 선택된 체크박스 ID로 업데이트
     },
   },
 };
