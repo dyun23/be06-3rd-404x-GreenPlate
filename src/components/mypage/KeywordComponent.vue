@@ -129,6 +129,9 @@ export default {
         },
         withCredentials: true,
       });
+      if (response.data.success === true) {
+        alert("저장되었습니다.");
+      }
       console.log(response);
     },
   },
