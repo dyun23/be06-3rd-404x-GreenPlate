@@ -137,7 +137,7 @@ export default {
       try {
         const orderId = this.ordersList[0].order_id;
 
-        const response = await axios.put('http://localhost:8080/orders/cancel', { orderId }, {
+        const response = await axios.put('http://localhost:8080/orders/kakaoRefund', { orderId }, {
           withCredentials: true
         });
 

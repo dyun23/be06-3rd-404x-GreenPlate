@@ -85,17 +85,11 @@
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDkgMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cGF0aCBkPSJtMiA0IDUgNS01IDUiIHN0cm9rZT0iIzVGMDA4MCIgc3Ryb2tlLXdpZHRoPSIxLjMiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo="
               alt="purpleArrowRight" class="emggxjq1 css-cb2xrd eflljbi0"></div>
         </button></div>
-      <div class="css-13pz1p0 emggxjq0">
-        <button
-          class="css-1wvls6k e4nu7ef3"
-          type="button"
-          :disabled="formatOrderState(ordersList[0].order_state) !== '주문완료'"
-          @click="cancelOrder"
-          height="48" radius="6"
-        >
-        <span class="css-nytqmg e4nu7ef1">전체 상품 주문 취소</span>
-        </button>
-      </div>
+        <div class="css-13pz1p0 emggxjq0">
+          <button class="css-1wvls6k e4nu7ef3" type="button" :disabled="!isCancellable" @click="cancelOrder" height="48" radius="6">
+            <span class="css-nytqmg e4nu7ef1">전체 상품 주문 취소</span>
+          </button>
+        </div>
     </div>
   </div>
 </template>
@@ -146,7 +140,7 @@ export default {
       try {
         const orderId = this.ordersList[0].order_id;
 
-        const response = await axios.put('http://localhost:8080/orders/cancel', { orderId }, {
+        const response = await axios.put('http://localhost:8080/orders/kakaoRefund', { orderId }, {
           withCredentials: true
         });
 
