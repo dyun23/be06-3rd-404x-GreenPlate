@@ -55,6 +55,7 @@ export default {
       const response = await axios.post('/api/cart/add', params, {
           withCredentials: true
       });
+      alert(response.data.message);
       console.log(response);
     }
   }
