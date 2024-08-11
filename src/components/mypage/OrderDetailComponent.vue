@@ -117,9 +117,11 @@ export default {
   },
   computed: {
     isCancellable() {
-      // 첫 번째 주문의 상태를 체크하여 결제취소가 포함되지 않으면 버튼을 활성화
-      const state = this.formatOrderState(this.ordersList[0].order_state);
-      return !state.includes('결제취소');
+    if (this.ordersList.length > 0) {
+        const state = this.formatOrderState(this.ordersList[0].order_state);
+        return state.includes('주문완료') && !state.includes('결제취소');
+      }
+      return false;
     }
   },
   methods: {
