@@ -81,8 +81,17 @@
               src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iOSIgaGVpZ2h0PSIxOCIgdmlld0JveD0iMCAwIDkgMTgiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgICA8cGF0aCBkPSJtMiA0IDUgNS01IDUiIHN0cm9rZT0iIzVGMDA4MCIgc3Ryb2tlLXdpZHRoPSIxLjMiIGZpbGw9Im5vbmUiIGZpbGwtcnVsZT0iZXZlbm9kZCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+Cjwvc3ZnPgo="
               alt="purpleArrowRight" class="emggxjq1 css-cb2xrd eflljbi0"></div>
         </button></div>
-      <div class="css-13pz1p0 emggxjq0"><button class="css-1wvls6k e4nu7ef3" type="button" disabled="" height="48"
-          radius="6"><span class="css-nytqmg e4nu7ef1">전체 상품 주문 취소</span></button></div>
+      <div class="css-13pz1p0 emggxjq0">
+        <button
+          class="css-1wvls6k e4nu7ef3"
+          type="button"
+          :disabled="formatOrderState(ordersList[0].order_state) !== '주문완료'"
+          @click="cancelOrder"
+          height="48" radius="6"
+        >
+        <span class="css-nytqmg e4nu7ef1">전체 상품 주문 취소</span>
+        </button>
+      </div>
     </div>
   </div>
 </template>
@@ -129,16 +138,37 @@ export default {
         console.error('Error fetching user info:', error);
       }
     },
+    async cancelOrder() {
+      try {
+        const orderId = this.ordersList[0].order_id;
+
+        const response = await axios.put('http://localhost:8080/orders/cancel', { orderId }, {
+          withCredentials: true
+        });
+
+        // Handle the response as needed
+        console.log(response.data);
+        alert(response.data.message);
+        window.location.reload();
+      } catch (error) {
+        console.error('Error cancelling order:', error);
+        alert('주문 취소에 실패했습니다.');
+      }
+    },
     formatOrderState(state) {
+      let refund = "";
+      if (this.ordersList[0].refund_yn) {
+          refund = ' (결제취소)';
+      }
       switch (state) {
-        case 'ready':
-          return '상품준비';
-        case 'shipped':
-          return '배송중';
-        case 'completed':
-          return '배송완료';
-        default:
-          return '상태 미정';
+      case 'ready':
+          return '주문완료'+refund;
+      case 'shipped':
+          return '배송중'+refund;
+      case 'completed':
+          return '배송완료'+refund;
+      default:
+          return '상태 미정'+refund;
       }
     },
     extractNumberFromCurrentPath() {
