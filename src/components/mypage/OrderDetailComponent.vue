@@ -17,8 +17,7 @@
       <div class="css-d3v9zr e14m4ys50" style="opacity: 1; height: auto;">
         <div class="css-cku72n e1lb2pwe2">
           <div  v-for="(orderDetail, index) in ordersList" :key="index" class="css-100mgqw e20ugtq12">
-            <img src="https://img-cf.kurly.com/hdims/resize/%5E%3E120x%3E156/cropcenter/120x156/quality/85/src/shop/data/goods/1540185573395l0.jpg"
-              alt="청양고추 80g" class="css-1mhidi6 e20ugtq11">
+            <img :src="orderDetail.itemImageUrl" :alt="orderDetail.itemName" class="css-1mhidi6 e20ugtq11">
             <div class="css-1yt1bj8 e20ugtq10">
               <div class="css-95tt0l e20ugtq9"><a data-testid="deal-name" href="/goods/5027766"
                   class="css-1awriqz e20ugtq8">{{ orderDetail.itemName }}</a></div>
@@ -72,6 +71,11 @@
               class="css-1ept5d5 e1nt8uak0">{{ordersList[0].phoneNum}}</span></li>
           <li class="css-1i0l638 e1nt8uak2"><span class="css-1l1nmpa e1nt8uak1">주소</span><span
               class="css-1ept5d5 e1nt8uak0">({{ordersList[0].zipCode}}) {{ordersList[0].address}}</span></li>
+          <li class="css-1i0l638 e1nt8uak2">
+            <span class="css-1l1nmpa e1nt8uak1">운송장 번호</span>
+            <span v-if="ordersList[0].invoice" class="css-1ept5d5 e1nt8uak0">{{ ordersList[0].invoice }}</span>
+            <span v-else class="css-1ept5d5 e1nt8uak0">배송 준비중</span>
+          </li>
         </ul>
       </div>
       <div class="css-jp2y92 e1s7667r0"></div>
