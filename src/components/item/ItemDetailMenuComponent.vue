@@ -7,12 +7,12 @@
       <!-- <li class="css-1tzhzcg efe6b6j1">
         <a class="css-1t0ft7s efe6b6j0"><span class="name">상세정보</span></a>
       </li> -->
-      <li class="css-1tzhzcg efe6b6j1">
+      <!-- <li class="css-1tzhzcg efe6b6j1">
         <a class="css-1t0ft7s efe6b6j0">
           <span class="name">후기</span>
           <span class="count">({{ count }})</span>
         </a>
-      </li>
+      </li> -->
     </ul>
   </nav>
 </template>

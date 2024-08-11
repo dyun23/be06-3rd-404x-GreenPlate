@@ -16,7 +16,7 @@
               <th class="tit_receive">가격</th>
               <th class="tit_phone">남은 수량</th>
               <th class="tit_modify">수정</th>
-              <th class="tit_modify">삭제</th>
+              <!-- <th class="tit_modify">삭제</th> -->
             </tr>
           </thead>
           <tbody id="addrList">
@@ -30,87 +30,40 @@
                 <p class="addr">{{ item.name }}</p>
               </td>
               <td class="name">
-                <span>{{ item.price }}원</span>
+                <span v-if="!item.isEditing">{{ item.price }}원</span>
+                <input v-else v-model="item.editPrice" type="number" />
               </td>
               <td class="phone">
-                <span>{{ item.stock }}개</span>
+                <span v-if="!item.isEditing">{{ item.stock }}개</span>
+                <input v-else v-model="item.editStock" type="number" />
               </td>
               <td>
                 <button
                   type="button"
                   class="ico modify"
-                  onclick="popup()"
-                  target="_blank"
+                  @click="toggleEdit(item)"
                 >
-                  수정하기
+                  {{ item.isEditing ? "수정 완료" : "수정하기" }}
                 </button>
               </td>
-              <td class="delete_position">
-                <button type="button" class="product_delete">삭제하기</button>
-              </td>
+              <!-- <td class="delete_position">
+                <button
+                  type="button"
+                  class="product_delete"
+                  @click="deleteItem(item.itemId)"
+                >
+                  삭제하기
+                </button>
+              </td> -->
             </tr>
-            <!-- 
-            <tr>
-              <td class="select type_radio">
-                <p>2</p>
-              </td>
-              <td class="address">
-                <p class="addr">빵 시루떡</p>
-              </td>
-              <td class="name">
-                <span>300원</span>
-              </td>
-              <td class="phone">
-                <span>22개</span>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  class="ico modify"
-                  onclick="popup()"
-                  target="_blank"
-                >
-                  수정하기
-                </button>
-              </td>
-              <td class="delete_position">
-                <button type="button" class="product_delete">삭제하기</button>
-              </td>
-            </tr>
-
-            <tr>
-              <td class="select type_radio">
-                <p>1</p>
-              </td>
-              <td class="address">
-                <p class="addr">사과 오렌지 배</p>
-              </td>
-              <td class="name">
-                <span>3000원</span>
-              </td>
-              <td class="phone">
-                <span>20000개</span>
-              </td>
-              <td>
-                <button
-                  type="button"
-                  class="ico modify"
-                  onclick="popup()"
-                  target="_blank"
-                >
-                  수정하기
-                </button>
-              </td>
-              <td class="delete_position">
-                <button type="button" class="product_delete">삭제하기</button>
-              </td>
-            </tr> -->
           </tbody>
         </table>
       </div>
     </div>
 
-    <div class="no_data">상품이 없습니다.</div>
+    <div class="no_data" v-if="items && items.length === 0">
+      상품이 없습니다.
+    </div>
   </div>
 </template>
 
@@ -132,8 +85,54 @@ export default {
       const response = await axios.get("http://localhost:8080/item/company", {
         withCredentials: true,
       });
-      this.items = response.data.result;
-      console.log(this.items);
+      this.items = response.data.result.map((item) => ({
+        ...item,
+        isEditing: false,
+        editName: item.name,
+        editPrice: item.price,
+        editStock: item.stock,
+      }));
+    },
+    toggleEdit(item) {
+      if (item.isEditing) {
+        this.updateItem(item);
+      } else {
+        item.isEditing = true;
+      }
+    },
+    async updateItem(item) {
+      try {
+        console.log("update", item.itemId);
+        await axios.get("http://localhost:8080/item/update/simple", {
+          params: {
+            id: item.itemId,
+            price: item.editPrice,
+            stock: item.editStock,
+          },
+          withCredentials: true,
+        });
+        item.name = item.editName;
+        item.price = item.editPrice;
+        item.stock = item.editStock;
+        item.isEditing = false;
+        alert("상품이 수정되었습니다.");
+      } catch (error) {
+        alert("수정에 실패하였습니다.");
+      }
+    },
+    async deleteItem(itemId) {
+      try {
+        await axios.get("http://localhost:8080/item/delete", {
+          params: {
+            id: itemId,
+          },
+          withCredentials: true,
+        });
+        this.items = this.items.filter((item) => item.itemId !== itemId);
+        alert("상품이 삭제되었습니다.");
+      } catch (error) {
+        alert("삭제에 실패하였습니다.");
+      }
     },
   },
 };
