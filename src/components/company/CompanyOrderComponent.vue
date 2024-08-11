@@ -32,7 +32,6 @@
                 </div>
                 <div v-for="order in ordersList" :key="order.order_id" class="css-9hrkbf e88f0q51">
                 <a class="css-h9u7nh e13d9bui8"> 
-                  <router-link :to="{ path: `/company/order/${order.order_id}`, query: { price: order.price } }">
                     <div class="css-1prr1nv e13d9bui7">
                     <span class="css-mvcumu e13d9bui6">
                         {{ new Date(order.order_date).toLocaleString() }}
@@ -40,32 +39,43 @@
                     <span class="css-yi6epy e13d9bui5">주문 상세</span>
                     </div>
                     <div class="css-1e8mkxi e13d9bui4">
-                    <dl class="css-oxiuin e13d9bui3">
-                        <dt class="css-1qdgh9t e13d9bui2">상품명</dt>
-                        <dd class="css-1iph3gc e13d9bui0">
-                        {{ order.item_name }} 외 {{ order.cnt - 1 }}건
-                        </dd>
-                    </dl>
-                    <dl class="css-oxiuin e13d9bui3">
-                        <dt class="css-1qdgh9t e13d9bui2">주문 번호</dt>
-                        <dd class="css-wstq91 e13d9bui1">{{ order.order_id }}</dd>
-                    </dl>
-                    <dl class="css-oxiuin e13d9bui3">
-                        <dt class="css-1qdgh9t e13d9bui2">결제 방법</dt>
-                        <dd class="css-wstq91 e13d9bui1">카카오페이</dd>
-                    </dl>
-                    <dl class="css-oxiuin e13d9bui3">
-                        <dt class="css-1qdgh9t e13d9bui2">결제 금액</dt>
-                        <dd class="css-wstq91 e13d9bui1">{{ order.price }}원</dd>
-                    </dl>
-                    <dl class="css-oxiuin e13d9bui3">
-                        <dt class="css-1qdgh9t e13d9bui2">주문 상태</dt>
-                        <dd class="css-wstq91 e13d9bui1">
-                        {{ formatOrderState(order.order_state, order.refund_yn) }}
-                        </dd>
-                    </dl>
+                        
+                    <router-link :to="{ path: `/company/order/${order.order_id}`, query: { price: order.price } }">
+                    <div class="left-column">
+                        <dl class="css-oxiuin e13d9bui3">
+                            <dt class="css-1qdgh9t e13d9bui2">상품명</dt>
+                            <dd class="css-1iph3gc e13d9bui0">
+                            {{ order.item_name }} 외 {{ order.cnt - 1 }}건
+                            </dd>
+                        </dl>
+                        <dl class="css-oxiuin e13d9bui3">
+                            <dt class="css-1qdgh9t e13d9bui2">주문 번호</dt>
+                            <dd class="css-wstq91 e13d9bui1">{{ order.order_id }}</dd>
+                        </dl>
+                        <dl class="css-oxiuin e13d9bui3">
+                            <dt class="css-1qdgh9t e13d9bui2">결제 방법</dt>
+                            <dd class="css-wstq91 e13d9bui1">카카오페이</dd>
+                        </dl>
+                        <dl class="css-oxiuin e13d9bui3">
+                            <dt class="css-1qdgh9t e13d9bui2">결제 금액</dt>
+                            <dd class="css-wstq91 e13d9bui1">{{ order.price }}원</dd>
+                        </dl>
+                        <dl class="css-oxiuin e13d9bui3">
+                            <dt class="css-1qdgh9t e13d9bui2">주문 상태</dt>
+                            <dd class="css-wstq91 e13d9bui1">
+                            {{ formatOrderState(order.order_state, order.refund_yn) }}
+                            </dd>
+                        </dl>
                     </div>
-                </router-link>
+                    
+                    </router-link>
+                    <div v-if="order.order_state === 'ready'" class="button-container">
+                        <div class="input-container">
+                        <input v-model="order.invoiceNumber" type="text" placeholder="송장번호를 입력하세요" />
+                        </div>
+                        <button class="custom-button" @click="submitInvoiceNumber(order.order_id)">송장 입력</button>
+                    </div>
+                    </div>
                 </a>
                 </div>
             </div>
@@ -81,12 +91,14 @@
       name: "CompanyOrderComponent",
       data() {
         return {
-          ordersList: [],
-          currentPage: 0,
-          pageSize: 5,
-          isLoading: false,
-          isLastPage: false,
-          currentStatus: 'ready'
+            ordersList: [],
+            currentPage: 0,
+            pageSize: 5,
+            isLoading: false,
+            isLastPage: false,
+            currentStatus: 'ready',
+            showInputField: false,  // 입력 상자 표시 상태
+            activeOrderId: null    // 현재 송장 입력 중인 주문 ID
         };
       },
       mounted() {
@@ -95,11 +107,11 @@
       },
       methods: {
         async fetchOrders(status) {
-          this.currentStatus = status; 
-          this.currentPage = 0;
-          this.isLastPage = false; 
-          this.ordersList = []; 
-          await this.getData(); 
+            this.currentStatus = status;
+            this.currentPage = 0;
+            this.isLastPage = false;
+            this.ordersList = []; 
+            await this.getData();
         },
         async getData() {
           if (this.isLastPage || this.isLoading) return;
@@ -117,13 +129,42 @@
               params,
               withCredentials: true
             });
-            console.error('response.data.result:', response.data.result);
+            console.log('response.data.result:', response.data.result);
             const newData = response.data.result.content.map(item => ({ ...item, quantity: 1 }));
             if (newData.length < this.pageSize) {
               this.isLastPage = true;
             }
     
             this.ordersList = [...this.ordersList, ...newData];
+          } catch (error) {
+            console.error('Error fetching orders:', error);
+          } finally {
+            this.isLoading = false;
+          }
+        },
+        showInput(orderId) {
+          this.activeOrderId = orderId;
+          this.showInputField = true;
+        },
+        async submitInvoiceNumber(orderId) {
+            const order = this.ordersList.find(o => o.order_id === orderId);
+            console.log('송장번호:', order.invoiceNumber, '주문ID:', orderId);
+            this.postInvocie(orderId,order.invoiceNumber);
+            // 서버에 송장 번호를 제출하는 로직을 추가합니다.
+            this.showInputField = false; // 입력 상자 숨기기
+            order.invoiceNumber = '';    // 입력 필드 초기화
+        },
+        async postInvocie(orderId,invoiceNumber) {
+          try {
+            const response = await axios.post(`http://localhost:8080/orders/invoice`, {
+                orderId: orderId,
+                invoiceNum: invoiceNumber
+            }, {
+                withCredentials: true
+            });
+            console.log(response.data.message);
+            alert(response.data.message);
+            window.location.reload();
           } catch (error) {
             console.error('Error fetching orders:', error);
           } finally {
@@ -137,20 +178,20 @@
             this.getData();
           }
         },
-        formatOrderState(state, retfundYn) {
+        formatOrderState(state, refundYn) {
           let refund = "";
-          if (retfundYn) {
-              refund = ' (결제취소)';
+          if (refundYn) {
+            refund = ' (결제취소)';
           }
           switch (state) {
-          case 'ready':
-              return '주문완료'+refund;
-          case 'shipped':
-              return '배송중'+refund;
-          case 'completed':
-              return '배송완료'+refund;
-          default:
-              return '상태 미정'+refund;
+            case 'ready':
+              return '주문완료' + refund;
+            case 'shipped':
+              return '배송중' + refund;
+            case 'completed':
+              return '배송완료' + refund;
+            default:
+              return '상태 미정' + refund;
           }
         }
       }
@@ -297,6 +338,77 @@ border-radius: 16px;
     color: rgb(95, 0, 128);
     font-weight: 500;
 }
+.css-1e8mkxi {
+    position: relative;
+}
 
+.custom-button {
+    padding: 10px 20px;
+    background-color: white; /* 배경색 흰색 */
+    color: rgb(95, 0, 128);   /* 글자색 보라색 */
+    border: 1px solid rgb(95, 0, 128); /* 테두리 색상 보라색, 두께 2px */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;  /* 기본 글자 크기 설정 (기존보다 2배는 아니지만, 강조를 위해 크기 조정) */
+    font-weight: 600; /* 글자 굵기 600으로 설정 (기본보다 두 배 두꺼운 설정) */
+    transition: background-color 0.3s, color 0.3s; /* 부드러운 색상 전환 */
+    height: 36px; /* 버튼과 동일한 높이 설정 */
+    margin-left: 10px; /* input과 버튼 사이에 20px 간격 추가 */
+}
+
+.custom-button:hover {
+    background-color: rgb(95, 0, 128); /* 배경색 보라색 */
+    color: white; /* 글자색 흰색 */
+    border-color: rgb(95, 0, 128); /* 테두리 색상 보라색 */
+}
+.button-container {
+    position: absolute;
+    top: 0;       /* 상단 여백을 제거 */
+    right: 0px;  /* 우측에서 20px 간격 */
+    padding: 0px;
+    display: flex;
+    align-items: center; /* 버튼과 입력 상자가 수직으로 맞추어지도록 설정 */
+    justify-content: flex-end; /* 우측 정렬 */
+    position: relative; /* 버튼 컨테이너를 기준으로 위치 설정 */
+}
+
+.input-container {
+    display: flex;
+    align-items: center;
+    border: 1px solid rgb(95, 0, 128); /* 테두리 보라색 */
+    border-radius: 4px;
+    background-color: white; /* 배경색 흰색 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* 그림자 효과 */
+    height: 36px; /* 버튼과 동일한 높이 설정 */
+}
+
+
+.input-container input {
+    padding: 5px;
+    border: none; /* 기본 테두리 제거 */
+    border-radius: 4px;
+    font-size: 14px;
+    margin-right: 10px; /* 입력 필드와 버튼 간의 간격 */
+    height: 30px; /* 버튼과 동일한 높이 설정 */
+    outline: none; /* 포커스 시 기본 테두리 제거 */
+}
+
+
+.input-container button {
+    padding: 5px 10px;
+    background-color: white; /* 배경색 흰색 */
+    color: rgb(95, 0, 128);   /* 글자색 보라색 */
+    border: 1px solid rgb(95, 0, 128); /* 테두리 색상 보라색 */
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 600;
+    transition: background-color 0.3s, color 0.3s;
+    height: 30px; /* 버튼 높이 설정 */
+}
+.input-container button:hover {
+    background-color: rgb(95, 0, 128); /* 배경색 보라색 */
+    color: white; /* 글자색 흰색 */
+}
 </style>
     
