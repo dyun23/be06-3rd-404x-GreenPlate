@@ -6,12 +6,12 @@
               <div class="css-zo1i6f edbbr7c2">
                   <h3 class="css-1ddzp0m edbbr7c1">주문 상품</h3>
               </div>
-              <div v-for="item in selectedItems" :key="item.id" class="css-bd9p1l e17a7yib10"><img
-                      src="https://product-image.kurly.com/hdims/resize/%5E%3E120x%3E156/cropcenter/120x156/quality/85/src/product/image/4bf285ce-e95f-4fd6-9fab-b69e2c9691bb.jpeg"
-                      alt="[비움반찬] 진미채볶음" class="css-17jyui4 e17a7yib9"><span class="css-10nl60h e17a7yib8"><span
-                          class="css-9j7jhp e17a7yib7">{{ item.title }}</span></span><span
-                      class="css-1efb5i1 e17a7yib5">{{ item.quantity }}개</span><span class="css-1j31gob e17a7yib4"><span
-                          class="css-jnogx7 e17a7yib1">{{ item.discountPrice }}원</span></span></div>
+              <div v-for="item in selectedItems" :key="item.id" class="css-bd9p1l e17a7yib10">
+                <img :src="item.imageUrl" :alt="item.title"  class="css-17jyui4 e17a7yib9" >
+                <span class="css-10nl60h e17a7yib8"><span class="css-9j7jhp e17a7yib7">{{ item.title }}</span></span>
+                <span class="css-1efb5i1 e17a7yib5">{{ item.quantity }}개</span>
+                <span class="css-1j31gob e17a7yib4"><span class="css-jnogx7 e17a7yib1">{{ item.discountPrice }}원</span></span>
+              </div>
               <div class="css-12aowi2 edbbr7c2">
                   <h3 class="css-1ddzp0m edbbr7c1">주문자 정보</h3>
               </div>
