@@ -48,6 +48,7 @@ import AddressCardComponent from "./AddressCardComponent.vue";
 import { mapStores } from "pinia";
 import { useAddressStore } from "@/stores/useAddressStore";
 import { useUserInfoStore } from "@/stores/useUserInfoStore";
+import { useUserStore } from "@/stores/useUserStore";
 
 export default {
   name: "AddressComponent",
@@ -61,6 +62,7 @@ export default {
   computed: {
     ...mapStores(useAddressStore),
     ...mapStores(useUserInfoStore),
+    ...mapStores(useUserStore),
   },
   mounted() {
     this.getInfo();
@@ -71,10 +73,15 @@ export default {
       console.log(this.addressStore.isOpen);
     },
     async getInfo() {
-      const response = await this.userInfoListStore.getUserInfo();
-      this.address = response.addresses;
-      this.name = response.name;
-      console.log(this.address);
+      try {
+        const response = await this.userInfoListStore.getUserInfo();
+        this.address = response.addresses;
+        this.name = response.name;
+        console.log(this.address);
+      } catch (error) {
+        this.userStore.logout();
+        this.$router.push("/");
+      }
     },
     handleAddressAdded(newAddress) {
       this.address.push(newAddress);

@@ -135,7 +135,9 @@
               type="button"
               radius="3"
             >
-              <span class="css-nytqmg e4nu7ef1">장바구니 담기</span>
+              <span @click="addItemToCart" class="css-nytqmg e4nu7ef1"
+                >장바구니 담기</span
+              >
             </button>
           </div>
         </div>
@@ -146,6 +148,8 @@
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   data() {
     return {
@@ -171,6 +175,21 @@ export default {
     decreaseQuantity() {
       if (this.quantity > 1) {
         this.quantity--;
+      }
+    },
+    async addItemToCart() {
+      try {
+        const data = {
+          itemId: this.item.id,
+          quantity: this.quantity,
+        };
+        await axios.post("http://localhost:8080/cart/add", data, {
+          withCredentials: true,
+        });
+        alert("장바구니에 상품을 담았습니다.");
+        this.$router.go();
+      } catch (error) {
+        alert("로그인이 필요합니다.");
       }
     },
   },
