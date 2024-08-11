@@ -117,13 +117,13 @@
                 <button class="css-12t5wjq e57xuci2">
                     <img src="https://res.kurly.com/pc/ico/2208/logo_tosspayments.svg" alt="payments 로고" class="css-as7ifw e57xuci1"/>
                     <p class="css-bft4sh e57xuci0">
-                        토스페이먼츠 구매안전(에스크로)<br/>서비스를 이용하실 수 있습니다.
+                        카카오페이 서비스를<br/>이용하실 수 있습니다.
                     </p>
                 </button>
                 <button class="css-12t5wjq e57xuci2">
                     <img src="https://res.kurly.com/pc/ico/2208/logo_wooriBank.svg" alt="우리은행 로고" class="css-1262i6n e57xuci1"/>
                     <p class="css-bft4sh e57xuci0">
-                        고객님이 현금으로 결제한 금액에 대해 우리은행과<br/>
+                        고객님이 현금으로 결제한 금액에 대해 ABC은행과<br/>
                         채무지급보증 계약을 체결하여 안전거래를 보장하고<br/>있습니다.
                     </p>
                 </button>
