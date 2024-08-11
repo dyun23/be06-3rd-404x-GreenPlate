@@ -34,7 +34,7 @@
                 </div>
               </div>
               <div class="css-1w0ksfz e744wfw2">
-                <button class="css-ufulao e4nu7ef3" type="button">
+                <button class="css-ufulao e4nu7ef3" type="button" @click="checkEmailDuplicate">
                   <span class="css-nytqmg e4nu7ef1">중복확인</span>
                 </button>
               </div>
@@ -168,13 +168,10 @@
                 <label class="css-1obgjqh e744wfw4">
                   이용약관동의<span class="css-qq9ke6 e744wfw0">*</span>
                 </label>
-              </div>
-              
+              </div> 
             </div>
           </div>
-
           <div class="checkbox-section">
-            
             <div class="checkbox-item">
               <label class="css-msja7w e1dcessg3" for="TermsAgreeAll">
                 <input
@@ -304,7 +301,7 @@
 import axios from 'axios';
 
 export default {
-  name: "CompanySignupPage",
+  name: "CompanySignupComponent",
   data() {
     return {
       form: {
@@ -318,9 +315,10 @@ export default {
       termsAgreeAll: false,
       requiredTermsCondition: false,
       requiredPrivacyPolicy: false,
+      emailError: false,
+      passwordError: false,
       isPopupVisible: false, // 팝업 표시 여부
       message: "",
-
     };
   },
   methods: {
@@ -332,8 +330,39 @@ export default {
     checkAllAgree() {
       this.termsAgreeAll = this.requiredTermsCondition && this.requiredPrivacyPolicy;
     }, 
-    validateEmail(email){
-      // 이메일 형식이 @gmial.com 으로 끝나는지 확인
+    async checkEmailDuplicate() {
+      if (this.form.email.trim() === '') {
+        alert('이메일을 입력해 주세요');
+        return;
+      }
+      try {
+        // GET 요청을 보내기 위해 email을 쿼리 파라미터로 전송합니다.
+        const response = await axios.get('http://localhost:8080/company/email', {
+          params: { email: this.form.email }
+        });
+
+        // 콘솔 로그로 요청 및 응답 데이터 확인
+        console.log('Request URL:', 'http://localhost:8080/company/email', { params: { email: this.form.email } });
+        console.log('Server response:', response.data);
+
+        // 응답 코드에 따라 적절한 알림을 표시합니다.
+        if (response.data.code === 1121) {
+          alert('중복된 이메일입니다.');
+          this.emailError = true;
+        } else if (response.data.code === 1120) {
+          alert('사용 가능한 이메일입니다.');
+          this.emailError = false;
+        } else {
+          // 예상치 못한 응답 메시지 처리
+          alert('이메일 중복 확인 중 오류가 발생했습니다.');
+        }
+      } catch (error) {
+        console.error('Email check error:', error.response ? error.response.data : error.message);
+        alert('이메일 중복 확인 중 오류가 발생했습니다: ' + (error.response ? error.response.data.message : error.message));
+      }
+    },
+    validateEmail(email) {
+      // 이메일 형식이 @gmail.com 으로 끝나는지 확인
       const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
       return emailRegex.test(email) && email.endsWith('@gmail.com');
     },
@@ -342,43 +371,57 @@ export default {
       return password.length >= 8 && password.length <= 25;
     },
     async signup() {
-      if (this.requiredTermsCondition && this.requiredPrivacyPolicy) {
-        if (this.validateEmail(this.form.email)) {
-          if (this.validatePassword(this.form.password)) {
-            try {
-              await axios.post('http://localhost:8080/company/signup', this.form, {
-                headers: {
-                  'Content-Type': 'application/json'
-                }
-              });
-              alert('회원가입이 성공했습니다');
-              
-            } catch (error) {
-              console.error('CompanySignup error:', error);
-              alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요');
-            }
-          } else {
-              alert('비밀번호는 8글자 이상 25글자 이하로 입력해 주세요'); // 비밀번호 길이 오류 메시지
-              this.passwordError = true;
-                
-            } 
-          } else {
-              alert(this.popupMessage = '이메일 형식으로 입력해주세요 (예: example@gmail.com)') // 이메일 형식 오류 시 팝업 표시
-              this.emailError = true;
-              this.isPopupVisible = false;
-            } 
-          } else {
-            alert('필수 약관에 동의하셔야 합니다.');
-            this.isPopupVisible = false; // 약관 동의 오류 시 팝업 표시
+      // 약관 동의 확인
+      if (!this.requiredTermsCondition || !this.requiredPrivacyPolicy) {
+        alert('이용약관과 개인정보처리방침에 동의해 주세요.');
+        return;
       }
-    }, 
+
+      // 이메일 유효성 검사
+      if (!this.validateEmail(this.form.email)) {
+        alert('이메일 형식으로 입력해 주세요 (예: example@gmail.com)');
+        return;
+      }
+
+      // 비밀번호 유효성 검사
+      if (!this.validatePassword(this.form.password)) {
+        alert('비밀번호는 8글자 이상 25글자 이하로 입력해 주세요.');
+        return;
+      }
+
+      // 이메일 중복 확인
+      if (this.emailError) {
+        alert('이메일 중복 확인을 먼저 해 주세요.');
+        return;
+      }
+
+      try {
+        const response = await axios.post('http://localhost:8080/company/signup', this.form, {
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (response.status === 200) {
+          alert('회원가입이 성공했습니다');
+        } else {
+          alert('회원가입 중 오류가 발생했습니다.');
+        }
+      } catch (error) {
+        console.error('UserSignup error:', error.response ? error.response.data : error.message);
+        alert('회원가입 중 오류가 발생했습니다. 다시 시도해 주세요: ' + (error.response ? error.response.data.message : error.message));
+      }
+    },
     closePopup() {
       this.isPopupVisible = false;
     }
   }
 };
-
 </script>
+
+
+
+
 <style scoped>
 .css-pculus {
     min-width: 1050px;

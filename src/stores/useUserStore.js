@@ -6,21 +6,18 @@ const backend = "/api";
 export const useUserStore = defineStore("user", {
   state: () => ({
     isLoggedIn: false,
+    userType: "",
   }),
   persist: {
     storage: sessionStorage,
   },
   actions: {
     async login(user, userType) {
+      this.userType = userType;
       let url =
         backend + (userType === "company" ? "/company/login" : "/user/login");
-      console.log(user);
-      console.log(userType);
       try {
         let response = await axios.post(url, user);
-        console.log(user);
-        console.log(userType);
-
         // 로그인 성공 코드 확인
         if (
           (userType === "company" && response.data.code === 1050) ||
@@ -36,7 +33,14 @@ export const useUserStore = defineStore("user", {
         return false;
       }
     },
-    logout() {
+    async logout() {
+      let url =
+        backend +
+        (this.userType === "company" ? "/company/logout" : "/user/logout");
+      const response = await axios.get(url, {
+        withCredentials: true,
+      });
+      console.log("로그아웃 ", response);
       this.isLoggedIn = false;
     },
   },
