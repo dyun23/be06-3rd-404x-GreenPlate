@@ -225,9 +225,9 @@
               <router-link to="/mypage/address">배송지 관리</router-link>
             </div>
           </a>
-          <a class="css-1qe2c6r e1ytq75h2">
+          <router-link to="/mypage/keyword" class="css-1qe2c6r e1ytq75h2">
             <div class="css-1mq58uz e1ytq75h1">나의 키워드</div>
-          </a>
+          </router-link>
         </div>
       </div>
     </div>
@@ -236,6 +236,8 @@
 
 <script>
 import axios from "axios";
+import { useUserStore } from "@/stores/useUserStore";
+import { mapStores } from "pinia";
 
 export default {
   name: "LeftMenuComponent",
@@ -245,21 +247,28 @@ export default {
       name: "",
     };
   },
+  computed: {
+    ...mapStores(useUserStore),
+  },
   created() {
     this.getUserInfo();
   },
   methods: {
     async getUserInfo() {
-      const response = await axios.get("/api/user/details", {
-        withCredentials: true,
-      });
-
-      console.log(
-        "response.data.result:",
-        JSON.stringify(response.data.result, null, 2)
-      );
-      this.name = response.data.result.name + "님";
-      return response.data.result;
+      try {
+        const response = await axios.get("/api/user/details", {
+          withCredentials: true,
+        });
+        console.log(response);
+        console.log(
+          "response.data.result:",
+          JSON.stringify(response.data.result, null, 2)
+        );
+        this.name = response.data.result.name + "님";
+        return response.data.result;
+      } catch (error) {
+        this.userStore.logout();
+      }
     },
   },
 };

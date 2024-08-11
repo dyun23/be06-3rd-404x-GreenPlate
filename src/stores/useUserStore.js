@@ -34,14 +34,19 @@ export const useUserStore = defineStore("user", {
       }
     },
     async logout() {
-      let url =
-        backend +
-        (this.userType === "company" ? "/company/logout" : "/user/logout");
-      const response = await axios.get(url, {
-        withCredentials: true,
-      });
-      console.log("로그아웃 ", response);
-      this.isLoggedIn = false;
+      try {
+        let url =
+          backend +
+          (this.userType === "company" ? "/company/logout" : "/user/logout");
+        const response = await axios.get(url, {
+          withCredentials: true,
+        });
+        console.log("로그아웃 ", response);
+        this.isLoggedIn = false;
+      } catch (error) {
+        console.log("토큰 만료");
+      }
+      alert("로그아웃 되었습니다");
     },
   },
 });
