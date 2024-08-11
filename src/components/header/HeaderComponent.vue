@@ -3,20 +3,16 @@
     <div class="css-t79vuj e15sbxqa2">
       <div class="css-1xfyvd1 eo7pjfk4">
         <div v-if="!isLoggedIn">
-          <router-link to="/signup" class="css-xygizb eo7pjfk2"
-            >회원가입</router-link
-          >
+          <router-link to="/signup" class="css-xygizb eo7pjfk2">회원가입</router-link>
         </div>
         <div v-else>
           <div class="css-1qolcqm eo7pjfk3">
-            <a class="css-oyffzd eo7pjfk2"
-              >마이페이지<span class="css-1lrerrk eo4j3y50"></span
-            ></a>
+            <a class="css-oyffzd eo7pjfk2">마이페이지<span class="css-1lrerrk eo4j3y50"></span></a>
             <div class="menu css-1ho29iy ecncdj41">
-              <div class="css-12olpw6 ecncdj40">주문 내역</div>
-              <router-link to="/mypage/address" class="css-12olpw6 ecncdj40"
-                >배송지 관리</router-link
-              >
+              <div class="css-12olpw6 ecncdj40">
+                <router-link :to="orderPageUrl" class="css-12olpw6 ecncdj40">주문 내역</router-link>
+              </div>
+              <router-link to="/mypage/address" class="css-12olpw6 ecncdj40">배송지 관리</router-link>
               <div class="css-12olpw6 ecncdj40">나의 키워드</div>
             </div>
           </div>
@@ -139,6 +135,14 @@ export default {
     ...mapStores(useUserStore),
     isLoggedIn() {
       return this.userStore.isLoggedIn;
+    },
+    userType() {
+      return this.userStore.userType;
+    },
+    orderPageUrl() {
+      return this.userType === "company"
+        ? "/company/order"
+        : "/mypage/order";
     },
   },
   methods: {

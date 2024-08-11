@@ -9,7 +9,7 @@
                 <li v-if="card[0]" class="recipe_item">
                   <a :href="`/recipe/details?${card[0].recipeId}`">
                     <img
-                      src="/image/recipe_img1.PNG"
+                      :src="card[0].imageUrl"
                       width="480"
                       height="480"
                     />
@@ -27,7 +27,7 @@
                 <li v-if="card[1]" class="recipe_item">
                   <a :href="`/recipe/details?${card[1].recipeId}`">
                     <img
-                      src="/image/recipe_img1.PNG"
+                      :src="card[1].imageUrl"
                       width="480"
                       height="480"
                     />

@@ -2,15 +2,6 @@
   width: 1050px;
   margin: 0 auto;
 }
-div,
-th,
-td,
-li,
-dt,
-dd,
-p {
-  word-break: break-all;
-}
 *,
 *:after,
 *:before {
@@ -68,26 +59,13 @@ textarea {
   font: inherit;
   margin: 0;
 }
-table[Attributes Style] {
-  width: 100%;
-}
 #recipe_table .recipe_tr td {
   margin-left: 30px;
 }
-td,
-th {
-  padding: 0;
-}
-td[Attributes Style] {
-  text-align: -webkit-left;
-  vertical-align: top;
-}
-ol,
-ul {
-  list-style-type: none;
-}
 #recipe .recipe_item img {
   border-bottom: 1px solid #f4f4f4;
+  object-fit: cover; /* 이미지를 컨테이너에 맞게 크롭 */
+  object-position: center; /* 이미지의 중심 부분을 표시 */
 }
 img {
   border: 0;
@@ -97,11 +75,6 @@ video,
 canvas {
   max-width: 100%;
 }
-img[Attributes Style] {
-  width: 480px;
-  aspect-ratio: auto 480 / 480;
-  height: 480px;
-}
 img {
   overflow-clip-margin: content-box;
   overflow: clip;
@@ -109,7 +82,7 @@ img {
 #recipe .recipe_item .tit_recipe {
   width: 480px;
   height: 70px;
-  padding: 25px 0 25px 30px;
+  padding: 5px 0 5px 30px;
   text-align: left;
   font-size: 22px;
   line-height: 0.6;
