@@ -12,20 +12,18 @@
             <ul class="goods-add-product-list __slide-mover">
                 <li  v-for="(item, index) in itemList" :key="index"  class="goods-add-product-item __slide-item">
                     <div class="goods-add-product-item-figure">
-                        <a
-                            href="/shop/goods/goods_view.php?&amp;goodsno=1000167890">
+                      <router-link :to="{ path: `/item/list/details/${item.itemId}` }">
                             <img :src="item.itemUrl"
                                 alt="" class="goods-add-product-item-image">
-                        </a> 
-                        <button class="btn_cart" @click="addToCart(item.itemId)">이 상품을 장바구니에 담기</button>
+                      </router-link>
+                      <button class="btn_cart" @click="addToCart(item.itemId)">이 상품을 장바구니에 담기</button>
                     </div>
                     <div class="goods-add-product-item-content">
                         <div class="goods-add-product-item-content-wrapper">
-                            <a
-                                href="/shop/goods/goods_view.php?&amp;goodsno=1000167890">
+                          <router-link :to="{ path: `/item/list/details/${item.itemId}` }">
                                 <div class="goods-add-product-item-name">{{item.name}}</div>
                                 <div class="goods-add-product-item-price"> {{item.discountPrice}}원</div>
-                            </a>
+                          </router-link>
                         </div>
                     </div>
                 </li>
@@ -55,6 +53,7 @@ export default {
       const response = await axios.post('/api/cart/add', params, {
           withCredentials: true
       });
+      alert(response.data.message);
       console.log(response);
     }
   }
