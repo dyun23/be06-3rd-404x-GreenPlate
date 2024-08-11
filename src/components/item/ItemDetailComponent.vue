@@ -6,21 +6,29 @@
           <div class="css-0">
             <div class="css-pw7jst e9elpup1" style="padding-bottom: 128.372%">
               <div class="css-j2pfbl e9elpup0">
-              <span style="
-                  box-sizing: border-box;
-                  display: block;
-                  overflow: hidden;
-                  width: initial;
-                  height: initial;
-                  background: none;
-                  opacity: 1;
-                  border: 0px;
-                  margin: 0px;
-                  padding: 0px;
-                  position: absolute;
-                  inset: 0px;
-                ">
-                <img :src="getValidImageUrl(item?.imageUrl)" sizes="100vw" decoding="async" data-nimg="fill" class="css-1zjvv7" /></span>
+                <span
+                  style="
+                    box-sizing: border-box;
+                    display: block;
+                    overflow: hidden;
+                    width: initial;
+                    height: initial;
+                    background: none;
+                    opacity: 1;
+                    border: 0px;
+                    margin: 0px;
+                    padding: 0px;
+                    position: absolute;
+                    inset: 0px;
+                  "
+                >
+                  <img
+                    :src="getValidImageUrl(item?.imageUrl)"
+                    sizes="100vw"
+                    decoding="async"
+                    data-nimg="fill"
+                    class="css-1zjvv7"
+                /></span>
               </div>
             </div>
           </div>
@@ -67,11 +75,22 @@
                   </div>
                   <div class="css-tk6lxo e1bjklo15">
                     <div class="css-nx0orh e1cqr3m40">
-                      <button type="button" aria-label="수량내리기" class="css-1e90glc e1hx75jb0" @click="decreaseQuantity"
-                              :disabled="quantity <= 1"></button>
-                      <div class="count css-6m57y0 e1cqr3m41">{{ quantity }}</div>
-                      <button type="button" aria-label="수량올리기" class="css-18y6jr4 e1hx75jb0"
-                              @click="increaseQuantity"></button>
+                      <button
+                        type="button"
+                        aria-label="수량내리기"
+                        class="css-1e90glc e1hx75jb0"
+                        @click="decreaseQuantity"
+                        :disabled="quantity <= 1"
+                      ></button>
+                      <div class="count css-6m57y0 e1cqr3m41">
+                        {{ quantity }}
+                      </div>
+                      <button
+                        type="button"
+                        aria-label="수량올리기"
+                        class="css-18y6jr4 e1hx75jb0"
+                        @click="increaseQuantity"
+                      ></button>
                     </div>
                   </div>
                 </div>
@@ -81,15 +100,24 @@
           <div class="css-9y0nwt e17iylht0">
             <div class="css-ixlb9s eebc7rx4">
               <div class="css-yhijln eebc7rx3">
-                <span class="css-w1is7v eebc7rx2">총 상품금액 :</span><span
-                  class="css-x4cdgl eebc7rx1">{{ formattedTotalPrice }}</span><span class="css-1jb8hmu eebc7rx0">원</span>
+                <span class="css-w1is7v eebc7rx2">총 상품금액 :</span
+                ><span class="css-x4cdgl eebc7rx1">{{
+                  formattedTotalPrice
+                }}</span
+                ><span class="css-1jb8hmu eebc7rx0">원</span>
               </div>
             </div>
           </div>
           <div class="css-gnxbjx e10vtr1i2">
             <div class="css-14jnwd7 e10vtr1i0">
-              <button class="cart-button css-1qirdbn e4nu7ef3" type="button" radius="3">
-                <span class="css-nytqmg e4nu7ef1">장바구니 담기</span>
+              <button
+                class="cart-button css-1qirdbn e4nu7ef3"
+                type="button"
+                radius="3"
+              >
+                <span @click="addItemToCart" class="css-nytqmg e4nu7ef1"
+                  >장바구니 담기</span
+                >
               </button>
             </div>
           </div>
@@ -101,6 +129,7 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -112,7 +141,7 @@ export default {
       type: Object,
       required: true,
       default: () => ({
-        imageUrl: 'https://via.placeholder.com/430x550'
+        imageUrl: "https://via.placeholder.com/430x550",
       }),
     },
   },
@@ -150,8 +179,32 @@ export default {
       } catch (_) {
         return false;
       }
-    }
-  }
+    },
+    async addItemToCart() {
+      try {
+        const data = {
+          itemId: this.item.id,
+          quantity: this.quantity,
+        };
+        const response = await axios.post(
+          "http://localhost:8080/cart/add",
+          data,
+          {
+            withCredentials: true,
+          }
+        );
+        if (response.data.success === false) {
+          alert("로그인이 필요합니다.");
+          this.$router.push("/login");
+        } else {
+          alert("장바구니에 상품을 담았습니다.");
+          this.$router.go();
+        }
+      } catch (error) {
+        alert("로그인이 필요합니다.");
+      }
+    },
+  },
 };
 </script>
 
