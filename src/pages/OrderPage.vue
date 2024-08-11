@@ -421,8 +421,6 @@ export default {
         })
         .then((response) => {
           console.log("Delete successful:", response.data);
-          this.items = this.items.filter((item) => !item.checked);
-          this.updateSelectedItems();
         })
         .catch((error) => {
           this.userStore.logout();
