@@ -92,7 +92,9 @@
                     <tr>
                       <td></td>
                       <td align="right">
-                        <a href="list.php?id=recipe"><span class="bhs_button yb" style="float:none;">목록</span></a>
+                        <router-link :to="{ path: `/recipe/list/0` }">
+                          <span class="bhs_button yb" style="float:none;">목록</span>
+                        </router-link>
                       </td>
                     </tr>
                   </tbody>
