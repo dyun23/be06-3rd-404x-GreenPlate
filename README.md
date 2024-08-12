@@ -49,6 +49,7 @@ DB
 <summary> User </summary>
 
 ### 회원가입
+![](/img/기능구현/유저_회원가입.gif)
 ### 로그인
 ![](/img/기능구현/유저_로그인.gif)
 </details>
@@ -56,6 +57,7 @@ DB
 <summary> Company </summary>
 
 ### 회원가입
+![](/img/기능구현/사업자_회원가입.gif)
 ### 로그인
 ![](/img/기능구현/사업자_로그인_상품수정.gif)
 </details>
@@ -94,7 +96,7 @@ DB
 ![](/img/기능구현/레시피_상세조회.gif)
 </details>
 <details>
-<summary> User Mypage </summary>
+<summary> Mypage(User)  </summary>
 
 ### 주문내역
 ![](/img/기능구현/마이페이지_주문내역.gif)
@@ -102,4 +104,14 @@ DB
 ![](/img/기능구현/마이페이지_주소.gif)
 ### 키워드
 ![](/img/기능구현/마이페이지_키워드.gif)
+</details>
+<details>
+<summary> Mypage(Company)  </summary>
+
+### 주문관리
+![](/img/기능구현/사업자_주문관리.gif)
+### 주문관리-송장번호입력
+![](/img/기능구현/사업자_송장번호입력.gif)
+### 상품등록
+![](/img/기능구현/상품_등록.gif)
 </details>
