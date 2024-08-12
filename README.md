@@ -69,7 +69,6 @@ DB
 ### 장바구니 담기
 ![](/img/기능구현/상품_장바구니.gif)
 ### 사업자 상품 등록
-### 유저 상품 목록 조회
 </details>
 <details>
 <summary> Cart </summary>
