@@ -50,10 +50,24 @@ DB
 
 ### 회원가입
 ### 로그인
+![](/img/기능구현/유저_로그인.gif)
+</details>
+<details>
+<summary> Company </summary>
+
+### 회원가입
+### 로그인
+![](/img/기능구현/사업자_로그인_상품수정.gif)
 </details>
 <details>
 <summary> Item </summary>
 
+### 상품조회
+![](/img/기능구현/상품_조회.gif)
+### 상품검색
+![](/img/기능구현/상품_검색.gif)
+### 장바구니 담기
+![](/img/기능구현/상품_장바구니.gif)
 ### 사업자 상품 등록
 ### 유저 상품 목록 조회
 </details>
@@ -67,16 +81,26 @@ DB
 <summary> Order </summary>
 
 ### 카카오페이 결제
-![](/img/기능구현/카카오페이-결제.gif)
+![](/img/기능구현/카카오페이_결제.gif)
 ### 카카오페이 환불
-![](/img/기능구현/카카오페이-결제환불.gif)
+![](/img/기능구현/카카오페이_결제환불.gif)
 </details>
 <details>
 <summary> Recipe </summary>
 
 ### 레시피 등록
 ### 레시피 목록
-![](/img/기능구현/레시피-리스트조회.gif)
+![](/img/기능구현/레시피_리스트조회.gif)
 ### 레시피 상세
-![](/img/기능구현/레시피-상세조회.gif)
+![](/img/기능구현/레시피_상세조회.gif)
+</details>
+<details>
+<summary> User Mypage </summary>
+
+### 주문내역
+![](/img/기능구현/마이페이지_주문내역.gif)
+### 주소
+![](/img/기능구현/마이페이지_주소.gif)
+### 키워드
+![](/img/기능구현/마이페이지_키워드.gif)
 </details>
