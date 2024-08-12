@@ -109,12 +109,14 @@ DB
 ![](/img/기능구현/상품_검색.gif)
 ### 장바구니 담기
 ![](/img/기능구현/상품_장바구니.gif)
+### 상품 등록
+![](/img/기능구현/상품_등록.gif)
 </details>
 <details>
 <summary> Cart </summary>
 
-### 장바구니에 등록
-### 장바구니 조회
+### 장바구니 페이지
+![](/img/기능구현/장바구니.gif)
 </details>
 <details>
 <summary> Order </summary>
@@ -128,6 +130,7 @@ DB
 <summary> Recipe </summary>
 
 ### 레시피 등록
+![](/img/기능구현/레시피_작성.gif)
 ### 레시피 목록
 ![](/img/기능구현/레시피_리스트조회.gif)
 ### 레시피 상세
