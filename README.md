@@ -48,6 +48,9 @@ DB
 <a href="https://www.figma.com/design/1PVF5jM6ozQJ8CNJUQmiTf/greenplate-%ED%99%94%EB%A9%B4-%EC%84%A4%EA%B3%84%EC%84%9C?node-id=0-1&t=W8U2BEQUvvUK2I7B-0">Figma 화면 설계서</a> 
 <br/><br/>
 
+## ⭐ 접속 주소
+[접속 주소](http://3.38.181.59:8080/)
+
 ## ✨ 기능 테스트
 <details>
 <summary> User </summary>
