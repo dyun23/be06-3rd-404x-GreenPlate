@@ -66,12 +66,17 @@ DB
 <details>
 <summary> Order </summary>
 
-### 결제
-### 주문
+### 카카오페이 결제
+![](/img/기능구현/카카오페이-결제.gif)
+### 카카오페이 환불
+![](/img/기능구현/카카오페이-결제환불.gif)
 </details>
 <details>
 <summary> Recipe </summary>
 
 ### 레시피 등록
 ### 레시피 목록
+![](/img/기능구현/레시피-리스트조회.gif)
+### 레시피 상세
+![](/img/기능구현/레시피-상세조회.gif)
 </details>
