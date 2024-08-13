@@ -45,7 +45,7 @@ DB
 ![Git](https://img.shields.io/badge/git-%23F05033.svg?style=for-the-badge&logo=git&logoColor=white) ![GitHub](https://img.shields.io/badge/github-%23121011.svg?style=for-the-badge&logo=github&logoColor=white) ![Notion](https://img.shields.io/badge/Notion-%23000000.svg?style=for-the-badge&logo=notion&logoColor=white)  ![Figma](https://img.shields.io/badge/Figma-%232C2E3A.svg?style=for-the-badge&logo=figma&logoColor=white)
 
 ## 🖥️ 화면설계서
-<a href="https://www.figma.com/design/1PVF5jM6ozQJ8CNJUQmiTf/greenplate-%ED%99%94%EB%A9%B4-%EC%84%A4%EA%B3%84%EC%84%9C?node-id=0-1&t=W8U2BEQUvvUK2I7B-0">Figma 화면 설계서</a> 
+- <a href="https://www.figma.com/design/1PVF5jM6ozQJ8CNJUQmiTf/greenplate-%ED%99%94%EB%A9%B4-%EC%84%A4%EA%B3%84%EC%84%9C?node-id=0-1&t=W8U2BEQUvvUK2I7B-0">Figma 화면 설계서</a> 
 <br/><br/>
 
 ## 🔧 시스템 아키텍처
@@ -81,7 +81,7 @@ DB
 </details>
 
 ## ⭐ 접속 주소
-[접속 주소](http://3.38.181.59:8080/)
+- [접속 주소](http://greenplate.s3-website.ap-northeast-2.amazonaws.com)
 
 ## ✨ 기능 테스트
 <details>
